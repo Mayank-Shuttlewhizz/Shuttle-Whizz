@@ -6,7 +6,7 @@
 <title>Shuttlewhizz – Court Booking</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0c10;--s1:#13161d;--s2:#1c202b;--ac:#c8f135;--ac2:#35f1a8;--tx:#f0f2f5;--mu:#6b7280;--br:#252933;--rd:#ff4d6d;--ni:#7c6af7;--sel:#1e2d0a}
+:root{--bg:#0a0c10;--s1:#13161d;--s2:#1c202b;--ac:#c8f135;--ac2:#35f1a8;--tx:#f0f2f5;--mu:#6b7280;--br:#252933;--rd:#ff4d6d;--ni:#7c6af7;--sel:#1a2a06}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
 .hdr{background:var(--s1);border-bottom:1px solid var(--br);padding:13px 18px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between}
@@ -16,17 +16,15 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .sbar{background:var(--s2);border-bottom:1px solid var(--br);padding:8px 18px;display:flex;align-items:center;gap:8px}
 .surl{font-size:10px;color:var(--mu);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sbtn{flex-shrink:0;padding:6px 12px;border-radius:18px;background:var(--ac);border:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;color:#000;cursor:pointer}
-/* COURT TABS */
-.ctabs{display:flex;overflow-x:auto;gap:7px;padding:11px 18px;background:var(--s1);border-bottom:1px solid var(--br);scrollbar-width:none}
+.ctabs{display:flex;overflow-x:auto;gap:7px;padding:10px 18px;background:var(--s1);border-bottom:1px solid var(--br);scrollbar-width:none}
 .ctabs::-webkit-scrollbar{display:none}
 .ct{flex-shrink:0;padding:6px 14px;border-radius:18px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
 .ct.on{background:var(--ac);border-color:var(--ac);color:#000;font-weight:700}
-/* MONTH / DATE */
-.mtabs{display:flex;overflow-x:auto;gap:6px;padding:9px 18px;background:var(--s2);border-bottom:1px solid var(--br);scrollbar-width:none}
+.mtabs{display:flex;overflow-x:auto;gap:6px;padding:8px 18px;background:var(--s2);border-bottom:1px solid var(--br);scrollbar-width:none}
 .mtabs::-webkit-scrollbar{display:none}
-.mt2{flex-shrink:0;padding:5px 12px;border-radius:14px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.mt2{flex-shrink:0;padding:4px 12px;border-radius:14px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
 .mt2.on{background:var(--s1);border-color:var(--ac);color:var(--ac)}
-.wstrip{display:flex;overflow-x:auto;gap:5px;padding:10px 18px 7px;scrollbar-width:none}
+.wstrip{display:flex;overflow-x:auto;gap:5px;padding:9px 18px 6px;scrollbar-width:none}
 .wstrip::-webkit-scrollbar{display:none}
 .dbtn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:7px 9px;border-radius:10px;border:1.5px solid var(--br);background:var(--s1);cursor:pointer;transition:all .2s;min-width:44px}
 .dbtn .dn{font-size:9px;color:var(--mu);font-weight:600;text-transform:uppercase}
@@ -34,37 +32,33 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .dbtn.on{border-color:var(--ac);background:rgba(200,241,53,.07)}
 .dbtn.on .dd,.dbtn.on .dn{color:var(--ac)}
 .dbtn.past{opacity:.35}
-/* MULTI-SELECT BAR */
-.selbar{background:var(--sel);border-bottom:1px solid rgba(200,241,53,.2);padding:9px 18px;display:flex;align-items:center;justify-content:space-between;display:none}
+.selbar{background:var(--sel);border-bottom:1px solid rgba(200,241,53,.2);padding:8px 18px;display:none;align-items:center;justify-content:space-between}
 .selbar.show{display:flex}
 .selbar-info{font-size:12px;color:var(--ac);font-weight:600}
 .selbar-btns{display:flex;gap:7px}
 .selbar-clear{padding:5px 11px;border-radius:14px;border:1px solid var(--br);background:transparent;color:var(--mu);font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif}
 .selbar-book{padding:5px 14px;border-radius:14px;background:var(--ac);border:none;color:#000;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
-/* PRICING */
-.pbar{display:flex;gap:7px;padding:7px 18px 9px;flex-wrap:wrap}
+.pbar{display:flex;gap:7px;padding:6px 18px 8px;flex-wrap:wrap}
 .pp{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:7px;background:var(--s1);border:1px solid var(--br);font-size:10px;color:var(--mu)}
 .pd{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .pp b{color:var(--ac)}
-/* SLOTS */
 .scon{padding:0 18px 120px}
-.slbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:13px 0 7px;display:flex;align-items:center;gap:7px}
+.slbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:12px 0 6px;display:flex;align-items:center;gap:7px}
 .slbl::after{content:'';flex:1;height:1px;background:var(--br)}
-.sc{background:var(--s1);border:1.5px solid var(--br);border-radius:11px;padding:11px 13px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;transition:all .15s;cursor:pointer;position:relative;overflow:hidden;user-select:none}
+.sc{background:var(--s1);border:1.5px solid var(--br);border-radius:11px;padding:10px 13px;margin-bottom:5px;display:flex;align-items:center;justify-content:space-between;transition:all .15s;cursor:pointer;position:relative;overflow:hidden;user-select:none}
 .sc.av:active{transform:scale(.98)}
 .sc.av:hover{border-color:rgba(200,241,53,.4)}
 .sc.bk{opacity:.5;cursor:not-allowed}
 .sc.ni{border-left:3px solid var(--ni)}
 .sc.picked{border-color:var(--ac);background:var(--sel)}
-.sc.picked .sp{color:var(--ac)}
 .btag{position:absolute;top:6px;right:8px;font-size:8px;font-weight:700;letter-spacing:1px;color:var(--rd);border:1px solid var(--rd);padding:2px 5px;border-radius:3px}
-.seltag{position:absolute;top:6px;right:8px;font-size:9px;font-weight:700;color:var(--ac);padding:2px 5px}
+.seltag{position:absolute;top:6px;right:8px;font-size:10px;color:var(--ac);font-weight:700}
 .st{font-size:13px;font-weight:700;color:var(--tx)}
-.sdur{font-size:10px;color:var(--mu);margin-top:1px}
-.sw{font-size:10px;color:var(--rd);margin-top:2px;font-weight:600}
+.sdur{font-size:9px;color:var(--mu);margin-top:1px}
+.sw{font-size:10px;color:var(--rd);margin-top:1px;font-weight:600}
 .sr{text-align:right;flex-shrink:0;margin-left:7px}
-.sp{font-size:14px;font-weight:700;color:var(--ac)}
-.bchip{display:inline-block;margin-top:4px;padding:3px 11px;border-radius:18px;background:var(--ac);color:#000;font-size:10px;font-weight:700}
+.sp{font-size:13px;font-weight:700;color:var(--ac)}
+.bchip{display:inline-block;margin-top:3px;padding:3px 10px;border-radius:16px;background:var(--ac);color:#000;font-size:10px;font-weight:700}
 /* OVERLAYS */
 .ovl{position:fixed;inset:0;background:rgba(0,0,0,.87);z-index:200;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .28s}
 .ovl.op{opacity:1;pointer-events:all}
@@ -73,82 +67,82 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .hdl{width:38px;height:4px;border-radius:2px;background:var(--br);margin:13px auto 0}
 .shd{padding:14px 22px 0}
 .shd h2{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px}
-.ssum{background:var(--s2);border-radius:11px;margin:11px 22px;padding:12px 14px;font-size:13px;line-height:1.9;border-left:3px solid var(--ac)}
+.ssum{background:var(--s2);border-radius:11px;margin:10px 22px;padding:12px 14px;font-size:13px;line-height:1.9;border-left:3px solid var(--ac)}
 .ssum strong{color:var(--ac)}
-.slot-list-sum{margin:0 22px 11px;display:flex;flex-direction:column;gap:5px}
-.slot-sum-row{background:var(--s2);border-radius:8px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+.slot-list-sum{margin:0 22px 10px;display:flex;flex-direction:column;gap:4px}
+.slot-sum-row{background:var(--s2);border-radius:8px;padding:7px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center}
 .slot-sum-row span{color:var(--mu)}
 .slot-sum-row b{color:var(--ac)}
-.total-row{background:rgba(200,241,53,.08);border:1px solid rgba(200,241,53,.2);border-radius:8px;padding:10px 12px;font-size:14px;font-weight:700;display:flex;justify-content:space-between;margin:0 22px 11px}
+.total-row{background:rgba(200,241,53,.08);border:1px solid rgba(200,241,53,.2);border-radius:8px;padding:9px 12px;font-size:14px;font-weight:700;display:flex;justify-content:space-between;margin:0 22px 10px}
 .total-row span{color:var(--mu)}
 .total-row b{color:var(--ac)}
 .fa{padding:0 22px}
-.fg{margin-bottom:11px}
-.fg label{display:block;font-size:10px;font-weight:600;color:var(--mu);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
-.fg input{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color .2s}
-.fg input:focus{outline:none;border-color:var(--ac)}
-.utitle{font-size:11px;color:var(--mu);padding:3px 0 9px;text-align:center}
+.fg{margin-bottom:10px}
+.fg label{display:block;font-size:10px;font-weight:600;color:var(--mu);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.fg input,.fg select{width:100%;padding:10px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color .2s;-webkit-appearance:none}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--ac)}
+.fg select option{background:var(--s2)}
+.utitle{font-size:11px;color:var(--mu);padding:3px 0 8px;text-align:center}
 .utitle strong{color:var(--tx)}
-.uapps{display:flex;justify-content:center;gap:7px;margin-bottom:12px;flex-wrap:wrap}
-.ubtn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 13px;border-radius:11px;border:1.5px solid var(--br);background:var(--s2);cursor:pointer;transition:all .15s;min-width:62px}
+.uapps{display:flex;justify-content:center;gap:7px;margin-bottom:10px;flex-wrap:wrap}
+.ubtn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 12px;border-radius:11px;border:1.5px solid var(--br);background:var(--s2);cursor:pointer;transition:all .15s;min-width:60px}
 .ubtn:active{transform:scale(.94)}
 .ubtn .ul{font-size:9px;font-weight:700;color:var(--mu)}
 .ubtn.gp{border-color:#4285F4}.ubtn.gp .ul{color:#4285F4}
 .ubtn.pp2{border-color:#5f259f}.ubtn.pp2 .ul{color:#9b59f5}
 .ubtn.pt{border-color:#00BAF2}.ubtn.pt .ul{color:#00BAF2}
 .ubtn.bh{border-color:#ff6600}.ubtn.bh .ul{color:#ff8833}
-.dvd{display:flex;align-items:center;gap:8px;margin:1px 0 11px;color:var(--mu);font-size:11px}
+.dvd{display:flex;align-items:center;gap:8px;margin:1px 0 10px;color:var(--mu);font-size:11px}
 .dvd::before,.dvd::after{content:'';flex:1;height:1px;background:var(--br)}
-.pbtn{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:transform .12s;text-decoration:none;display:block;text-align:center}
+.pbtn{width:100%;padding:13px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer;transition:transform .12s;text-decoration:none;display:block;text-align:center}
 .pbtn:active{transform:scale(.97)}
-.cbtn{width:100%;padding:11px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;margin-top:7px}
+.cbtn{width:100%;padding:10px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;margin-top:7px}
 /* PAID SHEET */
 .povl{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:300;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .28s}
 .povl.op{opacity:1;pointer-events:all}
 .psht{background:var(--s1);border-radius:22px 22px 0 0;padding:20px 22px 42px;width:100%;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1)}
 .povl.op .psht{transform:translateY(0)}
 .psht h3{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:1px;margin-bottom:7px}
-.psht p{font-size:12px;color:var(--mu);margin-bottom:6px;line-height:1.6}
-.paid-opts{display:flex;gap:8px;margin-bottom:14px}
+.psht p{font-size:12px;color:var(--mu);margin-bottom:10px;line-height:1.6}
+.paid-opts{display:flex;gap:8px;margin-bottom:12px}
 .paid-opt{flex:1;padding:10px 8px;border-radius:10px;border:1.5px solid var(--br);background:var(--s2);text-align:center;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s}
 .paid-opt.yes{border-color:var(--ac);color:var(--ac)}
 .paid-opt.no{border-color:var(--rd);color:var(--rd)}
-.txni{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:11px;display:none}
+.txni{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:10px;display:none}
 .txni.show{display:block}
 .txni:focus{outline:none;border-color:var(--ac)}
-.cpbtn2{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer;display:none}
+.cpbtn2{width:100%;padding:13px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#000;cursor:pointer;display:none}
 .cpbtn2.show{display:block}
 /* SUCCESS */
-.sovl{position:fixed;inset:0;background:var(--bg);z-index:400;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;overflow-y:auto}
+.sovl{position:fixed;inset:0;background:var(--bg);z-index:400;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:22px;opacity:0;pointer-events:none;transition:opacity .35s;overflow-y:auto}
 .sovl.on{opacity:1;pointer-events:all}
-.si{font-size:60px;margin-bottom:12px;animation:pop .38s ease}
+.si{font-size:56px;margin-bottom:10px;animation:pop .38s ease}
 @keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.14)}100%{transform:scale(1)}}
-.sovl h2{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--ac);letter-spacing:2px;margin-bottom:10px}
-.conf-card{background:var(--s1);border:1.5px solid var(--br);border-radius:16px;padding:16px;width:100%;max-width:340px;margin:0 auto 14px;text-align:left}
+.sovl h2{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--ac);letter-spacing:2px;margin-bottom:10px}
+.conf-card{background:var(--s1);border:1.5px solid var(--br);border-radius:14px;padding:14px;width:100%;max-width:340px;margin:0 auto 12px;text-align:left}
 .conf-row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--br)}
 .conf-row:last-child{border-bottom:none}
-.conf-label{font-size:9px;color:var(--mu);font-weight:600;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;margin-right:10px;padding-top:2px}
+.conf-label{font-size:9px;color:var(--mu);font-weight:600;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;margin-right:8px;padding-top:2px}
 .conf-val{font-size:12px;font-weight:600;color:var(--tx);text-align:right}
 .conf-val.green{color:var(--ac)}
 .conf-val.txn{font-size:11px;color:var(--ac2);word-break:break-all}
-.copy-card-btn{width:100%;max-width:340px;padding:12px;background:var(--s2);border:1.5px solid var(--br);border-radius:13px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:9px;display:flex;align-items:center;justify-content:center;gap:7px}
-.dbtn2{width:100%;max-width:340px;padding:13px 40px;border-radius:13px;background:var(--ac);border:none;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
-/* FAIL OVERLAY */
+.copy-card-btn{width:100%;max-width:340px;padding:11px;background:var(--s2);border:1.5px solid var(--br);border-radius:13px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:7px}
+.dbtn2{width:100%;max-width:340px;padding:12px 40px;border-radius:13px;background:var(--ac);border:none;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#000;cursor:pointer}
+/* FAIL */
 .fovl{position:fixed;inset:0;background:rgba(0,0,0,.87);z-index:500;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .28s}
 .fovl.op{opacity:1;pointer-events:all}
-.fsht{background:var(--s1);border-radius:22px 22px 0 0;padding:24px 22px 42px;width:100%;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);text-align:center}
+.fsht{background:var(--s1);border-radius:22px 22px 0 0;padding:22px 22px 40px;width:100%;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);text-align:center}
 .fovl.op .fsht{transform:translateY(0)}
-.fsht .fi{font-size:52px;margin-bottom:12px}
-.fsht h3{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--rd);letter-spacing:1px;margin-bottom:8px}
-.fsht p{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:18px}
-.try-again-btn{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer;margin-bottom:9px}
-.dismiss-btn{width:100%;padding:12px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer}
-/* TOAST */
+.fsht .fi{font-size:48px;margin-bottom:10px}
+.fsht h3{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rd);letter-spacing:1px;margin-bottom:8px}
+.fsht p{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:16px}
+.try-again-btn{width:100%;padding:13px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#000;cursor:pointer;margin-bottom:8px}
+.dismiss-btn{width:100%;padding:11px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
 .toast.show{opacity:1}
-.spn{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite;vertical-align:middle}
+.spn{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-.empty{text-align:center;padding:36px 18px;color:var(--mu);font-size:13px}
+.empty{text-align:center;padding:32px 18px;color:var(--mu);font-size:13px}
 </style>
 </head>
 <body>
@@ -161,23 +155,19 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
   <span class="surl">mayank-shuttlewhizz.github.io/badmintonslots</span>
   <button class="sbtn" onclick="doShare()">🔗 Share</button>
 </div>
-
 <div class="ctabs" id="cTabs"></div>
 <div class="mtabs" id="mTabs"></div>
 <div class="wstrip" id="wStrip"></div>
-
-<!-- MULTI-SELECT BAR -->
 <div class="selbar" id="selBar">
   <div class="selbar-info" id="selInfo">0 slots · ₹0</div>
   <div class="selbar-btns">
-    <button class="selbar-clear" onclick="clearSelection()">Clear</button>
+    <button class="selbar-clear" onclick="clearSel()">Clear</button>
     <button class="selbar-book" onclick="openMultiBook()">Book All →</button>
   </div>
 </div>
-
 <div class="pbar">
-  <div class="pp"><div class="pd" style="background:#c8f135"></div>Day <b>₹1000/hr · ₹500/30min</b></div>
-  <div class="pp"><div class="pd" style="background:#7c6af7"></div>Night/Wknd <b>₹1200/hr · ₹600/30min</b></div>
+  <div class="pp"><div class="pd" style="background:#c8f135"></div>Day <b>₹500/30min · ₹1000/hr</b></div>
+  <div class="pp"><div class="pd" style="background:#7c6af7"></div>Night/Wknd <b>₹600/30min · ₹1200/hr</b></div>
 </div>
 <div class="scon" id="slotCon"><div class="empty"><span class="spn"></span></div></div>
 
@@ -186,9 +176,7 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
   <div class="sht">
     <div class="hdl"></div>
     <div class="shd"><h2>Confirm Booking</h2></div>
-    <!-- Single slot summary -->
     <div class="ssum" id="slotSum" style="display:none"></div>
-    <!-- Multi slot summary -->
     <div class="slot-list-sum" id="multiSum" style="display:none"></div>
     <div class="total-row" id="totalRow" style="display:none"><span>Total</span><b id="totalAmt"></b></div>
     <div class="fa">
@@ -196,380 +184,369 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
       <div class="fg"><label>Mobile Number</label><input type="tel" id="bPhone" placeholder="10-digit number" maxlength="10" inputmode="numeric"></div>
       <div class="utitle">Pay to <strong>Shuttlewhizz Badminton Academy</strong><br><span style="font-size:10px">UPI: shutt90828@barodampay</span></div>
       <div class="uapps">
-        <div class="ubtn gp" onclick="payWith('gpay')"><span style="font-size:20px;font-weight:900;color:#4285F4;line-height:1">G</span><span class="ul">GPay</span></div>
-        <div class="ubtn pp2" onclick="payWith('phonepe')"><span style="font-size:18px;line-height:1">📱</span><span class="ul">PhonePe</span></div>
-        <div class="ubtn pt" onclick="payWith('paytm')"><span style="font-size:18px;color:#00BAF2;font-weight:900;line-height:1">P</span><span class="ul">Paytm</span></div>
-        <div class="ubtn bh" onclick="payWith('bhim')"><span style="font-size:18px;line-height:1">₹</span><span class="ul">BHIM</span></div>
+        <div class="ubtn gp" onclick="payWith('gpay')"><span style="font-size:19px;font-weight:900;color:#4285F4;line-height:1">G</span><span class="ul">GPay</span></div>
+        <div class="ubtn pp2" onclick="payWith('phonepe')"><span style="font-size:17px;line-height:1">📱</span><span class="ul">PhonePe</span></div>
+        <div class="ubtn pt" onclick="payWith('paytm')"><span style="font-size:17px;color:#00BAF2;font-weight:900;line-height:1">P</span><span class="ul">Paytm</span></div>
+        <div class="ubtn bh" onclick="payWith('bhim')"><span style="font-size:17px;line-height:1">₹</span><span class="ul">BHIM</span></div>
       </div>
       <div class="dvd">or open any UPI app</div>
-      <!-- UPI link — proper anchor tag, not location.href -->
       <a id="upiLink" href="#" class="pbtn" onclick="handleUPIClick(event)">PAY ₹<span id="pAmt"></span> VIA UPI</a>
       <button class="cbtn" onclick="closeBook()">Cancel</button>
     </div>
   </div>
 </div>
 
-<!-- PAID CONFIRMATION SHEET -->
+<!-- PAID SHEET -->
 <div class="povl" id="pOvl">
   <div class="psht">
-    <div class="hdl" style="margin:0 auto 16px"></div>
+    <div class="hdl" style="margin:0 auto 14px"></div>
     <h3>Did the payment go through?</h3>
-    <p>Check your UPI app — if payment was successful, tap "Yes" and enter your Transaction ID to lock your slot.</p>
+    <p>Check your UPI app. If payment was successful tap "Yes" and enter your Transaction ID to lock your slot.</p>
     <div class="paid-opts">
       <div class="paid-opt yes" onclick="paidYes()">✅ Yes, paid</div>
       <div class="paid-opt no" onclick="paidNo()">❌ No / Failed</div>
     </div>
-    <input class="txni" id="txnId" type="text" placeholder="UPI Transaction ID (from your app)" inputmode="numeric">
+    <input class="txni" id="txnId" type="text" placeholder="UPI Transaction ID (from your app)">
     <button class="cpbtn2" id="confBtn" onclick="confirmBook()">CONFIRM &amp; LOCK SLOT</button>
   </div>
 </div>
 
-<!-- SUCCESS SCREEN -->
+<!-- SUCCESS -->
 <div class="sovl" id="sOvl">
   <div class="si">🏸</div>
   <h2>Booking Confirmed!</h2>
   <div class="conf-card" id="confCard"></div>
-  <button class="copy-card-btn" onclick="copyConfirmation()">📋 Copy Confirmation</button>
+  <button class="copy-card-btn" onclick="copyConf()">📋 Copy Confirmation</button>
   <button class="dbtn2" onclick="closeSuccess()">Done</button>
 </div>
 
-<!-- PAYMENT FAILED SCREEN -->
+<!-- FAIL -->
 <div class="fovl" id="fOvl">
   <div class="fsht">
     <div class="fi">⚠️</div>
     <h3>Payment Not Confirmed</h3>
-    <p>Your slot has <strong style="color:var(--tx)">NOT been blocked</strong>. It's still available for everyone.<br><br>Please try paying again or use a different UPI app.</p>
+    <p>Your slot has <strong style="color:var(--tx)">NOT been blocked</strong>. It's still available for everyone.<br><br>Try again or use a different UPI app.</p>
     <button class="try-again-btn" onclick="tryAgain()">Try Again</button>
     <button class="dismiss-btn" onclick="dismissFail()">Cancel – Keep Slot Open</button>
   </div>
 </div>
 
-<div class="toast" id="toast">Copied!</div>
+<div class="toast" id="toast"></div>
 
 <script>
-// ── CONFIG ─────────────────────────────────────────────────────────────────
-// UPI: do NOT encodeURIComponent the ID itself — pass it raw in the URL
-var UPI_ID   = 'shutt90828@barodampay';
-var UPI_NAME = 'Shuttlewhizz Badminton Academy';
+// ── CONFIG ──────────────────────────────────────────────────────────────────
+var UPI_ID='shutt90828@barodampay', UPI_NAME='Shuttlewhizz Badminton Academy';
 
-// ── DATE HELPERS ───────────────────────────────────────────────────────────
-var MONTHS = [
-  {key:'mar', label:'Mar', year:2026, month:2, start:30, end:31},
-  {key:'apr', label:'Apr', year:2026, month:3, start:1,  end:30},
+// ── DATES ───────────────────────────────────────────────────────────────────
+var MONTHS=[
+  {key:'mar',label:'Mar',year:2026,month:2,start:30,end:31},
+  {key:'apr',label:'Apr',year:2026,month:3,start:1,end:30},
 ];
-var DNAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-var MNAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function dkey(y,m,d){return y+'-'+(m<9?'0':'')+(m+1)+'-'+(d<10?'0':'')+d;}
-function dname(y,m,d){return DNAMES[new Date(y,m,d).getDay()];}
-function isWE(y,m,d){var dow=new Date(y,m,d).getDay();return dow===0||dow===6;}
-function fmtD(y,m,d){return d+' '+MNAMES[m];}
-
-function getDays(mObj){
-  var days=[], y=mObj.year, m=mObj.month;
-  for(var d=mObj.start; d<=mObj.end; d++){
-    days.push({key:dkey(y,m,d),label:dname(y,m,d),num:d,display:fmtD(y,m,d),weekend:isWE(y,m,d),y:y,m:m,d:d});
-  }
-  return days;
+var DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dk(y,m,d){return y+'-'+(m<9?'0':'')+(m+1)+'-'+(d<10?'0':'')+d;}
+function dn(y,m,d){return DN[new Date(y,m,d).getDay()];}
+function isWE(y,m,d){var w=new Date(y,m,d).getDay();return w===0||w===6;}
+function fmtD(y,m,d){return d+' '+MN[m];}
+function getDays(mo){
+  var a=[],y=mo.year,m=mo.month;
+  for(var d=mo.start;d<=mo.end;d++) a.push({key:dk(y,m,d),label:dn(y,m,d),num:d,display:fmtD(y,m,d),weekend:isWE(y,m,d),y:y,m:m,d:d});
+  return a;
 }
 
 // ── TIME FORMAT ─────────────────────────────────────────────────────────────
-function fh(h){
-  var t=Math.round(h*60), hr=Math.floor(t/60)%24, mn=t%60;
-  var ap=hr<12?'AM':'PM', dh=hr===0?12:hr>12?hr-12:hr;
-  return dh+':'+(mn<10?'0':'')+mn+' '+ap;
-}
-function durLabel(h){return h===1?'1 hr':h===0.5?'30 min':(h+' hrs');}
+function fh(h){var t=Math.round(h*60),hr=Math.floor(t/60)%24,mn=t%60,ap=hr<12?'AM':'PM',dh=hr===0?12:hr>12?hr-12:hr;return dh+':'+(mn<10?'0':'')+mn+' '+ap;}
 
-// ── COURTS & RULES ─────────────────────────────────────────────────────────
-var COURTS=[
-  {id:'bandra',    name:'Bandra'},
-  {id:'santacruz', name:'Santacruz'},
-  {id:'chembur',   name:'Chembur'},
-  {id:'colaba',    name:'Colaba'},
-  {id:'andheri',   name:'Andheri'},
-];
-
-// slot step: 0.5 = 30 min
-var STEP = 0.5;
-
-var RULES = {
-  bandra:    { weekday:[{s:8.5,e:9.5,'r':'day'},{s:11.5,e:16.5,'r':'day'},{s:23,e:26.5,'r':'night'}],    weekend:[{s:9,e:10.5,'r':'weekend'},{s:12,e:16.5,'r':'weekend'},{s:22.5,e:26.5,'r':'night'}] },
-  santacruz: { weekday:[{s:9.5,e:15,'r':'day'},{s:23,e:25,'r':'night'}],                                  weekend:[{s:5.5,e:6.5,'r':'weekend'},{s:14.5,e:20,'r':'weekend'},{s:21.5,e:25.5,'r':'night'}] },
-  chembur:   { weekday:[{s:11,e:19,'r':'day'}],                                                            weekend:[{s:11,e:19,'r':'weekend'}] },
-  colaba:    { weekday:[{s:11.5,e:18.5,'r':'day'}],                                                       weekend:[{s:11.5,e:18.5,'r':'weekend'}] },
-  andheri:   { weekday:[{s:6,e:22,'r':'day'}],                                                             weekend:[{s:6,e:22,'r':'weekend'}] },
-};
-
-// Pre-booked (before Apr 6 reset) — Mar 30–Apr 5 only
-var PRE = {
-  bandra:    {'2026-03-30':{'8.5':'Jyotika H','11.5':'Sundeep','14':'Rishikesh'},'2026-03-31':{'8.5':'Jyotika H','12':'Tracy H','13':'Tracy H'},'2026-04-01':{},'2026-04-02':{'23':'Shreyas H','23.5':'Shreyas H'},'2026-04-04':{'9':'Tanisha'},'2026-04-05':{'9':'Shreyash H','12':'Mayank','13':'Mayank'}},
-  santacruz: {'2026-03-30':{'9.5':'Ankit','11':'Prasad'},'2026-03-31':{'10':'Shradha','21.5':'Diya','22.5':'Diya'},'2026-04-01':{'9.5':'Prasad'}},
-  chembur:{}, colaba:{}, andheri:{},
-};
-
-function getSlotsForDay(courtId, dateObj){
-  var rules=RULES[courtId]; if(!rules) return [];
-  var wins=dateObj.weekend?rules.weekend:rules.weekday;
-  // Only apply pre-booked for dates before Apr 6
-  var pre=((PRE[courtId]||{})[dateObj.key])||{};
+// ── SLOT BUILDER ────────────────────────────────────────────────────────────
+// seg(start, end, rate, bookedBy_or_null)
+// bookedBy can be a name (string) — fills ALL 30-min slots in that range
+function buildSlots(courtId, dateKey, segs){
   var slots=[];
-  wins.forEach(function(w){
-    var h=Math.round(w.s*2)/2, en=Math.round(w.e*2)/2;
+  segs.forEach(function(seg){
+    var h=Math.round(seg.s*2)/2, en=Math.round(seg.e*2)/2;
     while(h<en){
-      var id=courtId+'-'+dateObj.key+'-'+h;
-      var preVal=pre[''+h];
-      slots.push({id:id,time:fh(h)+' – '+fh(h+STEP),h:h,hrs:STEP,rate:w.r,by:preVal||null,dateKey:dateObj.key,courtId:courtId});
-      h=Math.round((h+STEP)*2)/2;
+      slots.push({
+        id: courtId+'-'+dateKey+'-'+h,
+        time: fh(h)+' – '+fh(h+0.5),
+        h: h, rate: seg.r,
+        by: seg.by||null,
+        dateKey: dateKey, courtId: courtId
+      });
+      h=Math.round((h+0.5)*2)/2;
     }
   });
   return slots;
 }
 
-// ── STATE ───────────────────────────────────────────────────────────────────
-var selC='bandra', selMon='apr', selDay=null;
-var selectedSlots = []; // multi-select array of slot objects
-var pendingUser=null, confData=null, pendingSlots=[];
-var booked={};
-try{booked=JSON.parse(localStorage.getItem('sw_bk2')||'{}');}catch(e){}
-function save(){try{localStorage.setItem('sw_bk2',JSON.stringify(booked));}catch(e){}}
+// ── EXACT SCHEDULE DATA ─────────────────────────────────────────────────────
+// seg(start, end, rate, bookedBy)
+function seg(s,e,r,by){return{s:s,e:e,r:r,by:by||null};}
 
-function pricePerSlot(s){return s.rate==='day'?500:600;} // per 30min slot
+// Helper to mark a range as one person (multi-slot booking)
+var D='day', N='night', W='weekend';
+
+var SCHEDULE={
+  // ══════════ BANDRA ══════════
+  bandra:{
+    '2026-03-30':[ // Monday
+      seg(8.5,9.5,D,'Jyotika H'),
+      seg(11.5,12.5,D,'Sundeep'),
+      seg(12.5,14,D),          // available
+      seg(14,15,D,'Rishikesh'),
+      seg(23,26,N),             // 11pm-2am available
+    ],
+    '2026-03-31':[ // Tuesday
+      seg(8.5,9.5,D,'Jyotika H'),
+      seg(9.5,12,D),            // 9:30am-12pm available
+      seg(12,14,D,'Tracy H'),   // 12-2pm Tracy H
+      seg(14,16.5,D),           // 2-4:30pm available
+      seg(23,26,N),             // 11pm-2am available
+    ],
+    '2026-04-01':[ // Wednesday
+      seg(8.5,9.5,D),           // 8:30-9:30 available
+      seg(11.5,15,D),           // 11:30am-3pm available
+      seg(23,26,N),             // 11pm-2am available
+    ],
+    '2026-04-02':[ // Thursday
+      seg(8.5,9.5,D),           // 8:30-9:30
+      seg(9.5,10.5,D),          // 9:30-10:30 (from schedule "9:30pm to 9:30am" likely typo, treating as 9:30-10:30am)
+      seg(10.5,15.5,D),         // 10:30am-3:30pm
+      seg(15.5,16.5,D),         // 3:30-4:30pm
+      seg(23,24.5,N,'Shreyas H'), // 11pm-12:30am Shreyas H
+      seg(24.5,26.5,N),           // 12:30am-2:30am available
+    ],
+    '2026-04-03':[ // Friday
+      seg(8.5,9.5,D),           // 8:30-9:30
+      seg(11.5,15,D),           // 11:30am-3pm
+      seg(22.5,26.5,N),         // 10:30pm-2:30am
+    ],
+    '2026-04-04':[ // Saturday
+      seg(9,10.5,W,'Tanisha'),  // 9-10:30am Tanisha
+      seg(12,14,W),             // 12-2pm available
+      seg(14,15.5,W),           // 2-3:30pm available
+      seg(15.5,16.5,W),         // 3:30-4:30pm available
+      seg(22.5,26.5,N),         // 10:30pm-2:30am available
+    ],
+    '2026-04-05':[ // Sunday
+      seg(9,10.5,W,'Shreyash H'), // 9-10:30am Shreyash H
+      seg(12,14,W,'Mayank'),      // 12-2pm Mayank
+      seg(14,16,W),               // 2-4pm available
+      seg(17,18,W),               // 5-6pm available
+      seg(18,19.5,W),             // 6-7:30pm available
+      seg(22.5,26.5,N),           // 10:30pm-2:30am available
+    ],
+  },
+
+  // ══════════ SANTACRUZ ══════════
+  santacruz:{
+    '2026-03-30':[ // Monday
+      seg(9.5,11,D,'Ankit'),    // 9:30-11 Ankit
+      seg(11,12.5,D,'Prasad'),  // 11-12:30 Prasad
+      seg(12.5,15,D),           // 12:30-3pm available (10am-3pm window minus booked)
+    ],
+    '2026-03-31':[ // Tuesday
+      seg(10,11,D,'Shradha'),   // 10-11am Shradha
+      seg(11,14,D),             // 11am-2pm available
+      seg(14,15,D),             // 2-3pm available
+      seg(21.5,23,N,'Diya'),    // 9:30-11pm Diya
+      seg(23,25,N),             // 11pm-1am available
+    ],
+    '2026-04-01':[ // Wednesday
+      seg(9.5,11,D,'Prasad'),   // 9:30-11 Prasad
+      seg(11,15,D),             // 11am-3pm available
+      seg(23,25,N),             // 11pm-1am available
+    ],
+    '2026-04-02':[ // Thursday
+      seg(10,15,D),             // 10am-3pm available
+    ],
+    '2026-04-03':[ // Friday
+      seg(10,15,D),             // 10am-3pm available
+    ],
+    '2026-04-04':[ // Saturday
+      seg(5.5,6.5,W),           // 5:30-6:30am
+      seg(14.5,16.5,W),         // 2:30-4:30pm
+      seg(21.5,23.5,N),         // 9:30-11:30pm
+      seg(23.5,25.5,N),         // 11:30pm-1:30am
+    ],
+    '2026-04-05':[ // Sunday
+      seg(5.5,6.5,W),           // 5:30-6:30am
+      seg(14.5,16.5,W),         // 2:30-4:30pm
+      seg(16.5,18,W),           // 4:30-6pm
+      seg(18,20,W),             // 6-8pm
+      seg(21.5,23.5,N),         // 9:30-11:30pm
+      seg(23.5,25.5,N),         // 11:30pm-1:30am
+    ],
+  },
+};
+
+// For April 6+ generate standard slots from court rules
+var RULES={
+  bandra:{
+    weekday:[seg(8.5,9.5,D),seg(11.5,16.5,D),seg(23,26.5,N)],
+    weekend:[seg(9,10.5,W),seg(12,16.5,W),seg(22.5,26.5,N)],
+  },
+  santacruz:{
+    weekday:[seg(9.5,15,D),seg(23,25,N)],
+    weekend:[seg(5.5,6.5,W),seg(14.5,20,W),seg(21.5,25.5,N)],
+  },
+  chembur:{
+    weekday:[seg(11,19,D)],
+    weekend:[seg(11,19,W)],
+  },
+  colaba:{
+    weekday:[seg(11.5,18.5,D)],
+    weekend:[seg(11.5,18.5,W)],
+  },
+  andheri:{
+    weekday:[seg(6,22,D)],
+    weekend:[seg(6,22,W)],
+  },
+};
+
+var COURTS=[
+  {id:'bandra',name:'Bandra'},
+  {id:'santacruz',name:'Santacruz'},
+  {id:'chembur',name:'Chembur'},
+  {id:'colaba',name:'Colaba'},
+  {id:'andheri',name:'Andheri 🏓'},
+];
+
+function getSlotsForDay(courtId,dateObj){
+  // Use exact schedule for Mar 30 – Apr 5 for bandra/santacruz
+  var sched=SCHEDULE[courtId];
+  if(sched&&sched[dateObj.key]) return buildSlots(courtId,dateObj.key,sched[dateObj.key]);
+  // Otherwise use rules
+  var rules=RULES[courtId]; if(!rules) return [];
+  var segs=dateObj.weekend?rules.weekend:rules.weekday;
+  return buildSlots(courtId,dateObj.key,segs);
+}
+
+// ── STATE ────────────────────────────────────────────────────────────────────
+var selC='bandra',selMon='apr',selDay=null;
+var selSlots=[]; // multi-select
+var pendingSlots=[],pendingUser=null,confData=null;
+var booked={};
+try{booked=JSON.parse(localStorage.getItem('sw_bk3')||'{}');}catch(e){}
+function save(){try{localStorage.setItem('sw_bk3',JSON.stringify(booked));}catch(e){}}
+
+function pps(s){return s.rate===D?500:600;}
 function isB(s){return !!(booked[s.id]||s.by);}
 function bName(s){var b=booked[s.id];return b?b.name:s.by;}
 
-// ── INIT ────────────────────────────────────────────────────────────────────
+// ── INIT ─────────────────────────────────────────────────────────────────────
 function init(){
   var today=new Date();
   selMon=(today.getMonth()===2&&today.getDate()>=30)?'mar':'apr';
-  rCourts(); rMonths();
+  rCourts();rMonths();
   var mObj=MONTHS.find(function(m){return m.key===selMon;});
   var days=getDays(mObj);
-  var todayKey=dkey(today.getFullYear(),today.getMonth(),today.getDate());
+  var todayKey=dk(today.getFullYear(),today.getMonth(),today.getDate());
   selDay=days.find(function(d){return d.key>=todayKey;})||days[0];
-  rDays(); rSlots();
+  rDays();rSlots();
 }
 
-// ── RENDER ──────────────────────────────────────────────────────────────────
-function rCourts(){
-  document.getElementById('cTabs').innerHTML=COURTS.map(function(c){
-    return '<button class="ct'+(c.id===selC?' on':'')+'" onclick="pickCourt(\''+c.id+'\')">' +c.name+'</button>';
-  }).join('');
-}
-function rMonths(){
-  document.getElementById('mTabs').innerHTML=MONTHS.map(function(m){
-    return '<div class="mt2'+(m.key===selMon?' on':'')+'" onclick="pickMonth(\''+m.key+'\')">' +m.label+' \'26</div>';
-  }).join('');
-}
+// ── RENDER ───────────────────────────────────────────────────────────────────
+function rCourts(){document.getElementById('cTabs').innerHTML=COURTS.map(function(c){return'<button class="ct'+(c.id===selC?' on':'')+'" onclick="pickCourt(\''+c.id+'\')">' +c.name+'</button>';}).join('');}
+function rMonths(){document.getElementById('mTabs').innerHTML=MONTHS.map(function(m){return'<div class="mt2'+(m.key===selMon?' on':'')+'" onclick="pickMonth(\''+m.key+'\')">' +m.label+' \'26</div>';}).join('');}
 function rDays(){
   var mObj=MONTHS.find(function(m){return m.key===selMon;});
-  var days=getDays(mObj);
-  var today=new Date(); today.setHours(0,0,0,0);
+  var days=getDays(mObj),today=new Date();today.setHours(0,0,0,0);
   document.getElementById('wStrip').innerHTML=days.map(function(d){
-    var dDate=new Date(d.y,d.m,d.d), isPast=dDate<today, isOn=selDay&&selDay.key===d.key;
-    return '<div class="dbtn'+(isOn?' on':'')+(isPast?' past':'')+'" onclick="pickDay(\''+d.key+'\')">'
+    var dDate=new Date(d.y,d.m,d.d),isPast=dDate<today,isOn=selDay&&selDay.key===d.key;
+    return'<div class="dbtn'+(isOn?' on':'')+(isPast?' past':'')+'" onclick="pickDay(\''+d.key+'\')">'
       +'<span class="dn">'+d.label+'</span><span class="dd">'+d.num+'</span></div>';
   }).join('');
-  setTimeout(function(){
-    var s=document.getElementById('wStrip'), on=s.querySelector('.dbtn.on');
-    if(on)on.scrollIntoView({inline:'center',behavior:'smooth'});
-  },80);
+  setTimeout(function(){var s=document.getElementById('wStrip'),on=s.querySelector('.dbtn.on');if(on)on.scrollIntoView({inline:'center',behavior:'smooth'});},80);
 }
 function rSlots(){
-  clearSelection();
+  clearSel();
   if(!selDay){document.getElementById('slotCon').innerHTML='<div class="empty">Select a date.</div>';return;}
   var slots=getSlotsForDay(selC,selDay);
   var el=document.getElementById('slotCon');
   if(!slots.length){el.innerHTML='<div class="empty">No slots for this day.</div>';return;}
-  var day=slots.filter(function(s){return s.rate==='day';}),
-      wk=slots.filter(function(s){return s.rate==='weekend';}),
-      nt=slots.filter(function(s){return s.rate==='night';});
+  var ds=slots.filter(function(s){return s.rate===D;}),
+      ws=slots.filter(function(s){return s.rate===W;}),
+      ns=slots.filter(function(s){return s.rate===N;});
   var h='';
-  if(day.length) h+='<div class="slbl">☀️ Day — ₹500/30min · ₹1000/hr</div>'+day.map(sCard).join('');
-  if(wk.length)  h+='<div class="slbl">🟢 Weekend — ₹600/30min · ₹1200/hr</div>'+wk.map(sCard).join('');
-  if(nt.length)  h+='<div class="slbl">🌙 Night — ₹600/30min · ₹1200/hr</div>'+nt.map(sCard).join('');
+  if(ds.length)h+='<div class="slbl">☀️ Day — ₹500/30min · ₹1000/hr</div>'+ds.map(sCard).join('');
+  if(ws.length)h+='<div class="slbl">🟢 Weekend — ₹600/30min · ₹1200/hr</div>'+ws.map(sCard).join('');
+  if(ns.length)h+='<div class="slbl">🌙 Night — ₹600/30min · ₹1200/hr</div>'+ns.map(sCard).join('');
   el.innerHTML=h;
 }
-
 function sCard(s){
-  var b=isB(s), who=bName(s), p=pricePerSlot(s);
-  var isPicked=selectedSlots.some(function(x){return x.id===s.id;});
-  return '<div class="sc'+(b?' bk':' av')+(s.rate==='night'?' ni':'')+(isPicked?' picked':'')+'" id="sc-'+s.id+'" onclick="'+(b?'':'toggleSlot(\''+s.id+'\')')+'">'
-    +(b?'<div class="btag">BOOKED</div>':'')
-    +(isPicked?'<div class="seltag">✓</div>':'')
-    +'<div>'
-      +'<div class="st">'+s.time+'</div>'
-      +'<div class="sdur">30 min</div>'
-      +(who?'<div class="sw">● '+who+'</div>':'')
-    +'</div>'
-    +'<div class="sr">'
-      +'<div class="sp">₹'+p.toLocaleString('en-IN')+'</div>'
-      +(b?'':'<div class="bchip">'+(isPicked?'Selected':'Select')+'</div>')
-    +'</div>'
+  var b=isB(s),who=bName(s),p=pps(s),picked=selSlots.some(function(x){return x.id===s.id;});
+  return'<div class="sc'+(b?' bk':' av')+(s.rate===N?' ni':'')+(picked?' picked':'')+'" id="sc-'+s.id+'" onclick="'+(b?'':'toggleSlot(\''+s.id+'\')')+'">'
+    +(b?'<div class="btag">BOOKED</div>':'')+(picked?'<div class="seltag">✓</div>':'')
+    +'<div><div class="st">'+s.time+'</div><div class="sdur">30 min</div>'+(who?'<div class="sw">● '+who+'</div>':'')+'</div>'
+    +'<div class="sr"><div class="sp">₹'+p.toLocaleString('en-IN')+'</div>'+(b?'':'<div class="bchip">'+(picked?'Selected':'Select')+'</div>')+'</div>'
     +'</div>';
 }
 
-// ── MULTI SELECT ────────────────────────────────────────────────────────────
+// ── SELECTION ────────────────────────────────────────────────────────────────
 function toggleSlot(id){
   if(!selDay) return;
-  var slots=getSlotsForDay(selC,selDay);
-  var s=slots.find(function(x){return x.id===id;});
+  var s=getSlotsForDay(selC,selDay).find(function(x){return x.id===id;});
   if(!s||isB(s)) return;
-  var idx=selectedSlots.findIndex(function(x){return x.id===id;});
-  if(idx>-1){ selectedSlots.splice(idx,1); }
-  else { selectedSlots.push(s); }
+  var idx=selSlots.findIndex(function(x){return x.id===id;});
+  if(idx>-1)selSlots.splice(idx,1); else selSlots.push(s);
   updateSelBar();
-  // re-render just this card
   var el=document.getElementById('sc-'+id);
   if(el){
-    var isPicked=selectedSlots.some(function(x){return x.id===id;});
-    el.className='sc av'+(s.rate==='night'?' ni':'')+(isPicked?' picked':'');
-    el.querySelector('.bchip').textContent=isPicked?'Selected':'Select';
+    var picked=selSlots.some(function(x){return x.id===id;});
+    el.className='sc av'+(s.rate===N?' ni':'')+(picked?' picked':'');
+    var chip=el.querySelector('.bchip');if(chip)chip.textContent=picked?'Selected':'Select';
     var st=el.querySelector('.seltag');
-    if(isPicked&&!st){var d=document.createElement('div');d.className='seltag';d.textContent='✓';el.insertBefore(d,el.firstChild);}
-    else if(!isPicked&&st){el.removeChild(st);}
+    if(picked&&!st){var dv=document.createElement('div');dv.className='seltag';dv.textContent='✓';el.insertBefore(dv,el.firstChild);}
+    else if(!picked&&st)el.removeChild(st);
   }
 }
 function updateSelBar(){
-  var bar=document.getElementById('selBar');
-  var total=selectedSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
-  if(selectedSlots.length>0){
-    bar.classList.add('show');
-    document.getElementById('selInfo').textContent=selectedSlots.length+' slot'+(selectedSlots.length>1?'s':'')+' · ₹'+total.toLocaleString('en-IN');
-  } else {
-    bar.classList.remove('show');
-  }
+  var bar=document.getElementById('selBar'),tot=selSlots.reduce(function(s,x){return s+pps(x);},0);
+  if(selSlots.length>0){bar.classList.add('show');document.getElementById('selInfo').textContent=selSlots.length+' slot'+(selSlots.length>1?'s':'')+' · ₹'+tot.toLocaleString('en-IN');}
+  else bar.classList.remove('show');
 }
-function clearSelection(){
-  selectedSlots=[];
-  updateSelBar();
-}
-function openMultiBook(){
-  if(selectedSlots.length===0) return;
-  openBookSheet(selectedSlots);
-}
+function clearSel(){selSlots=[];updateSelBar();}
+function openMultiBook(){if(selSlots.length>0)openBookSheet(selSlots.slice());}
 
-// ── BOOKING SHEET ────────────────────────────────────────────────────────────
+// ── BOOKING SHEET ─────────────────────────────────────────────────────────────
 function openBookSheet(slots){
-  pendingSlots = slots.slice();
-  var total=pendingSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
+  pendingSlots=slots.slice();
+  var total=pendingSlots.reduce(function(s,x){return s+pps(x);},0);
   var court=COURTS.find(function(c){return c.id===selC;});
-
-  // Single vs multi display
-  var single=document.getElementById('slotSum');
-  var multi=document.getElementById('multiSum');
-  var totalRow=document.getElementById('totalRow');
-
+  var single=document.getElementById('slotSum'),multi=document.getElementById('multiSum'),tr=document.getElementById('totalRow');
   if(pendingSlots.length===1){
     var s=pendingSlots[0];
-    single.style.display='block'; multi.style.display='none'; totalRow.style.display='none';
-    single.innerHTML='<strong>'+court.name+' Court</strong><br>📅 '+selDay.label+', '+selDay.display+'<br>🕐 '+s.time+'<br>💰 <strong>₹'+pricePerSlot(s).toLocaleString('en-IN')+'</strong>';
+    single.style.display='block';multi.style.display='none';tr.style.display='none';
+    single.innerHTML='<strong>'+court.name+' Court</strong><br>📅 '+selDay.label+', '+selDay.display+'<br>🕐 '+s.time+'<br>💰 <strong>₹'+pps(s).toLocaleString('en-IN')+'</strong>';
   } else {
-    single.style.display='none'; multi.style.display='flex'; totalRow.style.display='flex';
-    multi.innerHTML=pendingSlots.map(function(s){
-      return '<div class="slot-sum-row"><span>'+s.time+'</span><b>₹'+pricePerSlot(s).toLocaleString('en-IN')+'</b></div>';
-    }).join('');
+    single.style.display='none';multi.style.display='flex';tr.style.display='flex';
+    multi.innerHTML=pendingSlots.map(function(s){return'<div class="slot-sum-row"><span>'+s.time+'</span><b>₹'+pps(s).toLocaleString('en-IN')+'</b></div>';}).join('');
     document.getElementById('totalAmt').textContent='₹'+total.toLocaleString('en-IN');
   }
-
   document.getElementById('pAmt').textContent=total.toLocaleString('en-IN');
-  buildUPILink(total, court.name);
-  document.getElementById('bName').value='';
-  document.getElementById('bPhone').value='';
+  buildUPILink(total,court.name);
+  document.getElementById('bName').value='';document.getElementById('bPhone').value='';
   document.getElementById('bOvl').classList.add('op');
 }
+function closeBook(){document.getElementById('bOvl').classList.remove('op');}
 
-// Single slot click → select and show sheet immediately
-function openBook(id){
-  if(!selDay) return;
-  var slots=getSlotsForDay(selC,selDay);
-  var s=slots.find(function(x){return x.id===id;});
-  if(!s||isB(s)) return;
-  // If no selection, open directly; else add to selection
-  if(selectedSlots.length===0){
-    openBookSheet([s]);
-  } else {
-    toggleSlot(id);
-  }
+// ── UPI (FIXED — no double encoding) ─────────────────────────────────────────
+function buildUPILink(total,courtName){
+  var note=courtName+(selDay?' '+selDay.label+' '+selDay.display:'');
+  // pa= raw (not encoded), rest encoded
+  var url='upi://pay?pa='+UPI_ID+'&pn='+encodeURIComponent(UPI_NAME)+'&am='+total+'&cu=INR&tn='+encodeURIComponent(note);
+  document.getElementById('upiLink').setAttribute('data-upi',url);
 }
-function closeBook(){ document.getElementById('bOvl').classList.remove('op'); }
-
-// ── UPI URL (FIXED) ──────────────────────────────────────────────────────────
-// Key fix: pa= must NOT be double-encoded. Use raw UPI ID in the URL.
-// The anchor href handles the encoding natively.
-function buildUPILink(totalAmt, courtName){
-  var note = courtName+' '+( selDay ? selDay.label+' '+selDay.display : '' );
-  // Build proper UPI intent URL — pa is NOT encoded here
-  var url = 'upi://pay?pa='+UPI_ID
-    +'&pn='+encodeURIComponent(UPI_NAME)
-    +'&am='+totalAmt
-    +'&cu=INR'
-    +'&tn='+encodeURIComponent(note);
-  document.getElementById('upiLink').setAttribute('data-upi', url);
-  document.getElementById('upiLink').setAttribute('data-amt', totalAmt);
-}
-
-function handleUPIClick(e){
-  e.preventDefault();
-  var u=validate(); if(!u) return;
-  pendingUser=u;
-  var url=document.getElementById('upiLink').getAttribute('data-upi');
-  // Use a hidden link click — preserves page state on mobile
-  var a=document.createElement('a');
-  a.href=url; a.style.display='none';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  // Show "did you pay?" after delay
-  setTimeout(showPaid, 2500);
-}
-
-function payWith(app){
-  var u=validate(); if(!u) return;
-  pendingUser=u;
-  var total=pendingSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
-  var court=COURTS.find(function(c){return c.id===selC;});
-  var note=court.name+(selDay?' '+selDay.label+' '+selDay.display:'');
+function getUPIUrl(app,total,courtName){
+  var note=courtName+(selDay?' '+selDay.label+' '+selDay.display:'');
   var base='?pa='+UPI_ID+'&pn='+encodeURIComponent(UPI_NAME)+'&am='+total+'&cu=INR&tn='+encodeURIComponent(note);
-  var url;
-  if(app==='gpay')    url='gpay://upi/pay'+base;
-  else if(app==='phonepe') url='phonepe://pay'+base;
-  else if(app==='paytm')   url='paytmmp://pay'+base;
-  else if(app==='bhim')    url='bhim://pay'+base;
-  else url='upi://pay'+base;
-
-  var a=document.createElement('a'); a.href=url; a.style.display='none';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  setTimeout(showPaid, 2500);
+  if(app==='gpay')return'gpay://upi/pay'+base;
+  if(app==='phonepe')return'phonepe://pay'+base;
+  if(app==='paytm')return'paytmmp://pay'+base;
+  if(app==='bhim')return'bhim://pay'+base;
+  return'upi://pay'+base;
 }
-
-function showPaid(){
-  closeBook();
-  document.getElementById('txnId').value='';
-  document.getElementById('txnId').classList.remove('show');
-  document.getElementById('confBtn').classList.remove('show');
-  document.getElementById('pOvl').classList.add('op');
-}
-
-// ── PAID / NOT PAID ──────────────────────────────────────────────────────────
-function paidYes(){
-  document.getElementById('txnId').classList.add('show');
-  document.getElementById('confBtn').classList.add('show');
-}
-function paidNo(){
-  document.getElementById('pOvl').classList.remove('op');
-  // Slot is NOT blocked — show fail message
-  document.getElementById('fOvl').classList.add('op');
-}
-function tryAgain(){
-  document.getElementById('fOvl').classList.remove('op');
-  // Re-open book sheet with same slots
-  if(pendingSlots.length>0) openBookSheet(pendingSlots);
-}
-function dismissFail(){
-  document.getElementById('fOvl').classList.remove('op');
-  pendingSlots=[]; pendingUser=null;
-  clearSelection();
-}
+function launchUPI(url){var a=document.createElement('a');a.href=url;a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);}
 
 function validate(){
   var n=document.getElementById('bName').value.trim(),p=document.getElementById('bPhone').value.trim();
@@ -577,96 +554,78 @@ function validate(){
   if(!/^\d{10}$/.test(p)){alert('Enter a valid 10-digit mobile number.');return null;}
   return{name:n,phone:p};
 }
+function handleUPIClick(e){
+  e.preventDefault();
+  var u=validate();if(!u)return;
+  pendingUser=u;
+  launchUPI(document.getElementById('upiLink').getAttribute('data-upi'));
+  setTimeout(showPaid,2500);
+}
+function payWith(app){
+  var u=validate();if(!u)return;
+  pendingUser=u;
+  var total=pendingSlots.reduce(function(s,x){return s+pps(x);},0);
+  var court=COURTS.find(function(c){return c.id===selC;});
+  launchUPI(getUPIUrl(app,total,court.name));
+  setTimeout(showPaid,2500);
+}
+function showPaid(){
+  closeBook();
+  document.getElementById('txnId').value='';
+  document.getElementById('txnId').classList.remove('show');
+  document.getElementById('confBtn').classList.remove('show');
+  document.getElementById('pOvl').classList.add('op');
+}
+function paidYes(){document.getElementById('txnId').classList.add('show');document.getElementById('confBtn').classList.add('show');}
+function paidNo(){document.getElementById('pOvl').classList.remove('op');document.getElementById('fOvl').classList.add('op');}
+function tryAgain(){document.getElementById('fOvl').classList.remove('op');if(pendingSlots.length>0)openBookSheet(pendingSlots);}
+function dismissFail(){document.getElementById('fOvl').classList.remove('op');pendingSlots=[];pendingUser=null;clearSel();}
 
 function confirmBook(){
   var txn=document.getElementById('txnId').value.trim()||'N/A';
   var u=pendingUser||{name:'User',phone:''};
   var court=COURTS.find(function(c){return c.id===selC;});
-  var total=pendingSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
-  var btn=document.getElementById('confBtn'); btn.textContent='Saving…'; btn.disabled=true;
-
+  var total=pendingSlots.reduce(function(s,x){return s+pps(x);},0);
   var ref='SW'+Date.now().toString(36).toUpperCase();
   var times=pendingSlots.map(function(s){return s.time;}).join(', ');
-
-  // Save each slot
   pendingSlots.forEach(function(s){
-    booked[s.id]={
-      name:u.name,phone:u.phone,txn:txn,court:court.name,courtId:selC,
-      day:selDay.label,date:selDay.display,time:s.time,rate:s.rate,
-      price:pricePerSlot(s),ref:ref,ts:new Date().toISOString(),tsd:new Date().toLocaleString('en-IN')
-    };
+    booked[s.id]={name:u.name,phone:u.phone,txn:txn,court:court.name,courtId:selC,day:selDay.label,date:selDay.display,time:s.time,rate:s.rate,price:pps(s),ref:ref,ts:new Date().toISOString(),tsd:new Date().toLocaleString('en-IN')};
   });
   save();
-
   confData={name:u.name,phone:u.phone,txn:txn,court:court.name,day:selDay.label,date:selDay.display,times:times,slots:pendingSlots.length,price:total,ref:ref,rate:pendingSlots[0].rate};
-
-  btn.textContent='CONFIRM & LOCK SLOT'; btn.disabled=false;
   document.getElementById('pOvl').classList.remove('op');
-
-  // Build confirmation card
-  var rl=confData.rate==='night'?'🌙 Night':confData.rate==='weekend'?'🟢 Weekend':'☀️ Day';
+  var rl=confData.rate===N?'🌙 Night':confData.rate===W?'🟢 Weekend':'☀️ Day';
   document.getElementById('confCard').innerHTML=
-    row('Booking Ref','<span class="green">'+confData.ref+'</span>')+
-    row('Name',confData.name)+
-    row('Mobile',confData.phone)+
-    row('Court',confData.court+' Court')+
-    row('Date',confData.day+', '+confData.date)+
-    row('Slot'+(confData.slots>1?'s':''),confData.times)+
-    row('Duration',confData.slots*30+' min')+
-    row('Rate',rl)+
+    row('Booking Ref','<span class="green">'+confData.ref+'</span>')+row('Name',confData.name)+row('Mobile',confData.phone)+
+    row('Court',confData.court+' Court')+row('Date',confData.day+', '+confData.date)+
+    row('Slot(s)',confData.times)+row('Duration',confData.slots*30+' min')+row('Rate',rl)+
     row('Amount','<span class="green">₹'+confData.price.toLocaleString('en-IN')+'</span>')+
     row('TXN ID','<span class="txn">'+(confData.txn!=='N/A'?confData.txn:'Not provided')+'</span>');
-
   document.getElementById('sOvl').classList.add('on');
-  clearSelection(); rSlots();
+  clearSel();rSlots();
 }
-
-function row(label,val){return '<div class="conf-row"><div class="conf-label">'+label+'</div><div class="conf-val">'+val+'</div></div>';}
-
-function copyConfirmation(){
-  if(!confData) return;
-  var rl=confData.rate==='night'?'Night (₹1200/hr)':confData.rate==='weekend'?'Weekend (₹1200/hr)':'Day (₹1000/hr)';
-  var txt='🏸 SHUTTLEWHIZZ BADMINTON – BOOKING CONFIRMED\n'
-    +'━━━━━━━━━━━━━━━━━━━━━\n'
-    +'📋 Ref: '+confData.ref+'\n'
-    +'👤 Name: '+confData.name+'\n'
-    +'📞 Mobile: '+confData.phone+'\n'
-    +'🏟️ Court: '+confData.court+'\n'
-    +'📅 Date: '+confData.day+', '+confData.date+'\n'
-    +'🕐 Slot(s): '+confData.times+'\n'
-    +'⏱ Duration: '+confData.slots*30+' min\n'
-    +'⚡ Rate: '+rl+'\n'
-    +'💰 Amount Paid: ₹'+confData.price.toLocaleString('en-IN')+'\n'
+function row(l,v){return'<div class="conf-row"><div class="conf-label">'+l+'</div><div class="conf-val">'+v+'</div></div>';}
+function copyConf(){
+  if(!confData)return;
+  var rl=confData.rate===N?'Night (₹1200/hr)':confData.rate===W?'Weekend (₹1200/hr)':'Day (₹1000/hr)';
+  var t='🏸 SHUTTLEWHIZZ BADMINTON – BOOKING CONFIRMED\n━━━━━━━━━━━━━━━━━━━━━\n'
+    +'📋 Ref: '+confData.ref+'\n👤 Name: '+confData.name+'\n📞 Mobile: '+confData.phone+'\n'
+    +'🏟️ Court: '+confData.court+'\n📅 Date: '+confData.day+', '+confData.date+'\n'
+    +'🕐 Slot(s): '+confData.times+'\n⏱ Duration: '+confData.slots*30+' min\n'
+    +'⚡ Rate: '+rl+'\n💰 Amount: ₹'+confData.price.toLocaleString('en-IN')+'\n'
     +(confData.txn!=='N/A'?'🔑 TXN: '+confData.txn+'\n':'')
-    +'━━━━━━━━━━━━━━━━━━━━━\n'
-    +'Book more: mayank-shuttlewhizz.github.io/badmintonslots';
-  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(showToast);
-  else{var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast();}
+    +'━━━━━━━━━━━━━━━━━━━━━\nBook: mayank-shuttlewhizz.github.io/badmintonslots';
+  if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){showToast('Copied!');});
+  else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('Copied!');}
 }
-
 function closeSuccess(){document.getElementById('sOvl').classList.remove('on');pendingSlots=[];pendingUser=null;confData=null;}
-function showToast(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);}
+function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);}
 
-// ── NAV ─────────────────────────────────────────────────────────────────────
+// ── NAV ───────────────────────────────────────────────────────────────────────
 function pickCourt(id){selC=id;rCourts();rSlots();}
-function pickMonth(k){
-  selMon=k;
-  var mObj=MONTHS.find(function(m){return m.key===k;});
-  selDay=getDays(mObj)[0];
-  rMonths();rDays();rSlots();
-}
-function pickDay(key){
-  var mObj=MONTHS.find(function(m){return m.key===selMon;});
-  selDay=getDays(mObj).find(function(d){return d.key===key;})||selDay;
-  rDays();rSlots();
-}
-
-function doShare(){
-  var url='https://mayank-shuttlewhizz.github.io/badmintonslots/';
-  if(navigator.share)navigator.share({title:'Shuttlewhizz Court Booking',text:'Book your badminton slot!',url:url});
-  else if(navigator.clipboard)navigator.clipboard.writeText(url).then(showToast);
-  else prompt('Copy:',url);
-}
+function pickMonth(k){selMon=k;var mObj=MONTHS.find(function(m){return m.key===k;});selDay=getDays(mObj)[0];rMonths();rDays();rSlots();}
+function pickDay(key){var mObj=MONTHS.find(function(m){return m.key===selMon;});selDay=getDays(mObj).find(function(d){return d.key===key;})||selDay;rDays();rSlots();}
+function doShare(){var url='https://mayank-shuttlewhizz.github.io/badmintonslots/';if(navigator.share)navigator.share({title:'Shuttlewhizz Court Booking',text:'Book your badminton slot!',url:url});else if(navigator.clipboard)navigator.clipboard.writeText(url).then(function(){showToast('Link copied!');});else prompt('Copy:',url);}
 
 init();
 </script>
