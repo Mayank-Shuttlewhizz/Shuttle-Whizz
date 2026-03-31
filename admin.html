@@ -6,75 +6,128 @@
 <title>Shuttlewhizz – Admin</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0c10;--s1:#13161d;--s2:#1c202b;--ac:#c8f135;--ac2:#35f1a8;--tx:#f0f2f5;--mu:#6b7280;--br:#252933;--rd:#ff4d6d;--ni:#7c6af7}
+:root{--bg:#0a0c10;--s1:#13161d;--s2:#1c202b;--ac:#c8f135;--ac2:#35f1a8;--tx:#f0f2f5;--mu:#6b7280;--br:#252933;--rd:#ff4d6d;--ni:#7c6af7;--sel:#1a2a06}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-height:100vh}
+/* LOGIN */
 .lscr{position:fixed;inset:0;background:var(--bg);z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:36px}
 .lscr.hid{display:none}
 .llogo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:3px;color:var(--ac);margin-bottom:3px}
 .lsub{font-size:11px;color:var(--mu);letter-spacing:1px;text-transform:uppercase;margin-bottom:36px}
 .lcard{background:var(--s1);border:1.5px solid var(--br);border-radius:18px;padding:24px 22px;width:100%;max-width:320px}
 .lcard h2{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:18px}
-.li{width:100%;padding:12px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:15px;margin-bottom:12px;transition:border-color .2s}
+.li{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:15px;margin-bottom:12px;transition:border-color .2s}
 .li:focus{outline:none;border-color:var(--ac)}
-.lbtn{width:100%;padding:13px;background:var(--ac);border:none;border-radius:11px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
-.lerr{color:var(--rd);font-size:12px;margin-top:9px;text-align:center;display:none}
-.hdr{background:var(--s1);border-bottom:1px solid var(--br);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--ac);line-height:1}
+.lbtn{width:100%;padding:12px;background:var(--ac);border:none;border-radius:11px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#000;cursor:pointer}
+.lerr{color:var(--rd);font-size:12px;margin-top:8px;text-align:center;display:none}
+/* HEADER */
+.hdr{background:var(--s1);border-bottom:1px solid var(--br);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:var(--ac);line-height:1}
 .logo-s{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:1px}
-.lgout{padding:6px 12px;border-radius:18px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
-.strow{display:flex;gap:9px;padding:14px 18px;overflow-x:auto;scrollbar-width:none}
+.hdr-btns{display:flex;gap:7px;align-items:center}
+.lgout{padding:6px 11px;border-radius:16px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.book-new-btn{padding:6px 12px;border-radius:16px;background:var(--ac);border:none;color:#000;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* TABS */
+.atabs{display:flex;background:var(--s1);border-bottom:1px solid var(--br)}
+.atab{flex:1;padding:11px 0;text-align:center;font-size:12px;font-weight:600;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.atab.on{color:var(--ac);border-bottom-color:var(--ac)}
+/* STATS */
+.strow{display:flex;gap:8px;padding:12px 18px;overflow-x:auto;scrollbar-width:none}
 .strow::-webkit-scrollbar{display:none}
-.stc{flex-shrink:0;background:var(--s1);border:1.5px solid var(--br);border-radius:13px;padding:12px 16px;min-width:100px}
-.stn{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--ac);line-height:1}
+.stc{flex-shrink:0;background:var(--s1);border:1.5px solid var(--br);border-radius:12px;padding:11px 14px;min-width:95px}
+.stn{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--ac);line-height:1}
 .stl{font-size:9px;color:var(--mu);margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
-.fils{padding:0 18px 10px;display:flex;gap:6px;flex-wrap:wrap}
-.fb{padding:5px 11px;border-radius:16px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+/* FILTERS */
+.fils{padding:0 18px 9px;display:flex;gap:5px;flex-wrap:wrap}
+.fb{padding:4px 10px;border-radius:14px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
 .fb.on{background:var(--ac);border-color:var(--ac);color:#000}
-.sh{padding:3px 18px 9px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
-.sh h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-.sh-btns{display:flex;gap:7px}
-.exbtn{padding:5px 12px;border-radius:16px;background:var(--s1);border:1.5px solid var(--br);color:var(--mu);font-size:10px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
-.clrall{padding:5px 12px;border-radius:16px;background:transparent;border:1.5px solid var(--rd);color:var(--rd);font-size:10px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.sh{padding:2px 18px 8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px}
+.sh h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.sh-btns{display:flex;gap:6px}
+.exbtn{padding:4px 10px;border-radius:14px;background:var(--s1);border:1.5px solid var(--br);color:var(--mu);font-size:10px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.clrall{padding:4px 10px;border-radius:14px;background:transparent;border:1.5px solid var(--rd);color:var(--rd);font-size:10px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* BOOKING CARDS */
 .blist{padding:0 18px 100px}
-.bcard{background:var(--s1);border:1.5px solid var(--br);border-radius:13px;padding:14px;margin-bottom:9px;transition:border-color .2s;position:relative}
+.bcard{background:var(--s1);border:1.5px solid var(--br);border-radius:12px;padding:13px;margin-bottom:8px;transition:border-color .2s}
 .bcard:hover{border-color:rgba(200,241,53,.3)}
-.bt{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:9px}
-.bn{font-size:15px;font-weight:700}
-.bph{font-size:11px;color:var(--mu);margin-top:2px}
-.bpr{font-size:16px;font-weight:700;color:var(--ac);text-align:right}
+.bc-admin{border-color:rgba(53,241,168,.3)!important}
+.bc-admin-badge{display:inline-block;padding:2px 7px;border-radius:5px;background:rgba(53,241,168,.12);color:var(--ac2);font-size:9px;font-weight:700;letter-spacing:.5px;margin-left:6px;vertical-align:middle}
+.bt{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+.bn{font-size:14px;font-weight:700}
+.bph{font-size:10px;color:var(--mu);margin-top:2px}
+.bpr{font-size:15px;font-weight:700;color:var(--ac);text-align:right}
 .bco{font-size:10px;color:var(--mu);text-align:right;margin-top:1px}
-.bref{font-size:10px;color:var(--ac2);text-align:right;margin-top:1px;font-weight:600}
-.bdet{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}
-.btg{padding:3px 9px;border-radius:7px;font-size:10px;font-weight:600;background:var(--s2);border:1px solid var(--br);color:var(--mu)}
+.bref{font-size:9px;color:var(--ac2);text-align:right;margin-top:1px;font-weight:600}
+.bdet{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.btg{padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;background:var(--s2);border:1px solid var(--br);color:var(--mu)}
 .btg.day{border-color:rgba(200,241,53,.3);color:var(--ac)}
 .btg.night{border-color:rgba(124,106,247,.3);color:var(--ni)}
 .btg.weekend{border-color:rgba(53,241,168,.3);color:var(--ac2)}
-.btxn{background:var(--s2);border-radius:7px;padding:7px 11px;font-size:11px;color:var(--mu);display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
-.btv{color:var(--tx);font-weight:600;font-size:12px;word-break:break-all;flex:1}
-.cpbtn{flex-shrink:0;margin-left:7px;padding:3px 9px;border-radius:5px;border:1px solid var(--br);background:transparent;color:var(--mu);font-size:10px;cursor:pointer;font-family:'DM Sans',sans-serif}
-.bts{font-size:10px;color:var(--mu);margin-bottom:9px}
-/* DELETE BUTTON */
-.del-btn{width:100%;padding:9px;background:transparent;border:1.5px solid var(--rd);border-radius:9px;color:var(--rd);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
-.del-btn:hover{background:rgba(255,77,109,.1)}
+.btxn{background:var(--s2);border-radius:7px;padding:7px 10px;font-size:11px;color:var(--mu);display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.btv{color:var(--tx);font-weight:600;font-size:11px;word-break:break-all;flex:1}
+.cpbtn{flex-shrink:0;margin-left:6px;padding:2px 8px;border-radius:5px;border:1px solid var(--br);background:transparent;color:var(--mu);font-size:10px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.bts{font-size:10px;color:var(--mu);margin-bottom:8px}
+.del-btn{width:100%;padding:8px;background:transparent;border:1.5px solid var(--rd);border-radius:8px;color:var(--rd);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
 .del-btn:active{transform:scale(.97)}
-/* DELETE CONFIRM MODAL */
+/* BOOK VIEW */
+.book-view{padding:12px 18px 100px}
+.bv-section{margin-bottom:16px}
+.bv-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--mu);margin-bottom:7px}
+.bv-courts{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.bvc{padding:6px 13px;border-radius:16px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s}
+.bvc.on{background:var(--ac);border-color:var(--ac);color:#000;font-weight:700}
+.bv-months{display:flex;gap:6px;margin-bottom:8px}
+.bvm{padding:5px 12px;border-radius:14px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.bvm.on{border-color:var(--ac);color:var(--ac)}
+.bv-days{display:flex;overflow-x:auto;gap:5px;padding-bottom:4px;scrollbar-width:none}
+.bv-days::-webkit-scrollbar{display:none}
+.bvd{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:6px 8px;border-radius:9px;border:1.5px solid var(--br);background:var(--s1);cursor:pointer;transition:all .2s;min-width:40px}
+.bvd .dn{font-size:8px;color:var(--mu);font-weight:600;text-transform:uppercase}
+.bvd .dd{font-size:13px;font-weight:700;color:var(--tx)}
+.bvd.on{border-color:var(--ac);background:rgba(200,241,53,.07)}
+.bvd.on .dd,.bvd.on .dn{color:var(--ac)}
+.bv-slots{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.bvs{background:var(--s1);border:1.5px solid var(--br);border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:all .15s;position:relative;user-select:none}
+.bvs.bk{opacity:.45;cursor:not-allowed}
+.bvs.sel{border-color:var(--ac);background:var(--sel)}
+.bvs:not(.bk):hover{border-color:rgba(200,241,53,.4)}
+.bvs .st{font-size:13px;font-weight:700}
+.bvs .sw{font-size:10px;color:var(--rd);margin-top:1px;font-weight:600}
+.bvs .sp2{font-size:13px;font-weight:700;color:var(--ac)}
+.bvs .bchip2{display:inline-block;margin-top:3px;padding:2px 9px;border-radius:14px;background:var(--ac);color:#000;font-size:10px;font-weight:700}
+.bvs-btag{position:absolute;top:5px;right:7px;font-size:8px;font-weight:700;color:var(--rd);border:1px solid var(--rd);padding:2px 4px;border-radius:3px;letter-spacing:.5px}
+/* ADMIN BOOK FORM */
+.abf{background:var(--s2);border-radius:12px;padding:14px;margin-top:12px}
+.abf h3{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;margin-bottom:10px;color:var(--ac)}
+.abf-sel-list{background:var(--bg);border-radius:8px;padding:8px;margin-bottom:10px;max-height:100px;overflow-y:auto}
+.abf-sel-row{font-size:11px;color:var(--tx);padding:2px 0;display:flex;justify-content:space-between}
+.abf-total{font-size:13px;font-weight:700;color:var(--ac);margin-bottom:10px;text-align:right}
+.abf-fg{margin-bottom:9px}
+.abf-fg label{display:block;font-size:10px;font-weight:600;color:var(--mu);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.abf-fg input,.abf-fg select{width:100%;padding:9px 12px;background:var(--bg);border:1.5px solid var(--br);border-radius:8px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:13px;transition:border-color .2s;-webkit-appearance:none}
+.abf-fg input:focus,.abf-fg select:focus{outline:none;border-color:var(--ac)}
+.abf-fg select option{background:var(--s2)}
+.admin-book-btn{width:100%;padding:12px;background:var(--ac2);border:none;border-radius:11px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:#000;cursor:pointer;margin-bottom:7px}
+.admin-clear-btn{width:100%;padding:9px;background:transparent;border:1.5px solid var(--br);border-radius:11px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
+/* DELETE MODAL */
 .del-ovl{position:fixed;inset:0;background:rgba(0,0,0,.87);z-index:400;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .25s}
 .del-ovl.op{opacity:1;pointer-events:all}
-.del-sht{background:var(--s1);border-radius:22px 22px 0 0;padding:22px 22px 40px;width:100%;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1);text-align:center}
+.del-sht{background:var(--s1);border-radius:22px 22px 0 0;padding:20px 22px 38px;width:100%;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1);text-align:center}
 .del-ovl.op .del-sht{transform:translateY(0)}
-.del-sht .di{font-size:44px;margin-bottom:10px}
-.del-sht h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--rd);margin-bottom:8px}
-.del-sht p{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:18px}
-.del-confirm{width:100%;padding:13px;background:var(--rd);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#fff;cursor:pointer;margin-bottom:9px}
-.del-cancel{width:100%;padding:12px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer}
-.mt2{text-align:center;padding:50px 18px;color:var(--mu)}
-.spn{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite;vertical-align:middle}
+.del-sht .di{font-size:40px;margin-bottom:9px}
+.del-sht h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--rd);margin-bottom:7px}
+.del-sht p{font-size:12px;color:var(--mu);line-height:1.6;margin-bottom:16px}
+.del-confirm{width:100%;padding:12px;background:var(--rd);border:none;border-radius:12px;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:2px;color:#fff;cursor:pointer;margin-bottom:8px}
+.del-cancel{width:100%;padding:10px;background:transparent;border:1.5px solid var(--br);border-radius:12px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer}
+/* MISC */
+.view{display:none}.view.on{display:block}
+.mt2{text-align:center;padding:40px 18px;color:var(--mu)}
+.spn{display:inline-block;width:12px;height:12px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
 .toast.show{opacity:1}
-.del-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--rd);color:#fff;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
-.del-toast.show{opacity:1}
+.toast.green{background:var(--ac)}
+.toast.red{background:var(--rd);color:#fff}
 </style>
 </head>
 <body>
@@ -92,175 +145,373 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 
 <div id="aUI" style="display:none">
   <div class="hdr">
-    <div><div class="logo">Admin Panel</div><div class="logo-s">Shuttlewhizz · All Courts · Apr 2026</div></div>
-    <button class="lgout" onclick="doLogout()">Logout</button>
-  </div>
-
-  <div class="strow">
-    <div class="stc"><div class="stn" id="stTotal">0</div><div class="stl">Bookings</div></div>
-    <div class="stc"><div class="stn" id="stRev">₹0</div><div class="stl">Revenue</div></div>
-    <div class="stc"><div class="stn" id="stBan">0</div><div class="stl">Bandra</div></div>
-    <div class="stc"><div class="stn" id="stSan">0</div><div class="stl">Santacruz</div></div>
-    <div class="stc"><div class="stn" id="stOth">0</div><div class="stl">Others</div></div>
-  </div>
-
-  <div class="fils">
-    <button class="fb on" onclick="setF('all',this)">All</button>
-    <button class="fb" onclick="setF('bandra',this)">Bandra</button>
-    <button class="fb" onclick="setF('santacruz',this)">Santacruz</button>
-    <button class="fb" onclick="setF('chembur',this)">Chembur</button>
-    <button class="fb" onclick="setF('colaba',this)">Colaba</button>
-    <button class="fb" onclick="setF('andheri',this)">Andheri</button>
-    <button class="fb" onclick="setF('Mon',this)">Mon</button>
-    <button class="fb" onclick="setF('Tue',this)">Tue</button>
-    <button class="fb" onclick="setF('Wed',this)">Wed</button>
-    <button class="fb" onclick="setF('Thu',this)">Thu</button>
-    <button class="fb" onclick="setF('Fri',this)">Fri</button>
-    <button class="fb" onclick="setF('Sat',this)">Sat</button>
-    <button class="fb" onclick="setF('Sun',this)">Sun</button>
-  </div>
-
-  <div class="sh">
-    <h3 id="resCount">Bookings</h3>
-    <div class="sh-btns">
-      <button class="exbtn" onclick="doExport()">📥 Export CSV</button>
-      <button class="clrall" onclick="confirmClearAll()">🗑 Clear All</button>
+    <div><div class="logo">Admin Panel</div><div class="logo-s">Shuttlewhizz · Apr 2026</div></div>
+    <div class="hdr-btns">
+      <button class="book-new-btn" onclick="switchTab('book',this)">+ Book Slot</button>
+      <button class="lgout" onclick="doLogout()">Logout</button>
     </div>
   </div>
-  <div class="blist" id="bList"><div class="mt2"><span class="spn"></span></div></div>
+
+  <div class="atabs">
+    <div class="atab on" onclick="switchTab('bookings',this)" id="tab-bookings">📋 Bookings</div>
+    <div class="atab" onclick="switchTab('book',this)" id="tab-book">➕ Book a Slot</div>
+  </div>
+
+  <!-- BOOKINGS VIEW -->
+  <div class="view on" id="view-bookings">
+    <div class="strow">
+      <div class="stc"><div class="stn" id="stTotal">0</div><div class="stl">Total</div></div>
+      <div class="stc"><div class="stn" id="stRev">₹0</div><div class="stl">Revenue</div></div>
+      <div class="stc"><div class="stn" id="stBan">0</div><div class="stl">Bandra</div></div>
+      <div class="stc"><div class="stn" id="stSan">0</div><div class="stl">Santacruz</div></div>
+      <div class="stc"><div class="stn" id="stOth">0</div><div class="stl">Others</div></div>
+    </div>
+    <div class="fils">
+      <button class="fb on" onclick="setF('all',this)">All</button>
+      <button class="fb" onclick="setF('bandra',this)">Bandra</button>
+      <button class="fb" onclick="setF('santacruz',this)">Santacruz</button>
+      <button class="fb" onclick="setF('chembur',this)">Chembur</button>
+      <button class="fb" onclick="setF('colaba',this)">Colaba</button>
+      <button class="fb" onclick="setF('andheri',this)">Andheri</button>
+      <button class="fb" onclick="setF('Mon',this)">Mon</button>
+      <button class="fb" onclick="setF('Tue',this)">Tue</button>
+      <button class="fb" onclick="setF('Wed',this)">Wed</button>
+      <button class="fb" onclick="setF('Thu',this)">Thu</button>
+      <button class="fb" onclick="setF('Fri',this)">Fri</button>
+      <button class="fb" onclick="setF('Sat',this)">Sat</button>
+      <button class="fb" onclick="setF('Sun',this)">Sun</button>
+    </div>
+    <div class="sh">
+      <h3 id="resCount">Bookings</h3>
+      <div class="sh-btns">
+        <button class="exbtn" onclick="doExport()">📥 Export CSV</button>
+        <button class="clrall" onclick="confirmClearAll()">🗑 Clear All</button>
+      </div>
+    </div>
+    <div class="blist" id="bList"><div class="mt2"><span class="spn"></span></div></div>
+  </div>
+
+  <!-- BOOK A SLOT VIEW (admin) -->
+  <div class="view" id="view-book">
+    <div class="book-view">
+      <div class="bv-section">
+        <div class="bv-label">Select Court</div>
+        <div class="bv-courts" id="bvCourts"></div>
+      </div>
+      <div class="bv-section">
+        <div class="bv-months" id="bvMonths"></div>
+        <div class="bv-days" id="bvDays"></div>
+      </div>
+      <div class="bv-section">
+        <div class="bv-label">Select Slots <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0">(tap to select multiple)</span></div>
+        <div class="bv-slots" id="bvSlots"></div>
+      </div>
+      <!-- Form appears when slots selected -->
+      <div class="abf" id="adminBookForm" style="display:none">
+        <h3>Book Selected Slots</h3>
+        <div class="abf-sel-list" id="abfSelList"></div>
+        <div class="abf-total" id="abfTotal"></div>
+        <div class="abf-fg"><label>Client Name</label><input type="text" id="abfName" placeholder="Full name"></div>
+        <div class="abf-fg"><label>Mobile Number</label><input type="tel" id="abfPhone" placeholder="10-digit number" maxlength="10" inputmode="numeric"></div>
+        <div class="abf-fg">
+          <label>Payment Status</label>
+          <select id="abfPay">
+            <option value="paid">✅ Paid – Collect payment</option>
+            <option value="pending">⏳ Pending – Will pay later</option>
+            <option value="free">🎁 Complimentary / Free</option>
+          </select>
+        </div>
+        <div class="abf-fg" id="abfTxnFg"><label>UPI Transaction ID (if paid)</label><input type="text" id="abfTxn" placeholder="Optional"></div>
+        <button class="admin-book-btn" onclick="adminConfirmBook()">✅ CONFIRM BOOKING</button>
+        <button class="admin-clear-btn" onclick="clearAdminSel()">Clear Selection</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- DELETE CONFIRM SHEET -->
+<!-- DELETE CONFIRM -->
 <div class="del-ovl" id="delOvl">
   <div class="del-sht">
     <div class="di">🗑️</div>
     <h3>Delete Booking?</h3>
-    <p id="delMsg">This will free up the slot so anyone can book it.</p>
-    <button class="del-confirm" onclick="doDelete()">YES, DELETE IT</button>
+    <p id="delMsg">This will free the slot so anyone can book it.</p>
+    <button class="del-confirm" onclick="doDelete()">YES, DELETE</button>
     <button class="del-cancel" onclick="closeDelOvl()">Cancel</button>
   </div>
 </div>
 
-<div class="toast" id="toast">Copied!</div>
-<div class="del-toast" id="delToast">Booking deleted ✓</div>
+<div class="toast" id="toast"></div>
 
 <script>
 var PASS='shuttlewhizz2026';
-var all=[], filt='all', pendingDelKey=null, pendingDelRef=null;
+var allBookings=[], filt='all';
+var pendingDelKey=null;
+// Admin booking state
+var abSelSlots=[], abSelCourt='bandra', abSelMon='apr', abSelDay=null;
 
+// ── Same schedule data as index.html ──────────────────────────────────────
+var D='day',N='night',W='weekend';
+var MONTHS=[{key:'mar',label:'Mar',year:2026,month:2,start:30,end:31},{key:'apr',label:'Apr',year:2026,month:3,start:1,end:30}];
+var DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dk(y,m,d){return y+'-'+(m<9?'0':'')+(m+1)+'-'+(d<10?'0':'')+d;}
+function dn(y,m,d){return DN[new Date(y,m,d).getDay()];}
+function isWE(y,m,d){var w=new Date(y,m,d).getDay();return w===0||w===6;}
+function fmtD(y,m,d){return d+' '+MN[m];}
+function getDays(mo){var a=[],y=mo.year,m=mo.month;for(var d=mo.start;d<=mo.end;d++)a.push({key:dk(y,m,d),label:dn(y,m,d),num:d,display:fmtD(y,m,d),weekend:isWE(y,m,d),y:y,m:m,d:d});return a;}
+function fh(h){var t=Math.round(h*60),hr=Math.floor(t/60)%24,mn=t%60,ap=hr<12?'AM':'PM',dh=hr===0?12:hr>12?hr-12:hr;return dh+':'+(mn<10?'0':'')+mn+' '+ap;}
+function seg(s,e,r,by){return{s:s,e:e,r:r,by:by||null};}
+
+var SCHEDULE={
+  bandra:{
+    '2026-03-30':[seg(8.5,9.5,D,'Jyotika H'),seg(11.5,12.5,D,'Sundeep'),seg(12.5,14,D),seg(14,15,D,'Rishikesh'),seg(23,26,N)],
+    '2026-03-31':[seg(8.5,9.5,D,'Jyotika H'),seg(9.5,12,D),seg(12,14,D,'Tracy H'),seg(14,16.5,D),seg(23,26,N)],
+    '2026-04-01':[seg(8.5,9.5,D),seg(11.5,15,D),seg(23,26,N)],
+    '2026-04-02':[seg(8.5,9.5,D),seg(9.5,10.5,D),seg(10.5,15.5,D),seg(15.5,16.5,D),seg(23,24.5,N,'Shreyas H'),seg(24.5,26.5,N)],
+    '2026-04-03':[seg(8.5,9.5,D),seg(11.5,15,D),seg(22.5,26.5,N)],
+    '2026-04-04':[seg(9,10.5,W,'Tanisha'),seg(12,14,W),seg(14,15.5,W),seg(15.5,16.5,W),seg(22.5,26.5,N)],
+    '2026-04-05':[seg(9,10.5,W,'Shreyash H'),seg(12,14,W,'Mayank'),seg(14,16,W),seg(17,18,W),seg(18,19.5,W),seg(22.5,26.5,N)],
+  },
+  santacruz:{
+    '2026-03-30':[seg(9.5,11,D,'Ankit'),seg(11,12.5,D,'Prasad'),seg(12.5,15,D)],
+    '2026-03-31':[seg(10,11,D,'Shradha'),seg(11,14,D),seg(14,15,D),seg(21.5,23,N,'Diya'),seg(23,25,N)],
+    '2026-04-01':[seg(9.5,11,D,'Prasad'),seg(11,15,D),seg(23,25,N)],
+    '2026-04-02':[seg(10,15,D)],
+    '2026-04-03':[seg(10,15,D)],
+    '2026-04-04':[seg(5.5,6.5,W),seg(14.5,16.5,W),seg(21.5,23.5,N),seg(23.5,25.5,N)],
+    '2026-04-05':[seg(5.5,6.5,W),seg(14.5,16.5,W),seg(16.5,18,W),seg(18,20,W),seg(21.5,23.5,N),seg(23.5,25.5,N)],
+  },
+};
+var RULES={
+  bandra:{weekday:[seg(8.5,9.5,D),seg(11.5,16.5,D),seg(23,26.5,N)],weekend:[seg(9,10.5,W),seg(12,16.5,W),seg(22.5,26.5,N)]},
+  santacruz:{weekday:[seg(9.5,15,D),seg(23,25,N)],weekend:[seg(5.5,6.5,W),seg(14.5,20,W),seg(21.5,25.5,N)]},
+  chembur:{weekday:[seg(11,19,D)],weekend:[seg(11,19,W)]},
+  colaba:{weekday:[seg(11.5,18.5,D)],weekend:[seg(11.5,18.5,W)]},
+  andheri:{weekday:[seg(6,22,D)],weekend:[seg(6,22,W)]},
+};
+var COURTS=[{id:'bandra',name:'Bandra'},{id:'santacruz',name:'Santacruz'},{id:'chembur',name:'Chembur'},{id:'colaba',name:'Colaba'},{id:'andheri',name:'Andheri 🏓'}];
+
+function buildSlots(courtId,dateKey,segs){
+  var slots=[];
+  segs.forEach(function(sg){
+    var h=Math.round(sg.s*2)/2,en=Math.round(sg.e*2)/2;
+    while(h<en){
+      slots.push({id:courtId+'-'+dateKey+'-'+h,time:fh(h)+' – '+fh(h+0.5),h:h,rate:sg.r,by:sg.by||null,dateKey:dateKey,courtId:courtId});
+      h=Math.round((h+0.5)*2)/2;
+    }
+  });
+  return slots;
+}
+function getSlotsForDay(courtId,dateObj){
+  var sc=SCHEDULE[courtId];
+  if(sc&&sc[dateObj.key])return buildSlots(courtId,dateObj.key,sc[dateObj.key]);
+  var rules=RULES[courtId];if(!rules)return[];
+  return buildSlots(courtId,dateObj.key,dateObj.weekend?rules.weekend:rules.weekday);
+}
+function pps(s){return s.rate===D?500:600;}
+
+// ── STORAGE ──────────────────────────────────────────────────────────────────
+var booked={};
+function loadBooked(){try{booked=JSON.parse(localStorage.getItem('sw_bk3')||'{}');}catch(e){booked={};}}
+function saveBooked(){try{localStorage.setItem('sw_bk3',JSON.stringify(booked));}catch(e){}}
+function isB(s){return !!(booked[s.id]||s.by);}
+function bNameOf(s){var b=booked[s.id];return b?b.name:s.by;}
+
+// ── LOGIN ─────────────────────────────────────────────────────────────────────
 function doLogin(){
   if(document.getElementById('aPass').value===PASS){
     document.getElementById('lScr').classList.add('hid');
     document.getElementById('aUI').style.display='block';
-    loadData();
-  } else {
-    document.getElementById('lErr').style.display='block';
-    document.getElementById('aPass').value='';
-  }
+    loadBooked();loadData();initBookView();
+  } else {document.getElementById('lErr').style.display='block';document.getElementById('aPass').value='';}
 }
-function doLogout(){
-  document.getElementById('lScr').classList.remove('hid');
-  document.getElementById('aUI').style.display='none';
-  document.getElementById('aPass').value='';
+function doLogout(){document.getElementById('lScr').classList.remove('hid');document.getElementById('aUI').style.display='none';document.getElementById('aPass').value='';}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function switchTab(v,el){
+  document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on');});
+  document.querySelectorAll('.atab').forEach(function(x){x.classList.remove('on');});
+  document.getElementById('view-'+v).classList.add('on');
+  document.getElementById('tab-'+v).classList.add('on');
 }
 
+// ── BOOKINGS VIEW ─────────────────────────────────────────────────────────────
 function loadData(){
-  try{var raw=JSON.parse(localStorage.getItem('sw_bk2')||'{}');all=Object.values(raw);}catch(e){all=[];}
-  // attach slotId to each booking
-  try{
-    var raw2=JSON.parse(localStorage.getItem('sw_bk2')||'{}');
-    all=Object.entries(raw2).map(function(e){return Object.assign({_slotId:e[0]},e[1]);});
-  }catch(e){all=[];}
-  all.sort(function(a,b){return new Date(b.ts||0)-new Date(a.ts||0);});
+  loadBooked();
+  var raw2={};try{raw2=JSON.parse(localStorage.getItem('sw_bk3')||'{}');}catch(e){}
+  allBookings=Object.entries(raw2).map(function(e){return Object.assign({_sid:e[0]},e[1]);});
+  allBookings.sort(function(a,b){return new Date(b.ts||0)-new Date(a.ts||0);});
   render();
 }
-
-function setF(f,el){
-  filt=f;
-  document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('on');});
-  el.classList.add('on'); render();
-}
-
+function setF(f,el){filt=f;document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('on');});el.classList.add('on');render();}
 var DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 function filtered(){
-  if(filt==='all') return all;
-  if(DAYS.indexOf(filt)>-1) return all.filter(function(b){return b.day===filt;});
-  return all.filter(function(b){return b.courtId===filt;});
+  if(filt==='all')return allBookings;
+  if(DAYS.indexOf(filt)>-1)return allBookings.filter(function(b){return b.day===filt;});
+  return allBookings.filter(function(b){return b.courtId===filt;});
 }
-
 function render(){
   var list=filtered();
-  var rev=all.reduce(function(s,b){return s+(b.price||0);},0);
-  document.getElementById('stTotal').textContent=all.length;
+  var rev=allBookings.reduce(function(s,b){return s+(b.price||0);},0);
+  document.getElementById('stTotal').textContent=allBookings.length;
   document.getElementById('stRev').textContent='₹'+rev.toLocaleString('en-IN');
-  document.getElementById('stBan').textContent=all.filter(function(b){return b.courtId==='bandra';}).length;
-  document.getElementById('stSan').textContent=all.filter(function(b){return b.courtId==='santacruz';}).length;
-  document.getElementById('stOth').textContent=all.filter(function(b){return['chembur','colaba','andheri'].indexOf(b.courtId)>-1;}).length;
+  document.getElementById('stBan').textContent=allBookings.filter(function(b){return b.courtId==='bandra';}).length;
+  document.getElementById('stSan').textContent=allBookings.filter(function(b){return b.courtId==='santacruz';}).length;
+  document.getElementById('stOth').textContent=allBookings.filter(function(b){return['chembur','colaba','andheri'].indexOf(b.courtId)>-1;}).length;
   document.getElementById('resCount').textContent=list.length+' Booking'+(list.length!==1?'s':'');
-
   var el=document.getElementById('bList');
   if(!list.length){el.innerHTML='<div class="mt2">📭 No bookings yet</div>';return;}
-
   el.innerHTML=list.map(function(b){
-    var rl=b.rate==='night'?'🌙 Night':b.rate==='weekend'?'🟢 Weekend':'☀️ Day';
+    var rl=b.rate===N?'🌙 Night':b.rate===W?'🟢 Weekend':'☀️ Day';
     var tv=b.txn&&b.txn!=='N/A'?b.txn:'Not provided';
-    var sid=b._slotId||'';
-    return '<div class="bcard" id="card-'+esc(sid)+'">'
-      +'<div class="bt"><div><div class="bn">'+esc(b.name||'—')+'</div><div class="bph">📞 '+esc(b.phone||'—')+'</div></div>'
-      +'<div><div class="bpr">₹'+(b.price||0).toLocaleString('en-IN')+'</div><div class="bco">'+esc(b.court||'—')+'</div>'+(b.ref?'<div class="bref">'+esc(b.ref)+'</div>':'')+'</div></div>'
-      +'<div class="bdet"><span class="btg">'+esc(b.day||'')+' '+esc(b.date||'')+'</span><span class="btg">'+esc(b.time||'—')+'</span><span class="btg '+(b.rate||'day')+'">'+rl+'</span></div>'
-      +'<div class="btxn"><div style="flex:1"><div style="font-size:9px;color:var(--mu);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px">UPI Transaction ID</div><div class="btv">'+esc(tv)+'</div></div>'
-      +(b.txn&&b.txn!=='N/A'?'<button class="cpbtn" onclick="cp(\''+esc(b.txn)+'\')">Copy</button>':'')+'</div>'
-      +'<div class="bts">Booked: '+esc(b.tsd||b.ts||'—')+'</div>'
-      +'<button class="del-btn" onclick="askDelete(\''+esc(sid)+'\',\''+esc(b.ref||b.name||'this booking')+'\')">🗑️ Delete This Booking &amp; Free Slot</button>'
+    var isAdmin=b.bookedByAdmin;
+    return'<div class="bcard'+(isAdmin?' bc-admin':'')+'">'
+      +'<div class="bt"><div><div class="bn">'+e(b.name||'—')+(isAdmin?'<span class="bc-admin-badge">ADMIN</span>':'')+'</div><div class="bph">📞 '+e(b.phone||'—')+'</div></div>'
+      +'<div><div class="bpr">₹'+(b.price||0).toLocaleString('en-IN')+'</div><div class="bco">'+e(b.court||'—')+'</div>'+(b.ref?'<div class="bref">'+e(b.ref)+'</div>':'')+'</div></div>'
+      +'<div class="bdet"><span class="btg">'+e(b.day||'')+' '+e(b.date||'')+'</span><span class="btg">'+e(b.time||'—')+'</span><span class="btg '+(b.rate||'day')+'">'+rl+'</span>'
+      +(b.payStatus?'<span class="btg">'+e(b.payStatus)+'</span>':'')+'</div>'
+      +'<div class="btxn"><div style="flex:1"><div style="font-size:9px;color:var(--mu);margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px">UPI Transaction ID</div>'
+      +'<div class="btv">'+e(tv)+'</div></div>'+(b.txn&&b.txn!=='N/A'?'<button class="cpbtn" onclick="cp(\''+e(b.txn)+'\')">Copy</button>':'')+'</div>'
+      +'<div class="bts">Booked: '+e(b.tsd||b.ts||'—')+'</div>'
+      +'<button class="del-btn" onclick="askDelete(\''+e(b._sid||'')+'\',\''+e(b.ref||b.name||'this booking')+'\')">🗑️ Delete &amp; Free Slot</button>'
       +'</div>';
   }).join('');
 }
 
-function askDelete(slotId, ref){
-  pendingDelKey=slotId; pendingDelRef=ref;
-  document.getElementById('delMsg').textContent='Delete booking "'+ref+'"? This will free the slot so anyone can book it.';
-  document.getElementById('delOvl').classList.add('op');
-}
+// ── DELETE ────────────────────────────────────────────────────────────────────
+function askDelete(sid,ref){pendingDelKey=sid;document.getElementById('delMsg').textContent='Delete booking "'+ref+'"? Slot will be freed for everyone.';document.getElementById('delOvl').classList.add('op');}
 function closeDelOvl(){document.getElementById('delOvl').classList.remove('op');}
-
 function doDelete(){
-  if(!pendingDelKey) return;
-  try{
-    var raw=JSON.parse(localStorage.getItem('sw_bk2')||'{}');
-    delete raw[pendingDelKey];
-    localStorage.setItem('sw_bk2',JSON.stringify(raw));
-  }catch(e){}
-  closeDelOvl();
-  var t=document.getElementById('delToast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);
-  pendingDelKey=null; pendingDelRef=null;
-  loadData();
+  if(!pendingDelKey)return;
+  try{var raw=JSON.parse(localStorage.getItem('sw_bk3')||'{}');delete raw[pendingDelKey];localStorage.setItem('sw_bk3',JSON.stringify(raw));}catch(e){}
+  closeDelOvl();showToast('Booking deleted','red');pendingDelKey=null;loadData();rBvSlots();
+}
+function confirmClearAll(){if(confirm('Delete ALL bookings?')){localStorage.removeItem('sw_bk3');loadData();rBvSlots();}}
+
+// ── ADMIN BOOK VIEW ───────────────────────────────────────────────────────────
+function initBookView(){
+  abSelCourt='bandra';
+  var today=new Date();
+  abSelMon=(today.getMonth()===2&&today.getDate()>=30)?'mar':'apr';
+  var mObj=MONTHS.find(function(m){return m.key===abSelMon;});
+  var days=getDays(mObj);
+  var todayKey=dk(today.getFullYear(),today.getMonth(),today.getDate());
+  abSelDay=days.find(function(d){return d.key>=todayKey;})||days[0];
+  rBvCourts();rBvMonths();rBvDays();rBvSlots();
 }
 
-function confirmClearAll(){
-  if(confirm('Delete ALL bookings? This cannot be undone.')){
-    localStorage.removeItem('sw_bk2');
-    loadData();
+function rBvCourts(){
+  document.getElementById('bvCourts').innerHTML=COURTS.map(function(c){
+    return'<div class="bvc'+(c.id===abSelCourt?' on':'')+'" onclick="abPickCourt(\''+c.id+'\')">'+c.name+'</div>';
+  }).join('');
+}
+function rBvMonths(){
+  document.getElementById('bvMonths').innerHTML=MONTHS.map(function(m){
+    return'<div class="bvm'+(m.key===abSelMon?' on':'')+'" onclick="abPickMonth(\''+m.key+'\')">'+m.label+' \'26</div>';
+  }).join('');
+}
+function rBvDays(){
+  var mObj=MONTHS.find(function(m){return m.key===abSelMon;});
+  var days=getDays(mObj);
+  document.getElementById('bvDays').innerHTML=days.map(function(d){
+    var isOn=abSelDay&&abSelDay.key===d.key;
+    return'<div class="bvd'+(isOn?' on':'')+'" onclick="abPickDay(\''+d.key+'\')">'
+      +'<span class="dn">'+d.label+'</span><span class="dd">'+d.num+'</span></div>';
+  }).join('');
+  setTimeout(function(){var s=document.getElementById('bvDays'),on=s.querySelector('.bvd.on');if(on)on.scrollIntoView({inline:'center',behavior:'smooth'});},80);
+}
+function rBvSlots(){
+  if(!abSelDay){document.getElementById('bvSlots').innerHTML='<div style="color:var(--mu);font-size:13px">Select a date.</div>';return;}
+  loadBooked();
+  var slots=getSlotsForDay(abSelCourt,abSelDay);
+  if(!slots.length){document.getElementById('bvSlots').innerHTML='<div style="color:var(--mu);font-size:13px">No slots for this day.</div>';return;}
+  document.getElementById('bvSlots').innerHTML=slots.map(function(s){
+    var b=isB(s),who=bNameOf(s),sel=abSelSlots.some(function(x){return x.id===s.id;});
+    return'<div class="bvs'+(b?' bk':'')+(sel?' sel':'')+'" id="abs-'+s.id+'" onclick="'+(b?'':'abToggleSlot(\''+s.id+'\')')+'">'
+      +(b?'<div class="bvs-btag">BOOKED</div>':'')
+      +'<div><div class="st">'+s.time+'</div>'+(who?'<div class="sw">● '+who+'</div>':'')+'</div>'
+      +'<div style="text-align:right"><div class="sp2">₹'+pps(s).toLocaleString('en-IN')+'</div>'+(b?'':'<div class="bchip2">'+(sel?'✓ Sel':'Select')+'</div>')+'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function abPickCourt(id){abSelCourt=id;abSelSlots=[];rBvCourts();rBvSlots();updateAbForm();}
+function abPickMonth(k){abSelMon=k;var mObj=MONTHS.find(function(m){return m.key===k;});abSelDay=getDays(mObj)[0];abSelSlots=[];rBvMonths();rBvDays();rBvSlots();updateAbForm();}
+function abPickDay(key){var mObj=MONTHS.find(function(m){return m.key===abSelMon;});abSelDay=getDays(mObj).find(function(d){return d.key===key;})||abSelDay;abSelSlots=[];rBvDays();rBvSlots();updateAbForm();}
+
+function abToggleSlot(id){
+  if(!abSelDay)return;
+  var s=getSlotsForDay(abSelCourt,abSelDay).find(function(x){return x.id===id;});
+  if(!s||isB(s))return;
+  var idx=abSelSlots.findIndex(function(x){return x.id===id;});
+  if(idx>-1)abSelSlots.splice(idx,1);else abSelSlots.push(s);
+  var el=document.getElementById('abs-'+id);
+  if(el){
+    var sel=abSelSlots.some(function(x){return x.id===id;});
+    el.className='bvs'+(sel?' sel':'');
+    var chip=el.querySelector('.bchip2');if(chip)chip.textContent=sel?'✓ Sel':'Select';
   }
+  updateAbForm();
+}
+function clearAdminSel(){abSelSlots=[];rBvSlots();updateAbForm();}
+
+function updateAbForm(){
+  var form=document.getElementById('adminBookForm');
+  if(abSelSlots.length===0){form.style.display='none';return;}
+  form.style.display='block';
+  var total=abSelSlots.reduce(function(s,x){return s+pps(x);},0);
+  document.getElementById('abfSelList').innerHTML=abSelSlots.map(function(s){
+    return'<div class="abf-sel-row"><span>'+s.time+'</span><b style="color:var(--ac)">₹'+pps(s).toLocaleString('en-IN')+'</b></div>';
+  }).join('');
+  document.getElementById('abfTotal').textContent='Total: ₹'+total.toLocaleString('en-IN');
 }
 
+function adminConfirmBook(){
+  var name=document.getElementById('abfName').value.trim();
+  var phone=document.getElementById('abfPhone').value.trim();
+  var payStatus=document.getElementById('abfPay').value;
+  var txn=document.getElementById('abfTxn').value.trim()||'N/A';
+  if(!name){alert('Enter client name.');return;}
+  if(!/^\d{10}$/.test(phone)&&phone!==''){/* allow empty phone for admin */}
+  var court=COURTS.find(function(c){return c.id===abSelCourt;});
+  var total=abSelSlots.reduce(function(s,x){return s+pps(x);},0);
+  var ref='ADM'+Date.now().toString(36).toUpperCase();
+  var payMap={'paid':'✅ Paid','pending':'⏳ Pending','free':'🎁 Complimentary'};
+  abSelSlots.forEach(function(s){
+    booked[s.id]={
+      name:name,phone:phone||'—',txn:payStatus==='paid'?txn:'N/A',
+      court:court.name,courtId:abSelCourt,
+      day:abSelDay.label,date:abSelDay.display,
+      time:s.time,rate:s.rate,price:pps(s),ref:ref,
+      payStatus:payMap[payStatus]||'',
+      bookedByAdmin:true,
+      ts:new Date().toISOString(),tsd:new Date().toLocaleString('en-IN')
+    };
+  });
+  saveBooked();
+  showToast('✅ '+abSelSlots.length+' slot(s) booked for '+name,'green');
+  abSelSlots=[];
+  document.getElementById('abfName').value='';
+  document.getElementById('abfPhone').value='';
+  document.getElementById('abfTxn').value='';
+  updateAbForm();rBvSlots();loadData();
+  // Switch to bookings view
+  setTimeout(function(){switchTab('bookings',document.getElementById('tab-bookings'));},800);
+}
+
+// ── UTILS ──────────────────────────────────────────────────────────────────
 function e(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function esc(s){return e(s);}
-
-function cp(t){
-  if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){toast('Copied!');});
-  else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('Copied!');}
-}
-function toast(msg){var t=document.getElementById('toast');t.textContent=msg||'Done';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1800);}
+function cp(t){if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){showToast('Copied!','green');});else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('Copied!','green');}}
+function showToast(msg,type){var t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(type||'green')+' show';setTimeout(function(){t.classList.remove('show');},2200);}
 
 function doExport(){
-  var rows=[['Ref','Name','Phone','Court','Day','Date','Time','Rate','Price (₹)','Transaction ID','Booked At']];
-  filtered().forEach(function(b){rows.push([b.ref||'',b.name||'',b.phone||'',b.court||'',b.day||'',b.date||'',b.time||'',b.rate||'',b.price||0,b.txn||'',b.tsd||b.ts||'']);});
+  var rows=[['Ref','Name','Phone','Court','Day','Date','Time','Rate','Price','Payment Status','TXN ID','Booked By','Booked At']];
+  filtered().forEach(function(b){rows.push([b.ref||'',b.name||'',b.phone||'',b.court||'',b.day||'',b.date||'',b.time||'',b.rate||'',b.price||0,b.payStatus||'',b.txn||'',b.bookedByAdmin?'Admin':'Client',b.tsd||b.ts||'']);});
   var csv=rows.map(function(r){return r.map(function(v){return'"'+String(v).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
   var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='shuttlewhizz-bookings.csv';a.click();
 }
 
-setInterval(function(){if(document.getElementById('aUI').style.display!=='none')loadData();},30000);
+setInterval(function(){if(document.getElementById('aUI').style.display!=='none'){loadData();if(document.getElementById('view-book').classList.contains('on'))rBvSlots();}},30000);
 </script>
 </body>
 </html>
