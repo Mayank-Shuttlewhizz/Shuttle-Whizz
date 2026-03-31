@@ -9,38 +9,35 @@
 :root{--bg:#0a0c10;--s1:#13161d;--s2:#1c202b;--ac:#c8f135;--ac2:#35f1a8;--tx:#f0f2f5;--mu:#6b7280;--br:#252933;--rd:#ff4d6d;--ni:#7c6af7}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
-/* HEADER */
 .hdr{background:var(--s1);border-bottom:1px solid var(--br);padding:13px 18px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--ac);line-height:1}
 .logo-s{font-size:9px;color:var(--mu);letter-spacing:1px;text-transform:uppercase}
 .dr{font-size:10px;color:var(--mu);text-align:right;line-height:1.5}
-/* SHARE */
 .sbar{background:var(--s2);border-bottom:1px solid var(--br);padding:8px 18px;display:flex;align-items:center;gap:8px}
 .surl{font-size:10px;color:var(--mu);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sbtn{flex-shrink:0;padding:6px 12px;border-radius:18px;background:var(--ac);border:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;color:#000;cursor:pointer}
-/* NAV */
-.nav{display:flex;background:var(--s1);border-bottom:1px solid var(--br)}
-.ntab{flex:1;padding:11px 0;text-align:center;font-size:12px;font-weight:600;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
-.ntab.on{color:var(--ac);border-bottom-color:var(--ac)}
-/* COURT TABS */
 .ctabs{display:flex;overflow-x:auto;gap:7px;padding:11px 18px;background:var(--s1);border-bottom:1px solid var(--br);scrollbar-width:none}
 .ctabs::-webkit-scrollbar{display:none}
-.ct{flex-shrink:0;padding:6px 15px;border-radius:18px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s}
+.ct{flex-shrink:0;padding:6px 14px;border-radius:18px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
 .ct.on{background:var(--ac);border-color:var(--ac);color:#000;font-weight:700}
-/* DAY STRIP */
-.dstrip{display:flex;overflow-x:auto;gap:5px;padding:11px 18px 8px;scrollbar-width:none}
-.dstrip::-webkit-scrollbar{display:none}
-.dbtn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:8px 10px;border-radius:11px;border:1.5px solid var(--br);background:var(--s1);cursor:pointer;transition:all .2s;min-width:46px}
+/* MONTH TABS */
+.mtabs{display:flex;overflow-x:auto;gap:6px;padding:9px 18px;background:var(--s2);border-bottom:1px solid var(--br);scrollbar-width:none}
+.mtabs::-webkit-scrollbar{display:none}
+.mt2{flex-shrink:0;padding:5px 12px;border-radius:14px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.mt2.on{background:var(--s1);border-color:var(--ac);color:var(--ac)}
+/* WEEK STRIP */
+.wstrip{display:flex;overflow-x:auto;gap:5px;padding:10px 18px 7px;scrollbar-width:none}
+.wstrip::-webkit-scrollbar{display:none}
+.dbtn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:7px 9px;border-radius:10px;border:1.5px solid var(--br);background:var(--s1);cursor:pointer;transition:all .2s;min-width:44px}
 .dbtn .dn{font-size:9px;color:var(--mu);font-weight:600;text-transform:uppercase}
-.dbtn .dd{font-size:15px;font-weight:700;color:var(--tx);line-height:1.3}
+.dbtn .dd{font-size:14px;font-weight:700;color:var(--tx);line-height:1.3}
 .dbtn.on{border-color:var(--ac);background:rgba(200,241,53,.07)}
 .dbtn.on .dd,.dbtn.on .dn{color:var(--ac)}
-/* PRICING */
+.dbtn.past{opacity:.35}
 .pbar{display:flex;gap:7px;padding:7px 18px 9px;flex-wrap:wrap}
 .pp{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:7px;background:var(--s1);border:1px solid var(--br);font-size:10px;color:var(--mu)}
 .pd{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .pp b{color:var(--ac)}
-/* SLOTS */
 .scon{padding:0 18px 120px}
 .slbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:13px 0 7px;display:flex;align-items:center;gap:7px}
 .slbl::after{content:'';flex:1;height:1px;background:var(--br)}
@@ -55,13 +52,7 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .sr{text-align:right;flex-shrink:0;margin-left:7px}
 .sp{font-size:14px;font-weight:700;color:var(--ac)}
 .bchip{display:inline-block;margin-top:4px;padding:3px 11px;border-radius:18px;background:var(--ac);color:#000;font-size:10px;font-weight:700}
-/* OTHER */
-.osec{padding:14px 18px 100px}
-.ocard{background:var(--s1);border:1.5px solid var(--br);border-radius:13px;padding:14px;margin-bottom:10px}
-.ocard h3{font-size:14px;font-weight:600;margin-bottom:3px}
-.ocard p{font-size:12px;color:var(--mu)}
-.ocard a{display:inline-block;margin-top:8px;padding:7px 15px;border-radius:18px;background:var(--ac2);color:#000;font-size:11px;font-weight:700;text-decoration:none}
-/* OVERLAY / SHEET */
+/* OVERLAYS */
 .ovl{position:fixed;inset:0;background:rgba(0,0,0,.87);z-index:200;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .28s}
 .ovl.op{opacity:1;pointer-events:all}
 .sht{background:var(--s1);border-radius:22px 22px 0 0;padding:0 0 36px;width:100%;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);max-height:93vh;overflow-y:auto}
@@ -76,7 +67,6 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .fg label{display:block;font-size:10px;font-weight:600;color:var(--mu);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
 .fg input{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;transition:border-color .2s}
 .fg input:focus{outline:none;border-color:var(--ac)}
-/* UPI */
 .utitle{font-size:11px;color:var(--mu);padding:3px 0 9px;text-align:center}
 .utitle strong{color:var(--tx)}
 .uapps{display:flex;justify-content:center;gap:7px;margin-bottom:12px;flex-wrap:wrap}
@@ -92,7 +82,7 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .pbtn{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:transform .12s}
 .pbtn:active{transform:scale(.97)}
 .cbtn{width:100%;padding:11px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;margin-top:7px}
-/* PAID */
+/* PAID SHEET */
 .povl{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:300;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .28s}
 .povl.op{opacity:1;pointer-events:all}
 .psht{background:var(--s1);border-radius:22px 22px 0 0;padding:20px 22px 42px;width:100%;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1)}
@@ -101,19 +91,28 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .psht p{font-size:12px;color:var(--mu);margin-bottom:13px;line-height:1.6}
 .txni{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:11px}
 .txni:focus{outline:none;border-color:var(--ac)}
-.cpbtn{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
+.cpbtn2{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
 .skbtn{width:100%;padding:10px;background:transparent;border:none;color:var(--mu);font-size:12px;cursor:pointer;margin-top:5px}
-/* SUCCESS */
-.sovl{position:fixed;inset:0;background:var(--bg);z-index:400;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:36px;opacity:0;pointer-events:none;transition:opacity .35s}
+/* SUCCESS / CONFIRMATION */
+.sovl{position:fixed;inset:0;background:var(--bg);z-index:400;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .35s;overflow-y:auto}
 .sovl.on{opacity:1;pointer-events:all}
-.si{font-size:64px;margin-bottom:13px;animation:pop .38s ease}
+.si{font-size:60px;margin-bottom:12px;animation:pop .38s ease}
 @keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.14)}100%{transform:scale(1)}}
-.sovl h2{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--ac);letter-spacing:2px;margin-bottom:7px}
-.sovl p{color:var(--mu);font-size:13px;line-height:1.7;max-width:270px;margin:0 auto 20px}
-.dbtn2{padding:12px 40px;border-radius:13px;background:var(--ac);border:none;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
+.sovl h2{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--ac);letter-spacing:2px;margin-bottom:10px}
+/* CONFIRMATION CARD */
+.conf-card{background:var(--s1);border:1.5px solid var(--br);border-radius:16px;padding:18px;width:100%;max-width:340px;margin:0 auto 16px;text-align:left}
+.conf-row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--br)}
+.conf-row:last-child{border-bottom:none}
+.conf-label{font-size:10px;color:var(--mu);font-weight:600;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;margin-right:10px;padding-top:2px}
+.conf-val{font-size:13px;font-weight:600;color:var(--tx);text-align:right}
+.conf-val.green{color:var(--ac)}
+.conf-val.txn{font-size:12px;color:var(--ac2);word-break:break-all}
+.copy-card-btn{width:100%;max-width:340px;padding:13px;background:var(--s2);border:1.5px solid var(--br);border-radius:13px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:7px}
+.dbtn2{width:100%;max-width:340px;padding:13px 40px;border-radius:13px;background:var(--ac);border:none;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
+.copy-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
+.copy-toast.show{opacity:1}
 .spn{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-.view{display:none}.view.on{display:block}
 .empty{text-align:center;padding:36px 18px;color:var(--mu);font-size:13px}
 </style>
 </head>
@@ -121,34 +120,25 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 
 <div class="hdr">
   <div><div class="logo">Shuttlewhizz</div><div class="logo-s">Badminton Academy · Mumbai</div></div>
-  <div class="dr">30 Mar – 05 Apr '26<br>Book your court</div>
+  <div class="dr">April 2026<br>Book your court</div>
 </div>
 <div class="sbar">
-  <span class="surl" id="shareUrl">shuttlewhizz.github.io</span>
+  <span class="surl" id="shareUrl">mayank-shuttlewhizz.github.io/badmintonslots</span>
   <button class="sbtn" onclick="doShare()">🔗 Share</button>
 </div>
-<div class="nav">
-  <div class="ntab on" onclick="swV('book',this)">🎾 Book Court</div>
-  <div class="ntab" onclick="swV('other',this)">📍 Other Courts</div>
-</div>
 
-<div class="view on" id="view-book">
-  <div class="ctabs" id="cTabs"></div>
-  <div class="dstrip" id="dStrip"></div>
-  <div class="pbar">
-    <div class="pp"><div class="pd" style="background:#c8f135"></div>Weekday Day <b>₹1000/hr</b></div>
-    <div class="pp"><div class="pd" style="background:#7c6af7"></div>Night/Weekend <b>₹1200/hr</b></div>
-  </div>
-  <div class="scon" id="slotCon"><div class="empty"><span class="spn"></span></div></div>
-</div>
+<!-- COURT TABS -->
+<div class="ctabs" id="cTabs"></div>
 
-<div class="view" id="view-other">
-  <div class="osec">
-    <div class="ocard"><h3>🏸 Chembur – Cheddhanagar Gymkhana</h3><p>Mon – Sat &nbsp;|&nbsp; 11:00 AM – 7:00 PM</p></div>
-    <div class="ocard"><h3>🏸 Badhwar Park – Colaba</h3><p>Mon – Sun &nbsp;|&nbsp; 11:30 AM – 6:30 PM</p></div>
-    <div class="ocard"><h3>🏓 Paddle Whizz – Andheri (Pickleball)</h3><p>Book via Hudle platform</p><a href="https://hudle.in/venues/paddle-whizz-academy-l-andheri-east/586107" target="_blank">Open Hudle →</a></div>
-  </div>
+<!-- MONTH / WEEK NAVIGATION -->
+<div class="mtabs" id="mTabs"></div>
+<div class="wstrip" id="wStrip"></div>
+
+<div class="pbar">
+  <div class="pp"><div class="pd" style="background:#c8f135"></div>Weekday Day <b>₹1000/hr</b></div>
+  <div class="pp"><div class="pd" style="background:#7c6af7"></div>Night/Weekend <b>₹1200/hr</b></div>
 </div>
+<div class="scon" id="slotCon"><div class="empty"><span class="spn"></span></div></div>
 
 <!-- BOOK SHEET -->
 <div class="ovl" id="bOvl">
@@ -178,161 +168,433 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
   <div class="psht">
     <div class="hdl" style="margin:0 auto 16px"></div>
     <h3>✅ Payment Done?</h3>
-    <p>Enter your UPI Transaction ID to confirm and lock your slot. Find it in your UPI app under recent transactions.</p>
+    <p>Enter your UPI Transaction ID to confirm and lock your slot. You'll find it in your UPI app under recent transactions.</p>
     <input class="txni" id="txnId" type="text" placeholder="e.g. 426835291034" inputmode="numeric">
-    <button class="cpbtn" id="confBtn" onclick="confirmBook()">CONFIRM MY BOOKING</button>
+    <button class="cpbtn2" id="confBtn" onclick="confirmBook()">CONFIRM MY BOOKING</button>
     <button class="skbtn" onclick="confirmBook()">Skip – confirm without transaction ID</button>
   </div>
 </div>
 
-<!-- SUCCESS -->
+<!-- SUCCESS + CONFIRMATION CARD -->
 <div class="sovl" id="sOvl">
   <div class="si">🏸</div>
   <h2>Booking Confirmed!</h2>
-  <p id="sMsg"></p>
+  <div class="conf-card" id="confCard"></div>
+  <button class="copy-card-btn" onclick="copyConfirmation()">📋 Copy Confirmation</button>
   <button class="dbtn2" onclick="closeSuccess()">Done</button>
 </div>
 
+<div class="copy-toast" id="copyToast">Copied to clipboard!</div>
+
 <script>
-// ── DATA ───────────────────────────────────────────────────────────────────
+// ── CONFIG ─────────────────────────────────────────────────────────────────
 var UPI='shutt90828@barodampay', UNAME='Shuttlewhizz Badminton Academy';
-var WEEK=[{k:'mon',l:'Mon',d:'30 Mar'},{k:'tue',l:'Tue',d:'31 Mar'},{k:'wed',l:'Wed',d:'01 Apr'},{k:'thu',l:'Thu',d:'02 Apr'},{k:'fri',l:'Fri',d:'03 Apr'},{k:'sat',l:'Sat',d:'04 Apr'},{k:'sun',l:'Sun',d:'05 Apr'}];
 
+// ── DATE HELPERS ───────────────────────────────────────────────────────────
+var MONTHS=[
+  {key:'mar',label:'Mar',year:2026,month:2,start:30,end:31},  // March 30-31
+  {key:'apr',label:'Apr',year:2026,month:3,start:1,end:30},   // All April
+];
+var DAY_NAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var MONTH_NAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function getDateKey(y,m,d){return y+'-'+(m<9?'0':'')+(m+1)+'-'+(d<10?'0':'')+d;}
+function getDayName(y,m,d){return DAY_NAMES[new Date(y,m,d).getDay()];}
+function isWeekend(y,m,d){var dow=new Date(y,m,d).getDay();return dow===0||dow===6;}
+function fmtDate(y,m,d){return d+' '+MONTH_NAMES[m];}
+
+// Generate all days for current month selection
+function getDays(mObj){
+  var days=[];
+  var y=mObj.year,m=mObj.month;
+  for(var d=mObj.start;d<=mObj.end;d++){
+    days.push({
+      key:getDateKey(y,m,d),
+      label:getDayName(y,m,d),
+      num:d,
+      display:fmtDate(y,m,d),
+      weekend:isWeekend(y,m,d),
+      y:y,m:m,d:d
+    });
+  }
+  return days;
+}
+
+// ── TIME HELPERS ───────────────────────────────────────────────────────────
 function fh(h){var t=Math.round(h*60),hr=Math.floor(t/60)%24,mn=t%60,ap=hr<12?'AM':'PM',d=hr===0?12:hr>12?hr-12:hr;return d+':'+(mn<10?'0':'')+mn+' '+ap;}
-function ms(px,s,e,rate,pre){var sl=[],h=Math.round(s*2)/2,en=Math.round(e*2)/2;pre=pre||{};while(h<en){sl.push({id:px+'-'+h,time:fh(h)+' – '+fh(h+1),h:h,rate:rate,by:pre[''+h]||null});h=Math.round((h+1)*2)/2;}return sl;}
 
-var COURTS=[
-  {id:'bandra',name:'Bandra',slots:{
-    mon:[].concat(ms('b-mn-a',8.5,9.5,'day',{'8.5':'Jyotika H'}),ms('b-mn-b',11.5,12.5,'day',{'11.5':'Sundeep'}),ms('b-mn-c',12.5,14,'day'),ms('b-mn-d',14,15,'day',{'14':'Rishikesh'}),ms('b-mn-n',23,26,'night')),
-    tue:[].concat(ms('b-tu-a',8.5,9.5,'day',{'8.5':'Jyotika H'}),ms('b-tu-b',9.5,11.5,'day'),ms('b-tu-c',12,14,'day',{'12':'Tracy H','13':'Tracy H'}),ms('b-tu-d',14,16.5,'day'),ms('b-tu-n',23,26,'night')),
-    wed:[].concat(ms('b-we-a',8.5,9.5,'day'),ms('b-we-b',11.5,15,'day'),ms('b-we-n',23,26,'night')),
-    thu:[].concat(ms('b-th-a',8.5,9.5,'day'),ms('b-th-b',9.5,10.5,'day'),ms('b-th-c',10.5,15.5,'day'),ms('b-th-d',15.5,16.5,'day'),ms('b-th-n',23,26.5,'night',{'23':'Shreyas H','24':'Shreyas H'})),
-    fri:[].concat(ms('b-fr-a',8.5,9.5,'day'),ms('b-fr-b',11.5,15,'day'),ms('b-fr-n',22.5,26.5,'night')),
-    sat:[].concat(ms('b-sa-a',9,10.5,'weekend',{'9':'Tanisha'}),ms('b-sa-b',12,14,'weekend'),ms('b-sa-c',14,15.5,'weekend'),ms('b-sa-d',15.5,16.5,'weekend'),ms('b-sa-n',22.5,26.5,'night')),
-    sun:[].concat(ms('b-su-a',9,10.5,'weekend',{'9':'Shreyash H'}),ms('b-su-b',12,14,'weekend',{'12':'Mayank','13':'Mayank'}),ms('b-su-c',14,16,'weekend'),ms('b-su-d',17,18,'weekend'),ms('b-su-e',18,19.5,'weekend'),ms('b-su-n',22.5,26.5,'night')),
-  }},
-  {id:'santacruz',name:'Santacruz',slots:{
-    mon:[].concat(ms('s-mn-a',9.5,11,'day',{'9.5':'Ankit'}),ms('s-mn-b',11,12.5,'day',{'11':'Prasad'}),ms('s-mn-c',12.5,15,'day')),
-    tue:[].concat(ms('s-tu-a',10,11,'day',{'10':'Shradha'}),ms('s-tu-b',11,14,'day'),ms('s-tu-c',14,15,'day'),ms('s-tu-n1',21.5,23,'night',{'21.5':'Diya','22.5':'Diya'}),ms('s-tu-n2',23,25,'night')),
-    wed:[].concat(ms('s-we-a',9.5,11,'day',{'9.5':'Prasad'}),ms('s-we-b',11,15,'day'),ms('s-we-n',23,25,'night')),
-    thu:[].concat(ms('s-th-a',10,15,'day')),
-    fri:[].concat(ms('s-fr-a',10,15,'day')),
-    sat:[].concat(ms('s-sa-a',5.5,6.5,'weekend'),ms('s-sa-b',14.5,16.5,'weekend'),ms('s-sa-n1',21.5,23.5,'night'),ms('s-sa-n2',23.5,25.5,'night')),
-    sun:[].concat(ms('s-su-a',5.5,6.5,'weekend'),ms('s-su-b',14.5,16.5,'weekend'),ms('s-su-c',16.5,18,'weekend'),ms('s-su-d',18,20,'weekend'),ms('s-su-n1',21.5,23.5,'night'),ms('s-su-n2',23.5,25.5,'night')),
-  }},
+// ── COURT DEFINITIONS ──────────────────────────────────────────────────────
+// Pre-booked slots for 30 Mar – 5 Apr (from original schedule)
+// Format: dateKey -> { startH: 'Name' }
+var PRE_BOOKED = {
+  'bandra': {
+    '2026-03-30': {'8.5':'Jyotika H','11.5':'Sundeep','14':'Rishikesh','23':'available','24':'available','25':'available'},
+    '2026-03-31': {'8.5':'Jyotika H','12':'Tracy H','13':'Tracy H'},
+    '2026-04-02': {'23':'Shreyas H','24':'Shreyas H'},
+    '2026-04-04': {'9':'Tanisha'},
+    '2026-04-05': {'9':'Shreyash H','12':'Mayank','13':'Mayank'},
+  },
+  'santacruz': {
+    '2026-03-30': {'9.5':'Ankit','11':'Prasad'},
+    '2026-03-31': {'10':'Shradha','21.5':'Diya','22.5':'Diya'},
+    '2026-04-01': {'9.5':'Prasad'},
+  },
+  'chembur': {},
+  'colaba': {},
+  'andheri': {},
+};
+
+// Court schedule rules: for each court, define time windows per day type
+// dayType: 'weekday' | 'weekend'
+// Windows: [{start, end, rate}]
+var COURT_RULES = {
+  bandra: {
+    weekday: [
+      {start:8.5,  end:9.5,  rate:'day'},
+      {start:11.5, end:16.5, rate:'day'},
+      {start:23,   end:26.5, rate:'night'},
+    ],
+    weekend: [
+      {start:9,    end:10.5, rate:'weekend'},
+      {start:12,   end:16.5, rate:'weekend'},
+      {start:22.5, end:26.5, rate:'night'},
+    ],
+  },
+  santacruz: {
+    weekday: [
+      {start:9.5,  end:15,   rate:'day'},
+      {start:23,   end:25,   rate:'night'},
+    ],
+    weekend: [
+      {start:5.5,  end:6.5,  rate:'weekend'},
+      {start:14.5, end:20,   rate:'weekend'},
+      {start:21.5, end:25.5, rate:'night'},
+    ],
+  },
+  chembur: {
+    weekday: [
+      {start:11,   end:19,   rate:'day'},
+    ],
+    weekend: [
+      {start:11,   end:19,   rate:'weekend'},
+    ],
+  },
+  colaba: {
+    weekday: [
+      {start:11.5, end:18.5, rate:'day'},
+    ],
+    weekend: [
+      {start:11.5, end:18.5, rate:'weekend'},
+    ],
+  },
+  andheri: {
+    weekday: [
+      {start:6,    end:22,   rate:'day'},
+    ],
+    weekend: [
+      {start:6,    end:22,   rate:'weekend'},
+    ],
+  },
+};
+
+var COURTS = [
+  {id:'bandra',    name:'Bandra'},
+  {id:'santacruz', name:'Santacruz'},
+  {id:'chembur',   name:'Chembur'},
+  {id:'colaba',    name:'Colaba'},
+  {id:'andheri',   name:'Andheri'},
 ];
 
-// flat lookup
-var ALL={};
-COURTS.forEach(function(c){Object.values(c.slots).forEach(function(a){a.forEach(function(s){ALL[s.id]=s;});});});
+// Generate slots for a specific court + date
+function getSlotsForDay(courtId, dateObj) {
+  var rules = COURT_RULES[courtId];
+  if (!rules) return [];
+  var windows = dateObj.weekend ? rules.weekend : rules.weekday;
+  var pre = (PRE_BOOKED[courtId] && PRE_BOOKED[courtId][dateObj.key]) || {};
+  var slots = [];
+  windows.forEach(function(w) {
+    var h = Math.round(w.start * 2) / 2;
+    var en = Math.round(w.end * 2) / 2;
+    while (h < en) {
+      var id = courtId + '-' + dateObj.key + '-' + h;
+      var preVal = pre[''+h];
+      // skip "available" marker (those are just notes, not real bookings)
+      var bookedBy = (preVal && preVal !== 'available') ? preVal : null;
+      slots.push({
+        id: id,
+        time: fh(h) + ' – ' + fh(h+1),
+        h: h,
+        rate: w.rate,
+        by: bookedBy,
+        dateKey: dateObj.key,
+        courtId: courtId,
+      });
+      h = Math.round((h+1)*2)/2;
+    }
+  });
+  return slots;
+}
 
 // ── STATE ──────────────────────────────────────────────────────────────────
-var selC='bandra',selD='mon',selSlot=null,pendingUser=null;
-var booked={};
-try{booked=JSON.parse(localStorage.getItem('sw_bk')||'{}');}catch(e){}
-function save(){try{localStorage.setItem('sw_bk',JSON.stringify(booked));}catch(e){}}
+var selC = 'bandra';
+var selMon = 'apr';
+var selDay = null;  // dateObj
+var selSlot = null, pendingUser = null;
+var booked = {};
+var confData = null; // store last booking for copy
 
-function price(s){return s.rate==='day'?1000:1200;}
-function isB(s){return !!(booked[s.id]||s.by);}
-function bName(s){var b=booked[s.id];return b?b.name:s.by;}
+try { booked = JSON.parse(localStorage.getItem('sw_bk') || '{}'); } catch(e) {}
+function save() { try { localStorage.setItem('sw_bk', JSON.stringify(booked)); } catch(e) {} }
+
+function price(s) {
+  if (s.rate === 'day') return 1000;
+  return 1200;
+}
+function isB(s) { return !!(booked[s.id] || s.by); }
+function bName(s) { var b = booked[s.id]; return b ? b.name : s.by; }
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+function init() {
+  // Default to today or Apr 1
+  var today = new Date();
+  var defaultM = (today.getMonth() === 2 && today.getDate() >= 30) ? 'mar' : 'apr';
+  selMon = defaultM;
+
+  rCourts();
+  rMonths();
+  // select first available day
+  var days = getDays(MONTHS.find(function(m){return m.key===selMon;}));
+  var todayKey = getDateKey(today.getFullYear(), today.getMonth(), today.getDate());
+  var found = days.find(function(d){return d.key >= todayKey;}) || days[0];
+  selDay = found;
+  rDays();
+  rSlots();
+  document.getElementById('shareUrl').textContent = location.href.replace('https://','').split('?')[0];
+}
 
 // ── RENDER ─────────────────────────────────────────────────────────────────
-function rCourts(){
-  document.getElementById('cTabs').innerHTML=COURTS.map(function(c){
-    return'<button class="ct'+(c.id===selC?' on':'')+'" onclick="selC=\''+c.id+'\';rCourts();rSlots()">'+c.name+'</button>';
+function rCourts() {
+  document.getElementById('cTabs').innerHTML = COURTS.map(function(c) {
+    return '<button class="ct'+(c.id===selC?' on':'')+'" onclick="pickCourt(\''+c.id+'\')">' + c.name + '</button>';
   }).join('');
 }
-function rDays(){
-  document.getElementById('dStrip').innerHTML=WEEK.map(function(d){
-    return'<div class="dbtn'+(d.k===selD?' on':'')+'" onclick="selD=\''+d.k+'\';rDays();rSlots()"><span class="dn">'+d.l+'</span><span class="dd">'+d.d.split(' ')[0]+'</span></div>';
+
+function rMonths() {
+  document.getElementById('mTabs').innerHTML = MONTHS.map(function(m) {
+    return '<div class="mt2'+(m.key===selMon?' on':'')+'" onclick="pickMonth(\''+m.key+'\')">' + m.label + ' \'26</div>';
   }).join('');
 }
-function rSlots(){
-  var court=COURTS.find(function(c){return c.id===selC;});
-  var slots=(court&&court.slots[selD])||[];
-  var el=document.getElementById('slotCon');
-  if(!slots.length){el.innerHTML='<div class="empty">No slots for this day.</div>';return;}
-  var day=slots.filter(function(s){return s.rate==='day';}),
-      ngt=slots.filter(function(s){return s.rate!=='day';});
-  var h='';
-  if(day.length)h+='<div class="slbl">☀️ Day Slots — ₹1000/hr</div>'+day.map(sCard).join('');
-  if(ngt.length)h+='<div class="slbl">🌙 Night / Weekend — ₹1200/hr</div>'+ngt.map(sCard).join('');
-  el.innerHTML=h;
+
+function rDays() {
+  var mObj = MONTHS.find(function(m){return m.key===selMon;});
+  var days = getDays(mObj);
+  var today = new Date(); today.setHours(0,0,0,0);
+  document.getElementById('wStrip').innerHTML = days.map(function(d) {
+    var dDate = new Date(d.y, d.m, d.d);
+    var isPast = dDate < today;
+    var isOn = selDay && selDay.key === d.key;
+    return '<div class="dbtn'+(isOn?' on':'')+(isPast?' past':'')+'" onclick="pickDay(\''+d.key+'\')">'
+      +'<span class="dn">'+d.label+'</span>'
+      +'<span class="dd">'+d.num+'</span>'
+      +'</div>';
+  }).join('');
+  // scroll selected into view
+  setTimeout(function(){
+    var strip = document.getElementById('wStrip');
+    var on = strip.querySelector('.dbtn.on');
+    if(on) on.scrollIntoView({inline:'center', behavior:'smooth'});
+  }, 80);
 }
-function sCard(s){
-  var b=isB(s),who=bName(s),p=price(s);
-  return'<div class="sc'+(b?' bk':' av')+(s.rate!=='day'?' ni':'')+'" onclick="'+(b?'':'openBook(\''+s.id+'\')')+'">'
+
+function rSlots() {
+  if (!selDay) { document.getElementById('slotCon').innerHTML = '<div class="empty">Select a date above.</div>'; return; }
+  var slots = getSlotsForDay(selC, selDay);
+  var el = document.getElementById('slotCon');
+  if (!slots.length) { el.innerHTML = '<div class="empty">No slots available for this day.</div>'; return; }
+  var day  = slots.filter(function(s){return s.rate==='day';});
+  var wknd = slots.filter(function(s){return s.rate==='weekend';});
+  var ngt  = slots.filter(function(s){return s.rate==='night';});
+  var h = '';
+  if (day.length)  h += '<div class="slbl">☀️ Day Slots — ₹1000/hr</div>' + day.map(sCard).join('');
+  if (wknd.length) h += '<div class="slbl">🟢 Weekend Slots — ₹1200/hr</div>' + wknd.map(sCard).join('');
+  if (ngt.length)  h += '<div class="slbl">🌙 Night Slots — ₹1200/hr</div>' + ngt.map(sCard).join('');
+  el.innerHTML = h;
+}
+
+function sCard(s) {
+  var b=isB(s), who=bName(s), p=price(s);
+  return '<div class="sc'+(b?' bk':' av')+(s.rate==='night'?' ni':'')+'" onclick="'+(b?'':'openBook(\''+s.id+'\')')+'">'
     +(b?'<div class="btag">BOOKED</div>':'')
     +'<div><div class="st">'+s.time+'</div>'+(who?'<div class="sw">● '+who+'</div>':'')+'</div>'
     +'<div class="sr"><div class="sp">₹'+p.toLocaleString('en-IN')+'</div>'+(b?'':'<div class="bchip">Book</div>')+'</div>'
     +'</div>';
 }
 
-// ── BOOKING ────────────────────────────────────────────────────────────────
-function openBook(id){
-  selSlot=ALL[id];if(!selSlot)return;
-  var p=price(selSlot),day=WEEK.find(function(d){return d.k===selD;}),court=COURTS.find(function(c){return c.id===selC;});
-  document.getElementById('slotSum').innerHTML='<strong>'+court.name+' Court</strong><br>📅 '+day.l+', '+day.d+'<br>🕐 '+selSlot.time+'<br>💰 <strong>₹'+p.toLocaleString('en-IN')+'</strong>';
-  document.getElementById('pAmt').textContent=p.toLocaleString('en-IN');
-  document.getElementById('bName').value='';document.getElementById('bPhone').value='';
+// ── NAVIGATION ─────────────────────────────────────────────────────────────
+function pickCourt(id) { selC = id; rCourts(); rSlots(); }
+function pickMonth(k) {
+  selMon = k;
+  var mObj = MONTHS.find(function(m){return m.key===k;});
+  var days = getDays(mObj);
+  selDay = days[0];
+  rMonths(); rDays(); rSlots();
+}
+function pickDay(key) {
+  var mObj = MONTHS.find(function(m){return m.key===selMon;});
+  var days = getDays(mObj);
+  selDay = days.find(function(d){return d.key===key;}) || days[0];
+  rDays(); rSlots();
+}
+
+// ── GET SLOT BY ID ─────────────────────────────────────────────────────────
+function getSlot(id) {
+  if (!selDay) return null;
+  var slots = getSlotsForDay(selC, selDay);
+  return slots.find(function(s){return s.id===id;}) || null;
+}
+
+// ── BOOKING FLOW ───────────────────────────────────────────────────────────
+function openBook(id) {
+  selSlot = getSlot(id);
+  if (!selSlot) return;
+  var p = price(selSlot);
+  var court = COURTS.find(function(c){return c.id===selC;});
+  document.getElementById('slotSum').innerHTML =
+    '<strong>'+court.name+' Court</strong><br>'
+    +'📅 '+selDay.label+', '+selDay.display+'<br>'
+    +'🕐 '+selSlot.time+'<br>'
+    +'💰 <strong>₹'+p.toLocaleString('en-IN')+'</strong>';
+  document.getElementById('pAmt').textContent = p.toLocaleString('en-IN');
+  document.getElementById('bName').value = '';
+  document.getElementById('bPhone').value = '';
   document.getElementById('bOvl').classList.add('op');
 }
-function closeBook(){document.getElementById('bOvl').classList.remove('op');}
+function closeBook() { document.getElementById('bOvl').classList.remove('op'); }
 
-function validate(){
-  var n=document.getElementById('bName').value.trim(),p=document.getElementById('bPhone').value.trim();
-  if(!n){alert('Please enter your name.');return null;}
-  if(!/^\d{10}$/.test(p)){alert('Enter a valid 10-digit mobile number.');return null;}
-  return{name:n,phone:p};
+function validate() {
+  var n=document.getElementById('bName').value.trim(),
+      p=document.getElementById('bPhone').value.trim();
+  if (!n) { alert('Please enter your name.'); return null; }
+  if (!/^\d{10}$/.test(p)) { alert('Enter a valid 10-digit mobile number.'); return null; }
+  return {name:n, phone:p};
 }
 
-function upiUrl(app){
-  var p=price(selSlot),court=COURTS.find(function(c){return c.id===selC;}),day=WEEK.find(function(d){return d.k===selD;});
-  var note=encodeURIComponent(court.name+' '+day.l+' '+selSlot.time);
-  var pa=encodeURIComponent(UPI),pn=encodeURIComponent(UNAME);
-  if(app==='gpay')   return'gpay://upi/pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  if(app==='phonepe')return'phonepe://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  if(app==='paytm')  return'paytmmp://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  if(app==='bhim')   return'bhim://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  return'upi://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
+function upiUrl(app) {
+  var p = price(selSlot);
+  var court = COURTS.find(function(c){return c.id===selC;});
+  var note = encodeURIComponent(court.name+' '+selDay.label+' '+selDay.display+' '+selSlot.time);
+  var pa = encodeURIComponent(UPI), pn = encodeURIComponent(UNAME);
+  if (app==='gpay')    return 'gpay://upi/pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
+  if (app==='phonepe') return 'phonepe://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
+  if (app==='paytm')   return 'paytmmp://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
+  if (app==='bhim')    return 'bhim://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
+  return 'upi://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
 }
 
-function payWith(app){var u=validate();if(!u)return;pendingUser=u;closeBook();setTimeout(function(){window.location.href=upiUrl(app);setTimeout(showPaid,2000);},300);}
-function payGeneric(){var u=validate();if(!u)return;pendingUser=u;closeBook();setTimeout(function(){window.location.href=upiUrl('');setTimeout(showPaid,2000);},300);}
-function showPaid(){document.getElementById('txnId').value='';document.getElementById('pOvl').classList.add('op');}
+function payWith(app) {
+  var u=validate(); if(!u) return;
+  pendingUser=u; closeBook();
+  setTimeout(function(){window.location.href=upiUrl(app); setTimeout(showPaid,2200);},300);
+}
+function payGeneric() {
+  var u=validate(); if(!u) return;
+  pendingUser=u; closeBook();
+  setTimeout(function(){window.location.href=upiUrl(''); setTimeout(showPaid,2200);},300);
+}
+function showPaid() {
+  document.getElementById('txnId').value='';
+  document.getElementById('pOvl').classList.add('op');
+}
 
-function confirmBook(){
-  var txn=document.getElementById('txnId').value.trim()||'N/A';
-  var u=pendingUser||{name:'User',phone:''};
-  var court=COURTS.find(function(c){return c.id===selC;}),day=WEEK.find(function(d){return d.k===selD;});
-  var btn=document.getElementById('confBtn');
-  btn.textContent='Saving...';btn.disabled=true;
-  booked[selSlot.id]={name:u.name,phone:u.phone,txn:txn,court:court.name,courtId:selC,day:day.l,date:day.d,time:selSlot.time,rate:selSlot.rate,price:price(selSlot),ts:new Date().toISOString(),tsd:new Date().toLocaleString('en-IN')};
+function confirmBook() {
+  var txn = document.getElementById('txnId').value.trim() || 'N/A';
+  var u = pendingUser || {name:'User', phone:''};
+  var court = COURTS.find(function(c){return c.id===selC;});
+  var p = price(selSlot);
+  var btn = document.getElementById('confBtn');
+  btn.textContent='Saving...'; btn.disabled=true;
+
+  var data = {
+    name: u.name, phone: u.phone, txn: txn,
+    court: court.name, courtId: selC,
+    day: selDay.label, date: selDay.display,
+    time: selSlot.time, rate: selSlot.rate,
+    price: p,
+    ts: new Date().toISOString(),
+    tsd: new Date().toLocaleString('en-IN'),
+    ref: 'SW'+Date.now().toString(36).toUpperCase()
+  };
+  booked[selSlot.id] = data;
   save();
-  btn.textContent='CONFIRM MY BOOKING';btn.disabled=false;
+  confData = data;
+
+  btn.textContent='CONFIRM MY BOOKING'; btn.disabled=false;
   document.getElementById('pOvl').classList.remove('op');
-  document.getElementById('sMsg').innerHTML='<strong>'+u.name+'</strong><br>'+court.name+' Court — '+day.l+', '+day.d+'<br>'+selSlot.time+'<br><br><span style="font-size:11px;color:#4b5563">TXN: '+txn+'</span>';
+
+  // Build confirmation card
+  var rateLabel = data.rate==='night'?'🌙 Night':data.rate==='weekend'?'🟢 Weekend':'☀️ Day';
+  document.getElementById('confCard').innerHTML =
+    row('Booking Ref','<span class="green">'+data.ref+'</span>')+
+    row('Name', data.name)+
+    row('Mobile', data.phone)+
+    row('Court', data.court+' Court')+
+    row('Date', data.day+', '+data.date)+
+    row('Time', data.time)+
+    row('Rate', rateLabel)+
+    row('Amount', '<span class="green">₹'+p.toLocaleString('en-IN')+'</span>')+
+    row('TXN ID', '<span class="txn">'+(data.txn!=='N/A'?data.txn:'Not provided')+'</span>');
+
   document.getElementById('sOvl').classList.add('on');
   rSlots();
 }
-function closeSuccess(){document.getElementById('sOvl').classList.remove('on');pendingUser=null;selSlot=null;}
 
-function swV(v,el){
-  document.querySelectorAll('.view').forEach(function(x){x.classList.remove('on');});
-  document.querySelectorAll('.ntab').forEach(function(x){x.classList.remove('on');});
-  document.getElementById('view-'+v).classList.add('on');
-  el.classList.add('on');
+function row(label,val){
+  return '<div class="conf-row"><div class="conf-label">'+label+'</div><div class="conf-val">'+val+'</div></div>';
 }
 
-function doShare(){
-  var url=location.href.split('?')[0];
-  if(navigator.share)navigator.share({title:'Shuttlewhizz Court Booking',text:'Book your badminton court!',url:url});
-  else if(navigator.clipboard)navigator.clipboard.writeText(url).then(function(){alert('Link copied to clipboard!');});
+function copyConfirmation() {
+  if (!confData) return;
+  var rateLabel = confData.rate==='night'?'Night (₹1200/hr)':confData.rate==='weekend'?'Weekend (₹1200/hr)':'Day (₹1000/hr)';
+  var text =
+    '🏸 SHUTTLEWHIZZ BADMINTON – BOOKING CONFIRMED\n'+
+    '━━━━━━━━━━━━━━━━━━━━━\n'+
+    '📋 Ref: '+confData.ref+'\n'+
+    '👤 Name: '+confData.name+'\n'+
+    '📞 Mobile: '+confData.phone+'\n'+
+    '🏟️ Court: '+confData.court+'\n'+
+    '📅 Date: '+confData.day+', '+confData.date+'\n'+
+    '🕐 Time: '+confData.time+'\n'+
+    '⚡ Rate: '+rateLabel+'\n'+
+    '💰 Amount: ₹'+confData.price.toLocaleString('en-IN')+'\n'+
+    (confData.txn!=='N/A'?'🔑 TXN ID: '+confData.txn+'\n':'')+
+    '━━━━━━━━━━━━━━━━━━━━━\n'+
+    'Book at: mayank-shuttlewhizz.github.io/badmintonslots';
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function(){showToast();});
+  } else {
+    var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast();
+  }
+}
+
+function showToast() {
+  var t=document.getElementById('copyToast');t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2000);
+}
+
+function closeSuccess() {
+  document.getElementById('sOvl').classList.remove('on');
+  pendingUser=null; selSlot=null; confData=null;
+}
+
+function doShare() {
+  var url='https://mayank-shuttlewhizz.github.io/badmintonslots/';
+  if (navigator.share) navigator.share({title:'Shuttlewhizz Court Booking',text:'Book your badminton slot!',url:url});
+  else if (navigator.clipboard) navigator.clipboard.writeText(url).then(function(){showToast();});
   else prompt('Copy this link:',url);
 }
 
-document.getElementById('shareUrl').textContent=location.href.replace('https://','').split('?')[0];
-rCourts();rDays();rSlots();
+init();
 </script>
 </body>
 </html>
