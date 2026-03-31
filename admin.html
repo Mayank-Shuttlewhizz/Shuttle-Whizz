@@ -31,12 +31,14 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .fils{padding:0 18px 10px;display:flex;gap:6px;flex-wrap:wrap}
 .fb{padding:5px 11px;border-radius:16px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
 .fb.on{background:var(--ac);border-color:var(--ac);color:#000}
-.sh{padding:3px 18px 9px;display:flex;align-items:center;justify-content:space-between}
+.sh{padding:3px 18px 9px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
 .sh h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.sh-btns{display:flex;gap:7px}
 .exbtn{padding:5px 12px;border-radius:16px;background:var(--s1);border:1.5px solid var(--br);color:var(--mu);font-size:10px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.clrall{padding:5px 12px;border-radius:16px;background:transparent;border:1.5px solid var(--rd);color:var(--rd);font-size:10px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
 .blist{padding:0 18px 100px}
-.bcard{background:var(--s1);border:1.5px solid var(--br);border-radius:13px;padding:14px;margin-bottom:9px;transition:border-color .2s}
-.bcard:hover{border-color:var(--ac)}
+.bcard{background:var(--s1);border:1.5px solid var(--br);border-radius:13px;padding:14px;margin-bottom:9px;transition:border-color .2s;position:relative}
+.bcard:hover{border-color:rgba(200,241,53,.3)}
 .bt{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:9px}
 .bn{font-size:15px;font-weight:700}
 .bph{font-size:11px;color:var(--mu);margin-top:2px}
@@ -48,15 +50,31 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .btg.day{border-color:rgba(200,241,53,.3);color:var(--ac)}
 .btg.night{border-color:rgba(124,106,247,.3);color:var(--ni)}
 .btg.weekend{border-color:rgba(53,241,168,.3);color:var(--ac2)}
-.btxn{background:var(--s2);border-radius:7px;padding:7px 11px;font-size:11px;color:var(--mu);display:flex;align-items:center;justify-content:space-between}
+.btxn{background:var(--s2);border-radius:7px;padding:7px 11px;font-size:11px;color:var(--mu);display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
 .btv{color:var(--tx);font-weight:600;font-size:12px;word-break:break-all;flex:1}
 .cpbtn{flex-shrink:0;margin-left:7px;padding:3px 9px;border-radius:5px;border:1px solid var(--br);background:transparent;color:var(--mu);font-size:10px;cursor:pointer;font-family:'DM Sans',sans-serif}
-.bts{font-size:10px;color:var(--mu);margin-top:7px}
+.bts{font-size:10px;color:var(--mu);margin-bottom:9px}
+/* DELETE BUTTON */
+.del-btn{width:100%;padding:9px;background:transparent;border:1.5px solid var(--rd);border-radius:9px;color:var(--rd);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.del-btn:hover{background:rgba(255,77,109,.1)}
+.del-btn:active{transform:scale(.97)}
+/* DELETE CONFIRM MODAL */
+.del-ovl{position:fixed;inset:0;background:rgba(0,0,0,.87);z-index:400;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .25s}
+.del-ovl.op{opacity:1;pointer-events:all}
+.del-sht{background:var(--s1);border-radius:22px 22px 0 0;padding:22px 22px 40px;width:100%;transform:translateY(100%);transition:transform .3s cubic-bezier(.32,.72,0,1);text-align:center}
+.del-ovl.op .del-sht{transform:translateY(0)}
+.del-sht .di{font-size:44px;margin-bottom:10px}
+.del-sht h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--rd);margin-bottom:8px}
+.del-sht p{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:18px}
+.del-confirm{width:100%;padding:13px;background:var(--rd);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#fff;cursor:pointer;margin-bottom:9px}
+.del-cancel{width:100%;padding:12px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer}
 .mt2{text-align:center;padding:50px 18px;color:var(--mu)}
 .spn{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-.copy-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999}
-.copy-toast.show{opacity:1}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
+.toast.show{opacity:1}
+.del-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--rd);color:#fff;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
+.del-toast.show{opacity:1}
 </style>
 </head>
 <body>
@@ -74,19 +92,19 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 
 <div id="aUI" style="display:none">
   <div class="hdr">
-    <div><div class="logo">Admin Panel</div><div class="logo-s">Shuttlewhizz · All Courts · April 2026</div></div>
+    <div><div class="logo">Admin Panel</div><div class="logo-s">Shuttlewhizz · All Courts · Apr 2026</div></div>
     <button class="lgout" onclick="doLogout()">Logout</button>
   </div>
 
   <div class="strow">
-    <div class="stc"><div class="stn" id="stTotal">0</div><div class="stl">Total Bookings</div></div>
+    <div class="stc"><div class="stn" id="stTotal">0</div><div class="stl">Bookings</div></div>
     <div class="stc"><div class="stn" id="stRev">₹0</div><div class="stl">Revenue</div></div>
     <div class="stc"><div class="stn" id="stBan">0</div><div class="stl">Bandra</div></div>
     <div class="stc"><div class="stn" id="stSan">0</div><div class="stl">Santacruz</div></div>
     <div class="stc"><div class="stn" id="stOth">0</div><div class="stl">Others</div></div>
   </div>
 
-  <div class="fils" id="filterRow">
+  <div class="fils">
     <button class="fb on" onclick="setF('all',this)">All</button>
     <button class="fb" onclick="setF('bandra',this)">Bandra</button>
     <button class="fb" onclick="setF('santacruz',this)">Santacruz</button>
@@ -104,54 +122,73 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 
   <div class="sh">
     <h3 id="resCount">Bookings</h3>
-    <button class="exbtn" onclick="doExport()">📥 Export CSV</button>
+    <div class="sh-btns">
+      <button class="exbtn" onclick="doExport()">📥 Export CSV</button>
+      <button class="clrall" onclick="confirmClearAll()">🗑 Clear All</button>
+    </div>
   </div>
   <div class="blist" id="bList"><div class="mt2"><span class="spn"></span></div></div>
 </div>
 
-<div class="copy-toast" id="cToast">Copied!</div>
+<!-- DELETE CONFIRM SHEET -->
+<div class="del-ovl" id="delOvl">
+  <div class="del-sht">
+    <div class="di">🗑️</div>
+    <h3>Delete Booking?</h3>
+    <p id="delMsg">This will free up the slot so anyone can book it.</p>
+    <button class="del-confirm" onclick="doDelete()">YES, DELETE IT</button>
+    <button class="del-cancel" onclick="closeDelOvl()">Cancel</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">Copied!</div>
+<div class="del-toast" id="delToast">Booking deleted ✓</div>
 
 <script>
-var PASS = 'shuttlewhizz2026';
-var all = [], filt = 'all';
+var PASS='shuttlewhizz2026';
+var all=[], filt='all', pendingDelKey=null, pendingDelRef=null;
 
-function doLogin() {
-  if (document.getElementById('aPass').value === PASS) {
+function doLogin(){
+  if(document.getElementById('aPass').value===PASS){
     document.getElementById('lScr').classList.add('hid');
-    document.getElementById('aUI').style.display = 'block';
+    document.getElementById('aUI').style.display='block';
     loadData();
   } else {
-    document.getElementById('lErr').style.display = 'block';
-    document.getElementById('aPass').value = '';
+    document.getElementById('lErr').style.display='block';
+    document.getElementById('aPass').value='';
   }
 }
-function doLogout() {
+function doLogout(){
   document.getElementById('lScr').classList.remove('hid');
-  document.getElementById('aUI').style.display = 'none';
-  document.getElementById('aPass').value = '';
+  document.getElementById('aUI').style.display='none';
+  document.getElementById('aPass').value='';
 }
 
-function loadData() {
-  try { var raw=JSON.parse(localStorage.getItem('sw_bk')||'{}'); all=Object.values(raw); } catch(e) { all=[]; }
+function loadData(){
+  try{var raw=JSON.parse(localStorage.getItem('sw_bk2')||'{}');all=Object.values(raw);}catch(e){all=[];}
+  // attach slotId to each booking
+  try{
+    var raw2=JSON.parse(localStorage.getItem('sw_bk2')||'{}');
+    all=Object.entries(raw2).map(function(e){return Object.assign({_slotId:e[0]},e[1]);});
+  }catch(e){all=[];}
   all.sort(function(a,b){return new Date(b.ts||0)-new Date(a.ts||0);});
   render();
 }
 
-function setF(f,el) {
+function setF(f,el){
   filt=f;
   document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('on');});
-  el.classList.add('on');
-  render();
+  el.classList.add('on'); render();
 }
 
 var DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-function filtered() {
-  if (filt==='all') return all;
-  if (DAYS.indexOf(filt)>-1) return all.filter(function(b){return b.day===filt;});
+function filtered(){
+  if(filt==='all') return all;
+  if(DAYS.indexOf(filt)>-1) return all.filter(function(b){return b.day===filt;});
   return all.filter(function(b){return b.courtId===filt;});
 }
 
-function render() {
+function render(){
   var list=filtered();
   var rev=all.reduce(function(s,b){return s+(b.price||0);},0);
   document.getElementById('stTotal').textContent=all.length;
@@ -162,46 +199,65 @@ function render() {
   document.getElementById('resCount').textContent=list.length+' Booking'+(list.length!==1?'s':'');
 
   var el=document.getElementById('bList');
-  if (!list.length) { el.innerHTML='<div class="mt2">📭 No bookings yet</div>'; return; }
+  if(!list.length){el.innerHTML='<div class="mt2">📭 No bookings yet</div>';return;}
 
   el.innerHTML=list.map(function(b){
     var rl=b.rate==='night'?'🌙 Night':b.rate==='weekend'?'🟢 Weekend':'☀️ Day';
     var tv=b.txn&&b.txn!=='N/A'?b.txn:'Not provided';
-    return '<div class="bcard">'
-      +'<div class="bt">'
-        +'<div><div class="bn">'+e(b.name||'—')+'</div><div class="bph">📞 '+e(b.phone||'—')+'</div></div>'
-        +'<div><div class="bpr">₹'+(b.price||0).toLocaleString('en-IN')+'</div><div class="bco">'+e(b.court||'—')+'</div>'+(b.ref?'<div class="bref">'+e(b.ref)+'</div>':'')+'</div>'
-      +'</div>'
-      +'<div class="bdet">'
-        +'<span class="btg">'+e(b.day||'')+' '+e(b.date||'')+'</span>'
-        +'<span class="btg">'+e(b.time||'—')+'</span>'
-        +'<span class="btg '+(b.rate||'day')+'">'+rl+'</span>'
-      +'</div>'
-      +'<div class="btxn">'
-        +'<div style="flex:1"><div style="font-size:9px;color:var(--mu);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px">UPI Transaction ID</div>'
-        +'<div class="btv">'+e(tv)+'</div></div>'
-        +(b.txn&&b.txn!=='N/A'?'<button class="cpbtn" onclick="cp(\''+e(b.txn)+'\')">Copy</button>':'')
-      +'</div>'
-      +'<div class="bts">Booked: '+e(b.tsd||b.ts||'—')+'</div>'
+    var sid=b._slotId||'';
+    return '<div class="bcard" id="card-'+esc(sid)+'">'
+      +'<div class="bt"><div><div class="bn">'+esc(b.name||'—')+'</div><div class="bph">📞 '+esc(b.phone||'—')+'</div></div>'
+      +'<div><div class="bpr">₹'+(b.price||0).toLocaleString('en-IN')+'</div><div class="bco">'+esc(b.court||'—')+'</div>'+(b.ref?'<div class="bref">'+esc(b.ref)+'</div>':'')+'</div></div>'
+      +'<div class="bdet"><span class="btg">'+esc(b.day||'')+' '+esc(b.date||'')+'</span><span class="btg">'+esc(b.time||'—')+'</span><span class="btg '+(b.rate||'day')+'">'+rl+'</span></div>'
+      +'<div class="btxn"><div style="flex:1"><div style="font-size:9px;color:var(--mu);margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px">UPI Transaction ID</div><div class="btv">'+esc(tv)+'</div></div>'
+      +(b.txn&&b.txn!=='N/A'?'<button class="cpbtn" onclick="cp(\''+esc(b.txn)+'\')">Copy</button>':'')+'</div>'
+      +'<div class="bts">Booked: '+esc(b.tsd||b.ts||'—')+'</div>'
+      +'<button class="del-btn" onclick="askDelete(\''+esc(sid)+'\',\''+esc(b.ref||b.name||'this booking')+'\')">🗑️ Delete This Booking &amp; Free Slot</button>'
       +'</div>';
   }).join('');
 }
 
+function askDelete(slotId, ref){
+  pendingDelKey=slotId; pendingDelRef=ref;
+  document.getElementById('delMsg').textContent='Delete booking "'+ref+'"? This will free the slot so anyone can book it.';
+  document.getElementById('delOvl').classList.add('op');
+}
+function closeDelOvl(){document.getElementById('delOvl').classList.remove('op');}
+
+function doDelete(){
+  if(!pendingDelKey) return;
+  try{
+    var raw=JSON.parse(localStorage.getItem('sw_bk2')||'{}');
+    delete raw[pendingDelKey];
+    localStorage.setItem('sw_bk2',JSON.stringify(raw));
+  }catch(e){}
+  closeDelOvl();
+  var t=document.getElementById('delToast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);
+  pendingDelKey=null; pendingDelRef=null;
+  loadData();
+}
+
+function confirmClearAll(){
+  if(confirm('Delete ALL bookings? This cannot be undone.')){
+    localStorage.removeItem('sw_bk2');
+    loadData();
+  }
+}
+
 function e(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function esc(s){return e(s);}
 
 function cp(t){
-  if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){toast();});
-  else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast();}
+  if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){toast('Copied!');});
+  else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('Copied!');}
 }
-function toast(){var t=document.getElementById('cToast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1800);}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg||'Done';t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1800);}
 
 function doExport(){
   var rows=[['Ref','Name','Phone','Court','Day','Date','Time','Rate','Price (₹)','Transaction ID','Booked At']];
-  filtered().forEach(function(b){
-    rows.push([b.ref||'',b.name||'',b.phone||'',b.court||'',b.day||'',b.date||'',b.time||'',b.rate||'',b.price||0,b.txn||'',b.tsd||b.ts||'']);
-  });
+  filtered().forEach(function(b){rows.push([b.ref||'',b.name||'',b.phone||'',b.court||'',b.day||'',b.date||'',b.time||'',b.rate||'',b.price||0,b.txn||'',b.tsd||b.ts||'']);});
   var csv=rows.map(function(r){return r.map(function(v){return'"'+String(v).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
-  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='shuttlewhizz-bookings-apr2026.csv';a.click();
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='shuttlewhizz-bookings.csv';a.click();
 }
 
 setInterval(function(){if(document.getElementById('aUI').style.display!=='none')loadData();},30000);
