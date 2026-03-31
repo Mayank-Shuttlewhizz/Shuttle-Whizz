@@ -6,7 +6,7 @@
 <title>Shuttlewhizz – Court Booking</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0c10;--s1:#13161d;--s2:#1c202b;--ac:#c8f135;--ac2:#35f1a8;--tx:#f0f2f5;--mu:#6b7280;--br:#252933;--rd:#ff4d6d;--ni:#7c6af7}
+:root{--bg:#0a0c10;--s1:#13161d;--s2:#1c202b;--ac:#c8f135;--ac2:#35f1a8;--tx:#f0f2f5;--mu:#6b7280;--br:#252933;--rd:#ff4d6d;--ni:#7c6af7;--sel:#1e2d0a}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
 .hdr{background:var(--s1);border-bottom:1px solid var(--br);padding:13px 18px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between}
@@ -16,16 +16,16 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .sbar{background:var(--s2);border-bottom:1px solid var(--br);padding:8px 18px;display:flex;align-items:center;gap:8px}
 .surl{font-size:10px;color:var(--mu);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sbtn{flex-shrink:0;padding:6px 12px;border-radius:18px;background:var(--ac);border:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;color:#000;cursor:pointer}
+/* COURT TABS */
 .ctabs{display:flex;overflow-x:auto;gap:7px;padding:11px 18px;background:var(--s1);border-bottom:1px solid var(--br);scrollbar-width:none}
 .ctabs::-webkit-scrollbar{display:none}
 .ct{flex-shrink:0;padding:6px 14px;border-radius:18px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
 .ct.on{background:var(--ac);border-color:var(--ac);color:#000;font-weight:700}
-/* MONTH TABS */
+/* MONTH / DATE */
 .mtabs{display:flex;overflow-x:auto;gap:6px;padding:9px 18px;background:var(--s2);border-bottom:1px solid var(--br);scrollbar-width:none}
 .mtabs::-webkit-scrollbar{display:none}
 .mt2{flex-shrink:0;padding:5px 12px;border-radius:14px;border:1.5px solid var(--br);background:transparent;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
 .mt2.on{background:var(--s1);border-color:var(--ac);color:var(--ac)}
-/* WEEK STRIP */
 .wstrip{display:flex;overflow-x:auto;gap:5px;padding:10px 18px 7px;scrollbar-width:none}
 .wstrip::-webkit-scrollbar{display:none}
 .dbtn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:7px 9px;border-radius:10px;border:1.5px solid var(--br);background:var(--s1);cursor:pointer;transition:all .2s;min-width:44px}
@@ -34,20 +34,33 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .dbtn.on{border-color:var(--ac);background:rgba(200,241,53,.07)}
 .dbtn.on .dd,.dbtn.on .dn{color:var(--ac)}
 .dbtn.past{opacity:.35}
+/* MULTI-SELECT BAR */
+.selbar{background:var(--sel);border-bottom:1px solid rgba(200,241,53,.2);padding:9px 18px;display:flex;align-items:center;justify-content:space-between;display:none}
+.selbar.show{display:flex}
+.selbar-info{font-size:12px;color:var(--ac);font-weight:600}
+.selbar-btns{display:flex;gap:7px}
+.selbar-clear{padding:5px 11px;border-radius:14px;border:1px solid var(--br);background:transparent;color:var(--mu);font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.selbar-book{padding:5px 14px;border-radius:14px;background:var(--ac);border:none;color:#000;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+/* PRICING */
 .pbar{display:flex;gap:7px;padding:7px 18px 9px;flex-wrap:wrap}
 .pp{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:7px;background:var(--s1);border:1px solid var(--br);font-size:10px;color:var(--mu)}
 .pd{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .pp b{color:var(--ac)}
+/* SLOTS */
 .scon{padding:0 18px 120px}
 .slbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:13px 0 7px;display:flex;align-items:center;gap:7px}
 .slbl::after{content:'';flex:1;height:1px;background:var(--br)}
 .sc{background:var(--s1);border:1.5px solid var(--br);border-radius:11px;padding:11px 13px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;transition:all .15s;cursor:pointer;position:relative;overflow:hidden;user-select:none}
 .sc.av:active{transform:scale(.98)}
-.sc.av:hover{border-color:var(--ac);background:rgba(200,241,53,.04)}
+.sc.av:hover{border-color:rgba(200,241,53,.4)}
 .sc.bk{opacity:.5;cursor:not-allowed}
 .sc.ni{border-left:3px solid var(--ni)}
+.sc.picked{border-color:var(--ac);background:var(--sel)}
+.sc.picked .sp{color:var(--ac)}
 .btag{position:absolute;top:6px;right:8px;font-size:8px;font-weight:700;letter-spacing:1px;color:var(--rd);border:1px solid var(--rd);padding:2px 5px;border-radius:3px}
+.seltag{position:absolute;top:6px;right:8px;font-size:9px;font-weight:700;color:var(--ac);padding:2px 5px}
 .st{font-size:13px;font-weight:700;color:var(--tx)}
+.sdur{font-size:10px;color:var(--mu);margin-top:1px}
 .sw{font-size:10px;color:var(--rd);margin-top:2px;font-weight:600}
 .sr{text-align:right;flex-shrink:0;margin-left:7px}
 .sp{font-size:14px;font-weight:700;color:var(--ac)}
@@ -62,6 +75,13 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .shd h2{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px}
 .ssum{background:var(--s2);border-radius:11px;margin:11px 22px;padding:12px 14px;font-size:13px;line-height:1.9;border-left:3px solid var(--ac)}
 .ssum strong{color:var(--ac)}
+.slot-list-sum{margin:0 22px 11px;display:flex;flex-direction:column;gap:5px}
+.slot-sum-row{background:var(--s2);border-radius:8px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+.slot-sum-row span{color:var(--mu)}
+.slot-sum-row b{color:var(--ac)}
+.total-row{background:rgba(200,241,53,.08);border:1px solid rgba(200,241,53,.2);border-radius:8px;padding:10px 12px;font-size:14px;font-weight:700;display:flex;justify-content:space-between;margin:0 22px 11px}
+.total-row span{color:var(--mu)}
+.total-row b{color:var(--ac)}
 .fa{padding:0 22px}
 .fg{margin-bottom:11px}
 .fg label{display:block;font-size:10px;font-weight:600;color:var(--mu);margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
@@ -79,7 +99,7 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .ubtn.bh{border-color:#ff6600}.ubtn.bh .ul{color:#ff8833}
 .dvd{display:flex;align-items:center;gap:8px;margin:1px 0 11px;color:var(--mu);font-size:11px}
 .dvd::before,.dvd::after{content:'';flex:1;height:1px;background:var(--br)}
-.pbtn{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:transform .12s}
+.pbtn{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:#000;cursor:pointer;transition:transform .12s;text-decoration:none;display:block;text-align:center}
 .pbtn:active{transform:scale(.97)}
 .cbtn{width:100%;padding:11px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;margin-top:7px}
 /* PAID SHEET */
@@ -88,29 +108,44 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 .psht{background:var(--s1);border-radius:22px 22px 0 0;padding:20px 22px 42px;width:100%;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1)}
 .povl.op .psht{transform:translateY(0)}
 .psht h3{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:1px;margin-bottom:7px}
-.psht p{font-size:12px;color:var(--mu);margin-bottom:13px;line-height:1.6}
-.txni{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:11px}
+.psht p{font-size:12px;color:var(--mu);margin-bottom:6px;line-height:1.6}
+.paid-opts{display:flex;gap:8px;margin-bottom:14px}
+.paid-opt{flex:1;padding:10px 8px;border-radius:10px;border:1.5px solid var(--br);background:var(--s2);text-align:center;cursor:pointer;font-size:12px;font-weight:600;transition:all .2s}
+.paid-opt.yes{border-color:var(--ac);color:var(--ac)}
+.paid-opt.no{border-color:var(--rd);color:var(--rd)}
+.txni{width:100%;padding:11px 14px;background:var(--s2);border:1.5px solid var(--br);border-radius:9px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:11px;display:none}
+.txni.show{display:block}
 .txni:focus{outline:none;border-color:var(--ac)}
-.cpbtn2{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
-.skbtn{width:100%;padding:10px;background:transparent;border:none;color:var(--mu);font-size:12px;cursor:pointer;margin-top:5px}
-/* SUCCESS / CONFIRMATION */
-.sovl{position:fixed;inset:0;background:var(--bg);z-index:400;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:28px;opacity:0;pointer-events:none;transition:opacity .35s;overflow-y:auto}
+.cpbtn2{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer;display:none}
+.cpbtn2.show{display:block}
+/* SUCCESS */
+.sovl{position:fixed;inset:0;background:var(--bg);z-index:400;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s;overflow-y:auto}
 .sovl.on{opacity:1;pointer-events:all}
 .si{font-size:60px;margin-bottom:12px;animation:pop .38s ease}
 @keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.14)}100%{transform:scale(1)}}
 .sovl h2{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--ac);letter-spacing:2px;margin-bottom:10px}
-/* CONFIRMATION CARD */
-.conf-card{background:var(--s1);border:1.5px solid var(--br);border-radius:16px;padding:18px;width:100%;max-width:340px;margin:0 auto 16px;text-align:left}
-.conf-row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--br)}
+.conf-card{background:var(--s1);border:1.5px solid var(--br);border-radius:16px;padding:16px;width:100%;max-width:340px;margin:0 auto 14px;text-align:left}
+.conf-row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--br)}
 .conf-row:last-child{border-bottom:none}
-.conf-label{font-size:10px;color:var(--mu);font-weight:600;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;margin-right:10px;padding-top:2px}
-.conf-val{font-size:13px;font-weight:600;color:var(--tx);text-align:right}
+.conf-label{font-size:9px;color:var(--mu);font-weight:600;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;margin-right:10px;padding-top:2px}
+.conf-val{font-size:12px;font-weight:600;color:var(--tx);text-align:right}
 .conf-val.green{color:var(--ac)}
-.conf-val.txn{font-size:12px;color:var(--ac2);word-break:break-all}
-.copy-card-btn{width:100%;max-width:340px;padding:13px;background:var(--s2);border:1.5px solid var(--br);border-radius:13px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:7px}
+.conf-val.txn{font-size:11px;color:var(--ac2);word-break:break-all}
+.copy-card-btn{width:100%;max-width:340px;padding:12px;background:var(--s2);border:1.5px solid var(--br);border-radius:13px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:9px;display:flex;align-items:center;justify-content:center;gap:7px}
 .dbtn2{width:100%;max-width:340px;padding:13px 40px;border-radius:13px;background:var(--ac);border:none;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer}
-.copy-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
-.copy-toast.show{opacity:1}
+/* FAIL OVERLAY */
+.fovl{position:fixed;inset:0;background:rgba(0,0,0,.87);z-index:500;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .28s}
+.fovl.op{opacity:1;pointer-events:all}
+.fsht{background:var(--s1);border-radius:22px 22px 0 0;padding:24px 22px 42px;width:100%;transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);text-align:center}
+.fovl.op .fsht{transform:translateY(0)}
+.fsht .fi{font-size:52px;margin-bottom:12px}
+.fsht h3{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--rd);letter-spacing:1px;margin-bottom:8px}
+.fsht p{font-size:13px;color:var(--mu);line-height:1.6;margin-bottom:18px}
+.try-again-btn{width:100%;padding:14px;background:var(--ac);border:none;border-radius:13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:2px;color:#000;cursor:pointer;margin-bottom:9px}
+.dismiss-btn{width:100%;padding:12px;background:transparent;border:1.5px solid var(--br);border-radius:13px;color:var(--mu);font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer}
+/* TOAST */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:8px 20px;border-radius:20px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:999;white-space:nowrap}
+.toast.show{opacity:1}
 .spn{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .55s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
 .empty{text-align:center;padding:36px 18px;color:var(--mu);font-size:13px}
@@ -120,23 +155,29 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 
 <div class="hdr">
   <div><div class="logo">Shuttlewhizz</div><div class="logo-s">Badminton Academy · Mumbai</div></div>
-  <div class="dr">April 2026<br>Book your court</div>
+  <div class="dr">Apr 2026<br>Book your court</div>
 </div>
 <div class="sbar">
-  <span class="surl" id="shareUrl">mayank-shuttlewhizz.github.io/badmintonslots</span>
+  <span class="surl">mayank-shuttlewhizz.github.io/badmintonslots</span>
   <button class="sbtn" onclick="doShare()">🔗 Share</button>
 </div>
 
-<!-- COURT TABS -->
 <div class="ctabs" id="cTabs"></div>
-
-<!-- MONTH / WEEK NAVIGATION -->
 <div class="mtabs" id="mTabs"></div>
 <div class="wstrip" id="wStrip"></div>
 
+<!-- MULTI-SELECT BAR -->
+<div class="selbar" id="selBar">
+  <div class="selbar-info" id="selInfo">0 slots · ₹0</div>
+  <div class="selbar-btns">
+    <button class="selbar-clear" onclick="clearSelection()">Clear</button>
+    <button class="selbar-book" onclick="openMultiBook()">Book All →</button>
+  </div>
+</div>
+
 <div class="pbar">
-  <div class="pp"><div class="pd" style="background:#c8f135"></div>Weekday Day <b>₹1000/hr</b></div>
-  <div class="pp"><div class="pd" style="background:#7c6af7"></div>Night/Weekend <b>₹1200/hr</b></div>
+  <div class="pp"><div class="pd" style="background:#c8f135"></div>Day <b>₹1000/hr · ₹500/30min</b></div>
+  <div class="pp"><div class="pd" style="background:#7c6af7"></div>Night/Wknd <b>₹1200/hr · ₹600/30min</b></div>
 </div>
 <div class="scon" id="slotCon"><div class="empty"><span class="spn"></span></div></div>
 
@@ -144,8 +185,12 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
 <div class="ovl" id="bOvl">
   <div class="sht">
     <div class="hdl"></div>
-    <div class="shd"><h2>Book This Slot</h2></div>
-    <div class="ssum" id="slotSum"></div>
+    <div class="shd"><h2>Confirm Booking</h2></div>
+    <!-- Single slot summary -->
+    <div class="ssum" id="slotSum" style="display:none"></div>
+    <!-- Multi slot summary -->
+    <div class="slot-list-sum" id="multiSum" style="display:none"></div>
+    <div class="total-row" id="totalRow" style="display:none"><span>Total</span><b id="totalAmt"></b></div>
     <div class="fa">
       <div class="fg"><label>Your Name</label><input type="text" id="bName" placeholder="Full name" autocomplete="name"></div>
       <div class="fg"><label>Mobile Number</label><input type="tel" id="bPhone" placeholder="10-digit number" maxlength="10" inputmode="numeric"></div>
@@ -156,26 +201,30 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
         <div class="ubtn pt" onclick="payWith('paytm')"><span style="font-size:18px;color:#00BAF2;font-weight:900;line-height:1">P</span><span class="ul">Paytm</span></div>
         <div class="ubtn bh" onclick="payWith('bhim')"><span style="font-size:18px;line-height:1">₹</span><span class="ul">BHIM</span></div>
       </div>
-      <div class="dvd">or</div>
-      <button class="pbtn" onclick="payGeneric()">PAY ₹<span id="pAmt"></span> VIA UPI</button>
+      <div class="dvd">or open any UPI app</div>
+      <!-- UPI link — proper anchor tag, not location.href -->
+      <a id="upiLink" href="#" class="pbtn" onclick="handleUPIClick(event)">PAY ₹<span id="pAmt"></span> VIA UPI</a>
       <button class="cbtn" onclick="closeBook()">Cancel</button>
     </div>
   </div>
 </div>
 
-<!-- PAID SHEET -->
+<!-- PAID CONFIRMATION SHEET -->
 <div class="povl" id="pOvl">
   <div class="psht">
     <div class="hdl" style="margin:0 auto 16px"></div>
-    <h3>✅ Payment Done?</h3>
-    <p>Enter your UPI Transaction ID to confirm and lock your slot. You'll find it in your UPI app under recent transactions.</p>
-    <input class="txni" id="txnId" type="text" placeholder="e.g. 426835291034" inputmode="numeric">
-    <button class="cpbtn2" id="confBtn" onclick="confirmBook()">CONFIRM MY BOOKING</button>
-    <button class="skbtn" onclick="confirmBook()">Skip – confirm without transaction ID</button>
+    <h3>Did the payment go through?</h3>
+    <p>Check your UPI app — if payment was successful, tap "Yes" and enter your Transaction ID to lock your slot.</p>
+    <div class="paid-opts">
+      <div class="paid-opt yes" onclick="paidYes()">✅ Yes, paid</div>
+      <div class="paid-opt no" onclick="paidNo()">❌ No / Failed</div>
+    </div>
+    <input class="txni" id="txnId" type="text" placeholder="UPI Transaction ID (from your app)" inputmode="numeric">
+    <button class="cpbtn2" id="confBtn" onclick="confirmBook()">CONFIRM &amp; LOCK SLOT</button>
   </div>
 </div>
 
-<!-- SUCCESS + CONFIRMATION CARD -->
+<!-- SUCCESS SCREEN -->
 <div class="sovl" id="sOvl">
   <div class="si">🏸</div>
   <h2>Booking Confirmed!</h2>
@@ -184,120 +233,55 @@ body{background:var(--bg);color:var(--tx);font-family:'DM Sans',sans-serif;min-h
   <button class="dbtn2" onclick="closeSuccess()">Done</button>
 </div>
 
-<div class="copy-toast" id="copyToast">Copied to clipboard!</div>
+<!-- PAYMENT FAILED SCREEN -->
+<div class="fovl" id="fOvl">
+  <div class="fsht">
+    <div class="fi">⚠️</div>
+    <h3>Payment Not Confirmed</h3>
+    <p>Your slot has <strong style="color:var(--tx)">NOT been blocked</strong>. It's still available for everyone.<br><br>Please try paying again or use a different UPI app.</p>
+    <button class="try-again-btn" onclick="tryAgain()">Try Again</button>
+    <button class="dismiss-btn" onclick="dismissFail()">Cancel – Keep Slot Open</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">Copied!</div>
 
 <script>
 // ── CONFIG ─────────────────────────────────────────────────────────────────
-var UPI='shutt90828@barodampay', UNAME='Shuttlewhizz Badminton Academy';
+// UPI: do NOT encodeURIComponent the ID itself — pass it raw in the URL
+var UPI_ID   = 'shutt90828@barodampay';
+var UPI_NAME = 'Shuttlewhizz Badminton Academy';
 
 // ── DATE HELPERS ───────────────────────────────────────────────────────────
-var MONTHS=[
-  {key:'mar',label:'Mar',year:2026,month:2,start:30,end:31},  // March 30-31
-  {key:'apr',label:'Apr',year:2026,month:3,start:1,end:30},   // All April
+var MONTHS = [
+  {key:'mar', label:'Mar', year:2026, month:2, start:30, end:31},
+  {key:'apr', label:'Apr', year:2026, month:3, start:1,  end:30},
 ];
-var DAY_NAMES=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-var MONTH_NAMES=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var DNAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var MNAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function dkey(y,m,d){return y+'-'+(m<9?'0':'')+(m+1)+'-'+(d<10?'0':'')+d;}
+function dname(y,m,d){return DNAMES[new Date(y,m,d).getDay()];}
+function isWE(y,m,d){var dow=new Date(y,m,d).getDay();return dow===0||dow===6;}
+function fmtD(y,m,d){return d+' '+MNAMES[m];}
 
-function getDateKey(y,m,d){return y+'-'+(m<9?'0':'')+(m+1)+'-'+(d<10?'0':'')+d;}
-function getDayName(y,m,d){return DAY_NAMES[new Date(y,m,d).getDay()];}
-function isWeekend(y,m,d){var dow=new Date(y,m,d).getDay();return dow===0||dow===6;}
-function fmtDate(y,m,d){return d+' '+MONTH_NAMES[m];}
-
-// Generate all days for current month selection
 function getDays(mObj){
-  var days=[];
-  var y=mObj.year,m=mObj.month;
-  for(var d=mObj.start;d<=mObj.end;d++){
-    days.push({
-      key:getDateKey(y,m,d),
-      label:getDayName(y,m,d),
-      num:d,
-      display:fmtDate(y,m,d),
-      weekend:isWeekend(y,m,d),
-      y:y,m:m,d:d
-    });
+  var days=[], y=mObj.year, m=mObj.month;
+  for(var d=mObj.start; d<=mObj.end; d++){
+    days.push({key:dkey(y,m,d),label:dname(y,m,d),num:d,display:fmtD(y,m,d),weekend:isWE(y,m,d),y:y,m:m,d:d});
   }
   return days;
 }
 
-// ── TIME HELPERS ───────────────────────────────────────────────────────────
-function fh(h){var t=Math.round(h*60),hr=Math.floor(t/60)%24,mn=t%60,ap=hr<12?'AM':'PM',d=hr===0?12:hr>12?hr-12:hr;return d+':'+(mn<10?'0':'')+mn+' '+ap;}
+// ── TIME FORMAT ─────────────────────────────────────────────────────────────
+function fh(h){
+  var t=Math.round(h*60), hr=Math.floor(t/60)%24, mn=t%60;
+  var ap=hr<12?'AM':'PM', dh=hr===0?12:hr>12?hr-12:hr;
+  return dh+':'+(mn<10?'0':'')+mn+' '+ap;
+}
+function durLabel(h){return h===1?'1 hr':h===0.5?'30 min':(h+' hrs');}
 
-// ── COURT DEFINITIONS ──────────────────────────────────────────────────────
-// Pre-booked slots for 30 Mar – 5 Apr (from original schedule)
-// Format: dateKey -> { startH: 'Name' }
-var PRE_BOOKED = {
-  'bandra': {
-    '2026-03-30': {'8.5':'Jyotika H','11.5':'Sundeep','14':'Rishikesh','23':'available','24':'available','25':'available'},
-    '2026-03-31': {'8.5':'Jyotika H','12':'Tracy H','13':'Tracy H'},
-    '2026-04-02': {'23':'Shreyas H','24':'Shreyas H'},
-    '2026-04-04': {'9':'Tanisha'},
-    '2026-04-05': {'9':'Shreyash H','12':'Mayank','13':'Mayank'},
-  },
-  'santacruz': {
-    '2026-03-30': {'9.5':'Ankit','11':'Prasad'},
-    '2026-03-31': {'10':'Shradha','21.5':'Diya','22.5':'Diya'},
-    '2026-04-01': {'9.5':'Prasad'},
-  },
-  'chembur': {},
-  'colaba': {},
-  'andheri': {},
-};
-
-// Court schedule rules: for each court, define time windows per day type
-// dayType: 'weekday' | 'weekend'
-// Windows: [{start, end, rate}]
-var COURT_RULES = {
-  bandra: {
-    weekday: [
-      {start:8.5,  end:9.5,  rate:'day'},
-      {start:11.5, end:16.5, rate:'day'},
-      {start:23,   end:26.5, rate:'night'},
-    ],
-    weekend: [
-      {start:9,    end:10.5, rate:'weekend'},
-      {start:12,   end:16.5, rate:'weekend'},
-      {start:22.5, end:26.5, rate:'night'},
-    ],
-  },
-  santacruz: {
-    weekday: [
-      {start:9.5,  end:15,   rate:'day'},
-      {start:23,   end:25,   rate:'night'},
-    ],
-    weekend: [
-      {start:5.5,  end:6.5,  rate:'weekend'},
-      {start:14.5, end:20,   rate:'weekend'},
-      {start:21.5, end:25.5, rate:'night'},
-    ],
-  },
-  chembur: {
-    weekday: [
-      {start:11,   end:19,   rate:'day'},
-    ],
-    weekend: [
-      {start:11,   end:19,   rate:'weekend'},
-    ],
-  },
-  colaba: {
-    weekday: [
-      {start:11.5, end:18.5, rate:'day'},
-    ],
-    weekend: [
-      {start:11.5, end:18.5, rate:'weekend'},
-    ],
-  },
-  andheri: {
-    weekday: [
-      {start:6,    end:22,   rate:'day'},
-    ],
-    weekend: [
-      {start:6,    end:22,   rate:'weekend'},
-    ],
-  },
-};
-
-var COURTS = [
+// ── COURTS & RULES ─────────────────────────────────────────────────────────
+var COURTS=[
   {id:'bandra',    name:'Bandra'},
   {id:'santacruz', name:'Santacruz'},
   {id:'chembur',   name:'Chembur'},
@@ -305,293 +289,383 @@ var COURTS = [
   {id:'andheri',   name:'Andheri'},
 ];
 
-// Generate slots for a specific court + date
-function getSlotsForDay(courtId, dateObj) {
-  var rules = COURT_RULES[courtId];
-  if (!rules) return [];
-  var windows = dateObj.weekend ? rules.weekend : rules.weekday;
-  var pre = (PRE_BOOKED[courtId] && PRE_BOOKED[courtId][dateObj.key]) || {};
-  var slots = [];
-  windows.forEach(function(w) {
-    var h = Math.round(w.start * 2) / 2;
-    var en = Math.round(w.end * 2) / 2;
-    while (h < en) {
-      var id = courtId + '-' + dateObj.key + '-' + h;
-      var preVal = pre[''+h];
-      // skip "available" marker (those are just notes, not real bookings)
-      var bookedBy = (preVal && preVal !== 'available') ? preVal : null;
-      slots.push({
-        id: id,
-        time: fh(h) + ' – ' + fh(h+1),
-        h: h,
-        rate: w.rate,
-        by: bookedBy,
-        dateKey: dateObj.key,
-        courtId: courtId,
-      });
-      h = Math.round((h+1)*2)/2;
+// slot step: 0.5 = 30 min
+var STEP = 0.5;
+
+var RULES = {
+  bandra:    { weekday:[{s:8.5,e:9.5,'r':'day'},{s:11.5,e:16.5,'r':'day'},{s:23,e:26.5,'r':'night'}],    weekend:[{s:9,e:10.5,'r':'weekend'},{s:12,e:16.5,'r':'weekend'},{s:22.5,e:26.5,'r':'night'}] },
+  santacruz: { weekday:[{s:9.5,e:15,'r':'day'},{s:23,e:25,'r':'night'}],                                  weekend:[{s:5.5,e:6.5,'r':'weekend'},{s:14.5,e:20,'r':'weekend'},{s:21.5,e:25.5,'r':'night'}] },
+  chembur:   { weekday:[{s:11,e:19,'r':'day'}],                                                            weekend:[{s:11,e:19,'r':'weekend'}] },
+  colaba:    { weekday:[{s:11.5,e:18.5,'r':'day'}],                                                       weekend:[{s:11.5,e:18.5,'r':'weekend'}] },
+  andheri:   { weekday:[{s:6,e:22,'r':'day'}],                                                             weekend:[{s:6,e:22,'r':'weekend'}] },
+};
+
+// Pre-booked (before Apr 6 reset) — Mar 30–Apr 5 only
+var PRE = {
+  bandra:    {'2026-03-30':{'8.5':'Jyotika H','11.5':'Sundeep','14':'Rishikesh'},'2026-03-31':{'8.5':'Jyotika H','12':'Tracy H','13':'Tracy H'},'2026-04-01':{},'2026-04-02':{'23':'Shreyas H','23.5':'Shreyas H'},'2026-04-04':{'9':'Tanisha'},'2026-04-05':{'9':'Shreyash H','12':'Mayank','13':'Mayank'}},
+  santacruz: {'2026-03-30':{'9.5':'Ankit','11':'Prasad'},'2026-03-31':{'10':'Shradha','21.5':'Diya','22.5':'Diya'},'2026-04-01':{'9.5':'Prasad'}},
+  chembur:{}, colaba:{}, andheri:{},
+};
+
+function getSlotsForDay(courtId, dateObj){
+  var rules=RULES[courtId]; if(!rules) return [];
+  var wins=dateObj.weekend?rules.weekend:rules.weekday;
+  // Only apply pre-booked for dates before Apr 6
+  var pre=((PRE[courtId]||{})[dateObj.key])||{};
+  var slots=[];
+  wins.forEach(function(w){
+    var h=Math.round(w.s*2)/2, en=Math.round(w.e*2)/2;
+    while(h<en){
+      var id=courtId+'-'+dateObj.key+'-'+h;
+      var preVal=pre[''+h];
+      slots.push({id:id,time:fh(h)+' – '+fh(h+STEP),h:h,hrs:STEP,rate:w.r,by:preVal||null,dateKey:dateObj.key,courtId:courtId});
+      h=Math.round((h+STEP)*2)/2;
     }
   });
   return slots;
 }
 
-// ── STATE ──────────────────────────────────────────────────────────────────
-var selC = 'bandra';
-var selMon = 'apr';
-var selDay = null;  // dateObj
-var selSlot = null, pendingUser = null;
-var booked = {};
-var confData = null; // store last booking for copy
+// ── STATE ───────────────────────────────────────────────────────────────────
+var selC='bandra', selMon='apr', selDay=null;
+var selectedSlots = []; // multi-select array of slot objects
+var pendingUser=null, confData=null, pendingSlots=[];
+var booked={};
+try{booked=JSON.parse(localStorage.getItem('sw_bk2')||'{}');}catch(e){}
+function save(){try{localStorage.setItem('sw_bk2',JSON.stringify(booked));}catch(e){}}
 
-try { booked = JSON.parse(localStorage.getItem('sw_bk') || '{}'); } catch(e) {}
-function save() { try { localStorage.setItem('sw_bk', JSON.stringify(booked)); } catch(e) {} }
+function pricePerSlot(s){return s.rate==='day'?500:600;} // per 30min slot
+function isB(s){return !!(booked[s.id]||s.by);}
+function bName(s){var b=booked[s.id];return b?b.name:s.by;}
 
-function price(s) {
-  if (s.rate === 'day') return 1000;
-  return 1200;
-}
-function isB(s) { return !!(booked[s.id] || s.by); }
-function bName(s) { var b = booked[s.id]; return b ? b.name : s.by; }
-
-// ── INIT ───────────────────────────────────────────────────────────────────
-function init() {
-  // Default to today or Apr 1
-  var today = new Date();
-  var defaultM = (today.getMonth() === 2 && today.getDate() >= 30) ? 'mar' : 'apr';
-  selMon = defaultM;
-
-  rCourts();
-  rMonths();
-  // select first available day
-  var days = getDays(MONTHS.find(function(m){return m.key===selMon;}));
-  var todayKey = getDateKey(today.getFullYear(), today.getMonth(), today.getDate());
-  var found = days.find(function(d){return d.key >= todayKey;}) || days[0];
-  selDay = found;
-  rDays();
-  rSlots();
-  document.getElementById('shareUrl').textContent = location.href.replace('https://','').split('?')[0];
-}
-
-// ── RENDER ─────────────────────────────────────────────────────────────────
-function rCourts() {
-  document.getElementById('cTabs').innerHTML = COURTS.map(function(c) {
-    return '<button class="ct'+(c.id===selC?' on':'')+'" onclick="pickCourt(\''+c.id+'\')">' + c.name + '</button>';
-  }).join('');
-}
-
-function rMonths() {
-  document.getElementById('mTabs').innerHTML = MONTHS.map(function(m) {
-    return '<div class="mt2'+(m.key===selMon?' on':'')+'" onclick="pickMonth(\''+m.key+'\')">' + m.label + ' \'26</div>';
-  }).join('');
-}
-
-function rDays() {
-  var mObj = MONTHS.find(function(m){return m.key===selMon;});
-  var days = getDays(mObj);
-  var today = new Date(); today.setHours(0,0,0,0);
-  document.getElementById('wStrip').innerHTML = days.map(function(d) {
-    var dDate = new Date(d.y, d.m, d.d);
-    var isPast = dDate < today;
-    var isOn = selDay && selDay.key === d.key;
-    return '<div class="dbtn'+(isOn?' on':'')+(isPast?' past':'')+'" onclick="pickDay(\''+d.key+'\')">'
-      +'<span class="dn">'+d.label+'</span>'
-      +'<span class="dd">'+d.num+'</span>'
-      +'</div>';
-  }).join('');
-  // scroll selected into view
-  setTimeout(function(){
-    var strip = document.getElementById('wStrip');
-    var on = strip.querySelector('.dbtn.on');
-    if(on) on.scrollIntoView({inline:'center', behavior:'smooth'});
-  }, 80);
-}
-
-function rSlots() {
-  if (!selDay) { document.getElementById('slotCon').innerHTML = '<div class="empty">Select a date above.</div>'; return; }
-  var slots = getSlotsForDay(selC, selDay);
-  var el = document.getElementById('slotCon');
-  if (!slots.length) { el.innerHTML = '<div class="empty">No slots available for this day.</div>'; return; }
-  var day  = slots.filter(function(s){return s.rate==='day';});
-  var wknd = slots.filter(function(s){return s.rate==='weekend';});
-  var ngt  = slots.filter(function(s){return s.rate==='night';});
-  var h = '';
-  if (day.length)  h += '<div class="slbl">☀️ Day Slots — ₹1000/hr</div>' + day.map(sCard).join('');
-  if (wknd.length) h += '<div class="slbl">🟢 Weekend Slots — ₹1200/hr</div>' + wknd.map(sCard).join('');
-  if (ngt.length)  h += '<div class="slbl">🌙 Night Slots — ₹1200/hr</div>' + ngt.map(sCard).join('');
-  el.innerHTML = h;
-}
-
-function sCard(s) {
-  var b=isB(s), who=bName(s), p=price(s);
-  return '<div class="sc'+(b?' bk':' av')+(s.rate==='night'?' ni':'')+'" onclick="'+(b?'':'openBook(\''+s.id+'\')')+'">'
-    +(b?'<div class="btag">BOOKED</div>':'')
-    +'<div><div class="st">'+s.time+'</div>'+(who?'<div class="sw">● '+who+'</div>':'')+'</div>'
-    +'<div class="sr"><div class="sp">₹'+p.toLocaleString('en-IN')+'</div>'+(b?'':'<div class="bchip">Book</div>')+'</div>'
-    +'</div>';
-}
-
-// ── NAVIGATION ─────────────────────────────────────────────────────────────
-function pickCourt(id) { selC = id; rCourts(); rSlots(); }
-function pickMonth(k) {
-  selMon = k;
-  var mObj = MONTHS.find(function(m){return m.key===k;});
-  var days = getDays(mObj);
-  selDay = days[0];
-  rMonths(); rDays(); rSlots();
-}
-function pickDay(key) {
-  var mObj = MONTHS.find(function(m){return m.key===selMon;});
-  var days = getDays(mObj);
-  selDay = days.find(function(d){return d.key===key;}) || days[0];
+// ── INIT ────────────────────────────────────────────────────────────────────
+function init(){
+  var today=new Date();
+  selMon=(today.getMonth()===2&&today.getDate()>=30)?'mar':'apr';
+  rCourts(); rMonths();
+  var mObj=MONTHS.find(function(m){return m.key===selMon;});
+  var days=getDays(mObj);
+  var todayKey=dkey(today.getFullYear(),today.getMonth(),today.getDate());
+  selDay=days.find(function(d){return d.key>=todayKey;})||days[0];
   rDays(); rSlots();
 }
 
-// ── GET SLOT BY ID ─────────────────────────────────────────────────────────
-function getSlot(id) {
-  if (!selDay) return null;
-  var slots = getSlotsForDay(selC, selDay);
-  return slots.find(function(s){return s.id===id;}) || null;
+// ── RENDER ──────────────────────────────────────────────────────────────────
+function rCourts(){
+  document.getElementById('cTabs').innerHTML=COURTS.map(function(c){
+    return '<button class="ct'+(c.id===selC?' on':'')+'" onclick="pickCourt(\''+c.id+'\')">' +c.name+'</button>';
+  }).join('');
+}
+function rMonths(){
+  document.getElementById('mTabs').innerHTML=MONTHS.map(function(m){
+    return '<div class="mt2'+(m.key===selMon?' on':'')+'" onclick="pickMonth(\''+m.key+'\')">' +m.label+' \'26</div>';
+  }).join('');
+}
+function rDays(){
+  var mObj=MONTHS.find(function(m){return m.key===selMon;});
+  var days=getDays(mObj);
+  var today=new Date(); today.setHours(0,0,0,0);
+  document.getElementById('wStrip').innerHTML=days.map(function(d){
+    var dDate=new Date(d.y,d.m,d.d), isPast=dDate<today, isOn=selDay&&selDay.key===d.key;
+    return '<div class="dbtn'+(isOn?' on':'')+(isPast?' past':'')+'" onclick="pickDay(\''+d.key+'\')">'
+      +'<span class="dn">'+d.label+'</span><span class="dd">'+d.num+'</span></div>';
+  }).join('');
+  setTimeout(function(){
+    var s=document.getElementById('wStrip'), on=s.querySelector('.dbtn.on');
+    if(on)on.scrollIntoView({inline:'center',behavior:'smooth'});
+  },80);
+}
+function rSlots(){
+  clearSelection();
+  if(!selDay){document.getElementById('slotCon').innerHTML='<div class="empty">Select a date.</div>';return;}
+  var slots=getSlotsForDay(selC,selDay);
+  var el=document.getElementById('slotCon');
+  if(!slots.length){el.innerHTML='<div class="empty">No slots for this day.</div>';return;}
+  var day=slots.filter(function(s){return s.rate==='day';}),
+      wk=slots.filter(function(s){return s.rate==='weekend';}),
+      nt=slots.filter(function(s){return s.rate==='night';});
+  var h='';
+  if(day.length) h+='<div class="slbl">☀️ Day — ₹500/30min · ₹1000/hr</div>'+day.map(sCard).join('');
+  if(wk.length)  h+='<div class="slbl">🟢 Weekend — ₹600/30min · ₹1200/hr</div>'+wk.map(sCard).join('');
+  if(nt.length)  h+='<div class="slbl">🌙 Night — ₹600/30min · ₹1200/hr</div>'+nt.map(sCard).join('');
+  el.innerHTML=h;
 }
 
-// ── BOOKING FLOW ───────────────────────────────────────────────────────────
-function openBook(id) {
-  selSlot = getSlot(id);
-  if (!selSlot) return;
-  var p = price(selSlot);
-  var court = COURTS.find(function(c){return c.id===selC;});
-  document.getElementById('slotSum').innerHTML =
-    '<strong>'+court.name+' Court</strong><br>'
-    +'📅 '+selDay.label+', '+selDay.display+'<br>'
-    +'🕐 '+selSlot.time+'<br>'
-    +'💰 <strong>₹'+p.toLocaleString('en-IN')+'</strong>';
-  document.getElementById('pAmt').textContent = p.toLocaleString('en-IN');
-  document.getElementById('bName').value = '';
-  document.getElementById('bPhone').value = '';
+function sCard(s){
+  var b=isB(s), who=bName(s), p=pricePerSlot(s);
+  var isPicked=selectedSlots.some(function(x){return x.id===s.id;});
+  return '<div class="sc'+(b?' bk':' av')+(s.rate==='night'?' ni':'')+(isPicked?' picked':'')+'" id="sc-'+s.id+'" onclick="'+(b?'':'toggleSlot(\''+s.id+'\')')+'">'
+    +(b?'<div class="btag">BOOKED</div>':'')
+    +(isPicked?'<div class="seltag">✓</div>':'')
+    +'<div>'
+      +'<div class="st">'+s.time+'</div>'
+      +'<div class="sdur">30 min</div>'
+      +(who?'<div class="sw">● '+who+'</div>':'')
+    +'</div>'
+    +'<div class="sr">'
+      +'<div class="sp">₹'+p.toLocaleString('en-IN')+'</div>'
+      +(b?'':'<div class="bchip">'+(isPicked?'Selected':'Select')+'</div>')
+    +'</div>'
+    +'</div>';
+}
+
+// ── MULTI SELECT ────────────────────────────────────────────────────────────
+function toggleSlot(id){
+  if(!selDay) return;
+  var slots=getSlotsForDay(selC,selDay);
+  var s=slots.find(function(x){return x.id===id;});
+  if(!s||isB(s)) return;
+  var idx=selectedSlots.findIndex(function(x){return x.id===id;});
+  if(idx>-1){ selectedSlots.splice(idx,1); }
+  else { selectedSlots.push(s); }
+  updateSelBar();
+  // re-render just this card
+  var el=document.getElementById('sc-'+id);
+  if(el){
+    var isPicked=selectedSlots.some(function(x){return x.id===id;});
+    el.className='sc av'+(s.rate==='night'?' ni':'')+(isPicked?' picked':'');
+    el.querySelector('.bchip').textContent=isPicked?'Selected':'Select';
+    var st=el.querySelector('.seltag');
+    if(isPicked&&!st){var d=document.createElement('div');d.className='seltag';d.textContent='✓';el.insertBefore(d,el.firstChild);}
+    else if(!isPicked&&st){el.removeChild(st);}
+  }
+}
+function updateSelBar(){
+  var bar=document.getElementById('selBar');
+  var total=selectedSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
+  if(selectedSlots.length>0){
+    bar.classList.add('show');
+    document.getElementById('selInfo').textContent=selectedSlots.length+' slot'+(selectedSlots.length>1?'s':'')+' · ₹'+total.toLocaleString('en-IN');
+  } else {
+    bar.classList.remove('show');
+  }
+}
+function clearSelection(){
+  selectedSlots=[];
+  updateSelBar();
+}
+function openMultiBook(){
+  if(selectedSlots.length===0) return;
+  openBookSheet(selectedSlots);
+}
+
+// ── BOOKING SHEET ────────────────────────────────────────────────────────────
+function openBookSheet(slots){
+  pendingSlots = slots.slice();
+  var total=pendingSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
+  var court=COURTS.find(function(c){return c.id===selC;});
+
+  // Single vs multi display
+  var single=document.getElementById('slotSum');
+  var multi=document.getElementById('multiSum');
+  var totalRow=document.getElementById('totalRow');
+
+  if(pendingSlots.length===1){
+    var s=pendingSlots[0];
+    single.style.display='block'; multi.style.display='none'; totalRow.style.display='none';
+    single.innerHTML='<strong>'+court.name+' Court</strong><br>📅 '+selDay.label+', '+selDay.display+'<br>🕐 '+s.time+'<br>💰 <strong>₹'+pricePerSlot(s).toLocaleString('en-IN')+'</strong>';
+  } else {
+    single.style.display='none'; multi.style.display='flex'; totalRow.style.display='flex';
+    multi.innerHTML=pendingSlots.map(function(s){
+      return '<div class="slot-sum-row"><span>'+s.time+'</span><b>₹'+pricePerSlot(s).toLocaleString('en-IN')+'</b></div>';
+    }).join('');
+    document.getElementById('totalAmt').textContent='₹'+total.toLocaleString('en-IN');
+  }
+
+  document.getElementById('pAmt').textContent=total.toLocaleString('en-IN');
+  buildUPILink(total, court.name);
+  document.getElementById('bName').value='';
+  document.getElementById('bPhone').value='';
   document.getElementById('bOvl').classList.add('op');
 }
-function closeBook() { document.getElementById('bOvl').classList.remove('op'); }
 
-function validate() {
-  var n=document.getElementById('bName').value.trim(),
-      p=document.getElementById('bPhone').value.trim();
-  if (!n) { alert('Please enter your name.'); return null; }
-  if (!/^\d{10}$/.test(p)) { alert('Enter a valid 10-digit mobile number.'); return null; }
-  return {name:n, phone:p};
+// Single slot click → select and show sheet immediately
+function openBook(id){
+  if(!selDay) return;
+  var slots=getSlotsForDay(selC,selDay);
+  var s=slots.find(function(x){return x.id===id;});
+  if(!s||isB(s)) return;
+  // If no selection, open directly; else add to selection
+  if(selectedSlots.length===0){
+    openBookSheet([s]);
+  } else {
+    toggleSlot(id);
+  }
+}
+function closeBook(){ document.getElementById('bOvl').classList.remove('op'); }
+
+// ── UPI URL (FIXED) ──────────────────────────────────────────────────────────
+// Key fix: pa= must NOT be double-encoded. Use raw UPI ID in the URL.
+// The anchor href handles the encoding natively.
+function buildUPILink(totalAmt, courtName){
+  var note = courtName+' '+( selDay ? selDay.label+' '+selDay.display : '' );
+  // Build proper UPI intent URL — pa is NOT encoded here
+  var url = 'upi://pay?pa='+UPI_ID
+    +'&pn='+encodeURIComponent(UPI_NAME)
+    +'&am='+totalAmt
+    +'&cu=INR'
+    +'&tn='+encodeURIComponent(note);
+  document.getElementById('upiLink').setAttribute('data-upi', url);
+  document.getElementById('upiLink').setAttribute('data-amt', totalAmt);
 }
 
-function upiUrl(app) {
-  var p = price(selSlot);
-  var court = COURTS.find(function(c){return c.id===selC;});
-  var note = encodeURIComponent(court.name+' '+selDay.label+' '+selDay.display+' '+selSlot.time);
-  var pa = encodeURIComponent(UPI), pn = encodeURIComponent(UNAME);
-  if (app==='gpay')    return 'gpay://upi/pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  if (app==='phonepe') return 'phonepe://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  if (app==='paytm')   return 'paytmmp://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  if (app==='bhim')    return 'bhim://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-  return 'upi://pay?pa='+pa+'&pn='+pn+'&am='+p+'&cu=INR&tn='+note;
-}
-
-function payWith(app) {
+function handleUPIClick(e){
+  e.preventDefault();
   var u=validate(); if(!u) return;
-  pendingUser=u; closeBook();
-  setTimeout(function(){window.location.href=upiUrl(app); setTimeout(showPaid,2200);},300);
+  pendingUser=u;
+  var url=document.getElementById('upiLink').getAttribute('data-upi');
+  // Use a hidden link click — preserves page state on mobile
+  var a=document.createElement('a');
+  a.href=url; a.style.display='none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // Show "did you pay?" after delay
+  setTimeout(showPaid, 2500);
 }
-function payGeneric() {
+
+function payWith(app){
   var u=validate(); if(!u) return;
-  pendingUser=u; closeBook();
-  setTimeout(function(){window.location.href=upiUrl(''); setTimeout(showPaid,2200);},300);
+  pendingUser=u;
+  var total=pendingSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
+  var court=COURTS.find(function(c){return c.id===selC;});
+  var note=court.name+(selDay?' '+selDay.label+' '+selDay.display:'');
+  var base='?pa='+UPI_ID+'&pn='+encodeURIComponent(UPI_NAME)+'&am='+total+'&cu=INR&tn='+encodeURIComponent(note);
+  var url;
+  if(app==='gpay')    url='gpay://upi/pay'+base;
+  else if(app==='phonepe') url='phonepe://pay'+base;
+  else if(app==='paytm')   url='paytmmp://pay'+base;
+  else if(app==='bhim')    url='bhim://pay'+base;
+  else url='upi://pay'+base;
+
+  var a=document.createElement('a'); a.href=url; a.style.display='none';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(showPaid, 2500);
 }
-function showPaid() {
+
+function showPaid(){
+  closeBook();
   document.getElementById('txnId').value='';
+  document.getElementById('txnId').classList.remove('show');
+  document.getElementById('confBtn').classList.remove('show');
   document.getElementById('pOvl').classList.add('op');
 }
 
-function confirmBook() {
-  var txn = document.getElementById('txnId').value.trim() || 'N/A';
-  var u = pendingUser || {name:'User', phone:''};
-  var court = COURTS.find(function(c){return c.id===selC;});
-  var p = price(selSlot);
-  var btn = document.getElementById('confBtn');
-  btn.textContent='Saving...'; btn.disabled=true;
+// ── PAID / NOT PAID ──────────────────────────────────────────────────────────
+function paidYes(){
+  document.getElementById('txnId').classList.add('show');
+  document.getElementById('confBtn').classList.add('show');
+}
+function paidNo(){
+  document.getElementById('pOvl').classList.remove('op');
+  // Slot is NOT blocked — show fail message
+  document.getElementById('fOvl').classList.add('op');
+}
+function tryAgain(){
+  document.getElementById('fOvl').classList.remove('op');
+  // Re-open book sheet with same slots
+  if(pendingSlots.length>0) openBookSheet(pendingSlots);
+}
+function dismissFail(){
+  document.getElementById('fOvl').classList.remove('op');
+  pendingSlots=[]; pendingUser=null;
+  clearSelection();
+}
 
-  var data = {
-    name: u.name, phone: u.phone, txn: txn,
-    court: court.name, courtId: selC,
-    day: selDay.label, date: selDay.display,
-    time: selSlot.time, rate: selSlot.rate,
-    price: p,
-    ts: new Date().toISOString(),
-    tsd: new Date().toLocaleString('en-IN'),
-    ref: 'SW'+Date.now().toString(36).toUpperCase()
-  };
-  booked[selSlot.id] = data;
+function validate(){
+  var n=document.getElementById('bName').value.trim(),p=document.getElementById('bPhone').value.trim();
+  if(!n){alert('Please enter your name.');return null;}
+  if(!/^\d{10}$/.test(p)){alert('Enter a valid 10-digit mobile number.');return null;}
+  return{name:n,phone:p};
+}
+
+function confirmBook(){
+  var txn=document.getElementById('txnId').value.trim()||'N/A';
+  var u=pendingUser||{name:'User',phone:''};
+  var court=COURTS.find(function(c){return c.id===selC;});
+  var total=pendingSlots.reduce(function(s,x){return s+pricePerSlot(x);},0);
+  var btn=document.getElementById('confBtn'); btn.textContent='Saving…'; btn.disabled=true;
+
+  var ref='SW'+Date.now().toString(36).toUpperCase();
+  var times=pendingSlots.map(function(s){return s.time;}).join(', ');
+
+  // Save each slot
+  pendingSlots.forEach(function(s){
+    booked[s.id]={
+      name:u.name,phone:u.phone,txn:txn,court:court.name,courtId:selC,
+      day:selDay.label,date:selDay.display,time:s.time,rate:s.rate,
+      price:pricePerSlot(s),ref:ref,ts:new Date().toISOString(),tsd:new Date().toLocaleString('en-IN')
+    };
+  });
   save();
-  confData = data;
 
-  btn.textContent='CONFIRM MY BOOKING'; btn.disabled=false;
+  confData={name:u.name,phone:u.phone,txn:txn,court:court.name,day:selDay.label,date:selDay.display,times:times,slots:pendingSlots.length,price:total,ref:ref,rate:pendingSlots[0].rate};
+
+  btn.textContent='CONFIRM & LOCK SLOT'; btn.disabled=false;
   document.getElementById('pOvl').classList.remove('op');
 
   // Build confirmation card
-  var rateLabel = data.rate==='night'?'🌙 Night':data.rate==='weekend'?'🟢 Weekend':'☀️ Day';
-  document.getElementById('confCard').innerHTML =
-    row('Booking Ref','<span class="green">'+data.ref+'</span>')+
-    row('Name', data.name)+
-    row('Mobile', data.phone)+
-    row('Court', data.court+' Court')+
-    row('Date', data.day+', '+data.date)+
-    row('Time', data.time)+
-    row('Rate', rateLabel)+
-    row('Amount', '<span class="green">₹'+p.toLocaleString('en-IN')+'</span>')+
-    row('TXN ID', '<span class="txn">'+(data.txn!=='N/A'?data.txn:'Not provided')+'</span>');
+  var rl=confData.rate==='night'?'🌙 Night':confData.rate==='weekend'?'🟢 Weekend':'☀️ Day';
+  document.getElementById('confCard').innerHTML=
+    row('Booking Ref','<span class="green">'+confData.ref+'</span>')+
+    row('Name',confData.name)+
+    row('Mobile',confData.phone)+
+    row('Court',confData.court+' Court')+
+    row('Date',confData.day+', '+confData.date)+
+    row('Slot'+(confData.slots>1?'s':''),confData.times)+
+    row('Duration',confData.slots*30+' min')+
+    row('Rate',rl)+
+    row('Amount','<span class="green">₹'+confData.price.toLocaleString('en-IN')+'</span>')+
+    row('TXN ID','<span class="txn">'+(confData.txn!=='N/A'?confData.txn:'Not provided')+'</span>');
 
   document.getElementById('sOvl').classList.add('on');
-  rSlots();
+  clearSelection(); rSlots();
 }
 
-function row(label,val){
-  return '<div class="conf-row"><div class="conf-label">'+label+'</div><div class="conf-val">'+val+'</div></div>';
+function row(label,val){return '<div class="conf-row"><div class="conf-label">'+label+'</div><div class="conf-val">'+val+'</div></div>';}
+
+function copyConfirmation(){
+  if(!confData) return;
+  var rl=confData.rate==='night'?'Night (₹1200/hr)':confData.rate==='weekend'?'Weekend (₹1200/hr)':'Day (₹1000/hr)';
+  var txt='🏸 SHUTTLEWHIZZ BADMINTON – BOOKING CONFIRMED\n'
+    +'━━━━━━━━━━━━━━━━━━━━━\n'
+    +'📋 Ref: '+confData.ref+'\n'
+    +'👤 Name: '+confData.name+'\n'
+    +'📞 Mobile: '+confData.phone+'\n'
+    +'🏟️ Court: '+confData.court+'\n'
+    +'📅 Date: '+confData.day+', '+confData.date+'\n'
+    +'🕐 Slot(s): '+confData.times+'\n'
+    +'⏱ Duration: '+confData.slots*30+' min\n'
+    +'⚡ Rate: '+rl+'\n'
+    +'💰 Amount Paid: ₹'+confData.price.toLocaleString('en-IN')+'\n'
+    +(confData.txn!=='N/A'?'🔑 TXN: '+confData.txn+'\n':'')
+    +'━━━━━━━━━━━━━━━━━━━━━\n'
+    +'Book more: mayank-shuttlewhizz.github.io/badmintonslots';
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(showToast);
+  else{var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast();}
 }
 
-function copyConfirmation() {
-  if (!confData) return;
-  var rateLabel = confData.rate==='night'?'Night (₹1200/hr)':confData.rate==='weekend'?'Weekend (₹1200/hr)':'Day (₹1000/hr)';
-  var text =
-    '🏸 SHUTTLEWHIZZ BADMINTON – BOOKING CONFIRMED\n'+
-    '━━━━━━━━━━━━━━━━━━━━━\n'+
-    '📋 Ref: '+confData.ref+'\n'+
-    '👤 Name: '+confData.name+'\n'+
-    '📞 Mobile: '+confData.phone+'\n'+
-    '🏟️ Court: '+confData.court+'\n'+
-    '📅 Date: '+confData.day+', '+confData.date+'\n'+
-    '🕐 Time: '+confData.time+'\n'+
-    '⚡ Rate: '+rateLabel+'\n'+
-    '💰 Amount: ₹'+confData.price.toLocaleString('en-IN')+'\n'+
-    (confData.txn!=='N/A'?'🔑 TXN ID: '+confData.txn+'\n':'')+
-    '━━━━━━━━━━━━━━━━━━━━━\n'+
-    'Book at: mayank-shuttlewhizz.github.io/badmintonslots';
+function closeSuccess(){document.getElementById('sOvl').classList.remove('on');pendingSlots=[];pendingUser=null;confData=null;}
+function showToast(){var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2000);}
 
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(function(){showToast();});
-  } else {
-    var ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast();
-  }
+// ── NAV ─────────────────────────────────────────────────────────────────────
+function pickCourt(id){selC=id;rCourts();rSlots();}
+function pickMonth(k){
+  selMon=k;
+  var mObj=MONTHS.find(function(m){return m.key===k;});
+  selDay=getDays(mObj)[0];
+  rMonths();rDays();rSlots();
+}
+function pickDay(key){
+  var mObj=MONTHS.find(function(m){return m.key===selMon;});
+  selDay=getDays(mObj).find(function(d){return d.key===key;})||selDay;
+  rDays();rSlots();
 }
 
-function showToast() {
-  var t=document.getElementById('copyToast');t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},2000);
-}
-
-function closeSuccess() {
-  document.getElementById('sOvl').classList.remove('on');
-  pendingUser=null; selSlot=null; confData=null;
-}
-
-function doShare() {
+function doShare(){
   var url='https://mayank-shuttlewhizz.github.io/badmintonslots/';
-  if (navigator.share) navigator.share({title:'Shuttlewhizz Court Booking',text:'Book your badminton slot!',url:url});
-  else if (navigator.clipboard) navigator.clipboard.writeText(url).then(function(){showToast();});
-  else prompt('Copy this link:',url);
+  if(navigator.share)navigator.share({title:'Shuttlewhizz Court Booking',text:'Book your badminton slot!',url:url});
+  else if(navigator.clipboard)navigator.clipboard.writeText(url).then(showToast);
+  else prompt('Copy:',url);
 }
 
 init();
